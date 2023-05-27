@@ -26,6 +26,10 @@ public class Passengers extends javax.swing.JFrame {
     public String oneWayRoundTrip;
     DefaultTableModel table = new DefaultTableModel();
     String insurance;
+    private int minorCounter = 1;
+    private int adultCounter = 1;
+    private int seniorCounter = 1;
+    private boolean validation;
     
     public Passengers() {
         super("MERC Airline System");
@@ -74,6 +78,7 @@ public class Passengers extends javax.swing.JFrame {
         txtFlight = new javax.swing.JTextField();
         txtAirlineType = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
+        lblPanelText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,7 +93,16 @@ public class Passengers extends javax.swing.JFrame {
         txtPassengers.setText(String.valueOf(AirlineType.passengerCount));
         txtPassengers.setEnabled(false);
 
-        pnlPassengerInput.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "User Code dito", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial Black", 0, 14))); // NOI18N
+        if(AirlineType.minorCount != 0){
+            lblPanelText.setText("Minor " + Integer.toString(minorCounter));
+        }
+        else if(AirlineType.adultCount != 0){
+            lblPanelText.setText("Adult " + Integer.toString(adultCounter));
+        }
+        else if(AirlineType.seniorCount != 0){
+            lblPanelText.setText("Senior " + Integer.toString(seniorCounter));
+        }
+        pnlPassengerInput.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         lblName.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -365,16 +379,19 @@ public class Passengers extends javax.swing.JFrame {
         jTextField1.setText(oneWayRoundTrip);
         jTextField1.setEnabled(false);
 
+        lblPanelText.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        lblPanelText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 33, Short.MAX_VALUE)
+                .addGap(0, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlPassengerInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlPassengerInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblNoPassengers)
                                 .addGap(42, 42, 42)
@@ -389,10 +406,13 @@ public class Passengers extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtAirlineType, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(143, 143, 143)
+                                .addComponent(lblPanelText)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(55, 55, 55))
                             .addGroup(layout.createSequentialGroup()
@@ -410,8 +430,13 @@ public class Passengers extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(lblPassengerTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnProceed)
+                        .addContainerGap(46, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNoPassengers)
                             .addComponent(txtPassengers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -424,13 +449,11 @@ public class Passengers extends javax.swing.JFrame {
                             .addComponent(lblAirlineType)
                             .addComponent(txtAirlineType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblPanelText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlPassengerInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnProceed)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addComponent(pnlPassengerInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))))
         );
 
         pack();
@@ -447,14 +470,46 @@ public class Passengers extends javax.swing.JFrame {
             else if(rdoNo.isSelected()){
                 insurance = rdoNo.getText();
             }
-            table.insertRow(table.getRowCount(), new Object[]{txtName.getText(), txtAge.getText(), insurance});
+            
+            minorCounter = minorCounter + 1;
+            adultCounter = adultCounter + 1;
+            seniorCounter = seniorCounter + 1;
+            validation = false;
+            
+            if(AirlineType.minorCount != 0 && AirlineType.minorCount >= minorCounter){
+                lblPanelText.setText("Minor " + Integer.toString(minorCounter));
+                if(Integer.parseInt(txtAge.getText()) >= 0 && Integer.parseInt(txtAge.getText()) <= 17){
+                    validation = true;
+                }
             }
-            txtName.setText("");
-            txtAge.setText("");
-            cboMM.setSelectedItem(null);
-            cboDD.setSelectedItem(null);
-            cboYYYY.setSelectedItem(null);
-            insuranceGroup.clearSelection();
+            else if(AirlineType.adultCount != 0 && AirlineType.adultCount >= adultCounter){
+                lblPanelText.setText("Adult " + Integer.toString(adultCounter));
+                if(Integer.parseInt(txtAge.getText()) >= 18 && Integer.parseInt(txtAge.getText()) <= 59){
+                    validation = true;
+                }
+            }
+            else if(AirlineType.seniorCount != 0 && AirlineType.seniorCount >= seniorCounter){
+                lblPanelText.setText("Senior " + Integer.toString(seniorCounter));
+                if(Integer.parseInt(txtAge.getText()) >= 60){
+                    validation = true;
+                }
+            }
+            
+            if(validation == true){
+                table.insertRow(table.getRowCount(), new Object[]{txtName.getText(), txtAge.getText(), insurance});
+                
+                txtName.setText("");
+                txtAge.setText("");
+                cboMM.setSelectedItem(null);
+                cboDD.setSelectedItem(null);
+                cboYYYY.setSelectedItem(null);
+                insuranceGroup.clearSelection();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Enter a valid age for the specific age range of the passenger.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            }
             
             if(table.getRowCount() == AirlineType.passengerCount){
                 btnProceed.setEnabled(true);
@@ -635,6 +690,7 @@ public class Passengers extends javax.swing.JFrame {
     private javax.swing.JLabel lblMM;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNoPassengers;
+    private javax.swing.JLabel lblPanelText;
     private javax.swing.JLabel lblPassengerTitle;
     private javax.swing.JLabel lblSlash1;
     private javax.swing.JLabel lblSlash2;

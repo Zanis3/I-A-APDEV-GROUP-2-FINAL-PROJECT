@@ -27,9 +27,9 @@ public class AirlineType extends javax.swing.JFrame {
     }
     int maxSeat=0;
     public static int passengerCount=0;
-    int minorCount;
-    int adultCount;
-    int seniorCount;
+    public static int minorCount;
+    public static int adultCount;
+    public static int seniorCount;
     
     public String getPassengerCount(){
         
