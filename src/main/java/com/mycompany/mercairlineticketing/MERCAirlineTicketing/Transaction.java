@@ -14,7 +14,9 @@ public class Transaction extends javax.swing.JFrame {
      * Creates new form Transaction
      */
     public Transaction() {
+        super("MERC Airline Ticketing System");
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

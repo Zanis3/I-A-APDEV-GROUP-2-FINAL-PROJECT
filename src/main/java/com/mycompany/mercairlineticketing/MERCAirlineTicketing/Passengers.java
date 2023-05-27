@@ -472,7 +472,9 @@ public class Passengers extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
-        // TODO add your handling code here:
+        Transaction t = new Transaction();
+        t.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnProceedActionPerformed
 
     private void rdoNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoNoActionPerformed
