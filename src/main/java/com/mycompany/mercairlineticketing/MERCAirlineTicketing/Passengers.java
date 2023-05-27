@@ -26,10 +26,11 @@ public class Passengers extends javax.swing.JFrame {
     public String oneWayRoundTrip;
     DefaultTableModel table = new DefaultTableModel();
     String insurance;
-    private int minorCounter = 1;
-    private int adultCounter = 1;
-    private int seniorCounter = 1;
+    private int minorCounter = 0;
+    private int adultCounter = 0;
+    private int seniorCounter = 0;
     private boolean validation;
+    private int passengerAge;
     
     public Passengers() {
         super("MERC Airline System");
@@ -94,13 +95,13 @@ public class Passengers extends javax.swing.JFrame {
         txtPassengers.setEnabled(false);
 
         if(AirlineType.minorCount != 0){
-            lblPanelText.setText("Minor " + Integer.toString(minorCounter));
+            lblPanelText.setText("Minor " + Integer.toString(minorCounter + 1));
         }
         else if(AirlineType.adultCount != 0){
-            lblPanelText.setText("Adult " + Integer.toString(adultCounter));
+            lblPanelText.setText("Adult " + Integer.toString(adultCounter + 1));
         }
         else if(AirlineType.seniorCount != 0){
-            lblPanelText.setText("Senior " + Integer.toString(seniorCounter));
+            lblPanelText.setText("Senior " + Integer.toString(seniorCounter + 1));
         }
         pnlPassengerInput.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
@@ -462,57 +463,57 @@ public class Passengers extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         if(txtName.getText().trim().isEmpty() == false && txtAge.getText().trim().isEmpty() == false && insuranceGroup.getSelection() != null){
             if(table.getRowCount()+1 <= AirlineType.passengerCount){
-            insurance = "";
+                insurance = "";
         
-            if(rdoYes.isSelected()){
-                insurance = rdoYes.getText();
-            }
-            else if(rdoNo.isSelected()){
-                insurance = rdoNo.getText();
-            }
-            
-            minorCounter = minorCounter + 1;
-            adultCounter = adultCounter + 1;
-            seniorCounter = seniorCounter + 1;
-            validation = false;
-            
-            if(AirlineType.minorCount != 0 && AirlineType.minorCount >= minorCounter){
-                lblPanelText.setText("Minor " + Integer.toString(minorCounter));
-                if(Integer.parseInt(txtAge.getText()) >= 0 && Integer.parseInt(txtAge.getText()) <= 17){
-                    validation = true;
+                if(rdoYes.isSelected()){
+                    insurance = rdoYes.getText();
                 }
-            }
-            else if(AirlineType.adultCount != 0 && AirlineType.adultCount >= adultCounter){
-                lblPanelText.setText("Adult " + Integer.toString(adultCounter));
-                if(Integer.parseInt(txtAge.getText()) >= 18 && Integer.parseInt(txtAge.getText()) <= 59){
-                    validation = true;
+                else if(rdoNo.isSelected()){
+                    insurance = rdoNo.getText();
                 }
-            }
-            else if(AirlineType.seniorCount != 0 && AirlineType.seniorCount >= seniorCounter){
-                lblPanelText.setText("Senior " + Integer.toString(seniorCounter));
-                if(Integer.parseInt(txtAge.getText()) >= 60){
-                    validation = true;
-                }
-            }
+
+                validation = false;
+                passengerAge = Integer.parseInt(txtAge.getText());
             
-            if(validation == true){
-                table.insertRow(table.getRowCount(), new Object[]{txtName.getText(), txtAge.getText(), insurance});
+                if(AirlineType.minorCount != 0 && AirlineType.minorCount > minorCounter){
+                    lblPanelText.setText("Minor " + Integer.toString(minorCounter + 1));
+                    if(passengerAge >= 0 && passengerAge <= 17){
+                        minorCounter++;
+                        validation = true;
+                    }
+                }
+                else if(AirlineType.adultCount != 0 && AirlineType.adultCount > adultCounter){
+                    lblPanelText.setText("Adult " + Integer.toString(adultCounter + 1));
+                    if(passengerAge >= 18 && passengerAge <= 59){
+                        adultCounter++;
+                        validation = true;
+                    }
+                }
+                else if(AirlineType.seniorCount != 0 && AirlineType.seniorCount > seniorCounter){
+                    lblPanelText.setText("Senior " + Integer.toString(seniorCounter + 1));
+                    if(passengerAge >= 60){
+                        seniorCounter++;
+                        validation = true;
+                    }
+                }
+            
+                if(validation == true){
+                    table.insertRow(table.getRowCount(), new Object[]{txtName.getText(), txtAge.getText(), insurance});
                 
-                txtName.setText("");
-                txtAge.setText("");
-                cboMM.setSelectedItem(null);
-                cboDD.setSelectedItem(null);
-                cboYYYY.setSelectedItem(null);
-                insuranceGroup.clearSelection();
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Enter a valid age for the specific age range of the passenger.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+                    txtName.setText("");
+                    txtAge.setText("");
+                    cboMM.setSelectedItem(null);
+                    cboDD.setSelectedItem(null);
+                    cboYYYY.setSelectedItem(null);
+                    insuranceGroup.clearSelection();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Enter a valid age for the specific age range of the passenger.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             
-            }
-            
-            if(table.getRowCount() == AirlineType.passengerCount){
-                btnProceed.setEnabled(true);
+                if(table.getRowCount() == AirlineType.passengerCount){
+                    btnProceed.setEnabled(true);
+                }
             }
         }
         else if(txtName.getText().trim().isEmpty() == true){

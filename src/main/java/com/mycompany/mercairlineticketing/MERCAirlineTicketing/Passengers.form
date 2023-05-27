@@ -156,7 +156,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(AirlineType.minorCount != 0){&#xa;    lblPanelText.setText(&quot;Minor &quot; + Integer.toString(minorCounter));&#xa;}&#xa;else if(AirlineType.adultCount != 0){&#xa;    lblPanelText.setText(&quot;Adult &quot; + Integer.toString(adultCounter));&#xa;}&#xa;else if(AirlineType.seniorCount != 0){&#xa;    lblPanelText.setText(&quot;Senior &quot; + Integer.toString(seniorCounter));&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(AirlineType.minorCount != 0){&#xa;    lblPanelText.setText(&quot;Minor &quot; + Integer.toString(minorCounter + 1));&#xa;}&#xa;else if(AirlineType.adultCount != 0){&#xa;    lblPanelText.setText(&quot;Adult &quot; + Integer.toString(adultCounter + 1));&#xa;}&#xa;else if(AirlineType.seniorCount != 0){&#xa;    lblPanelText.setText(&quot;Senior &quot; + Integer.toString(seniorCounter + 1));&#xa;}"/>
       </AuxValues>
 
       <Layout>
