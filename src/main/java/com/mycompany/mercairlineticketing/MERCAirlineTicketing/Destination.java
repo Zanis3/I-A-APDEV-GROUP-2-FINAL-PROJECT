@@ -115,7 +115,7 @@ public class Destination extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         rdoLocal.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         rdoLocal.setText("Local");
@@ -339,6 +339,6 @@ public class Destination extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdoInternational;
     private javax.swing.JRadioButton rdoLocal;
     public static javax.swing.JRadioButton rdoOneWay;
-    private javax.swing.JRadioButton rdoRoundTrip;
+    protected static javax.swing.JRadioButton rdoRoundTrip;
     // End of variables declaration//GEN-END:variables
 }
