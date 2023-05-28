@@ -13,13 +13,14 @@ import java.text.DecimalFormat;
 public class Transaction extends javax.swing.JFrame {
 
     private double transactionFee = 0;
-    private double taxFee = 0;
+    private static double taxFee = 0;
     private static double destinationPrice = 0;
+    private static double baggageTotal = 0;
+    private static double insuranceTotal = 0;
+    private double totalPrice = 0;
     
     DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-    private String transactionFormatted;
-    private String taxFormatted;
-    private String desPriceFormatted;
+    private String formattedPrice;
     
     public Transaction() {
         super("MERC Airline Ticketing System");
@@ -37,6 +38,7 @@ public class Transaction extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         lblBookingSummary = new javax.swing.JLabel();
         pnlPaymentDetails = new javax.swing.JPanel();
         rdoCash = new javax.swing.JRadioButton();
@@ -45,16 +47,25 @@ public class Transaction extends javax.swing.JFrame {
         lblModeOfPayment = new javax.swing.JLabel();
         lblPaymentDetails = new javax.swing.JLabel();
         txtPassengerPayment = new javax.swing.JTextField();
+        txtCreditCardDetails = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         pnlPaymentSummary = new javax.swing.JPanel();
         lblTransactionFee = new javax.swing.JLabel();
         txtTransactionFee = new javax.swing.JTextField();
         lblPaymentSummary = new javax.swing.JLabel();
         lblTaxFee = new javax.swing.JLabel();
         txtTaxFee = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lblTravelPrice = new javax.swing.JLabel();
+        txtTravelPrice = new javax.swing.JTextField();
+        lblBaggageTotal = new javax.swing.JLabel();
+        txtBaggageTotal = new javax.swing.JTextField();
+        lblInsuranceTotal = new javax.swing.JLabel();
+        txtInsuranceTotal = new javax.swing.JTextField();
+        lblTotal = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JTextField();
+        btnPriceBreakdown = new javax.swing.JButton();
+
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +92,9 @@ public class Transaction extends javax.swing.JFrame {
         lblPaymentDetails.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblPaymentDetails.setText("Payment Details:");
 
+        txtCreditCardDetails.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        txtCreditCardDetails.setText("Credit Card Details:");
+
         javax.swing.GroupLayout pnlPaymentDetailsLayout = new javax.swing.GroupLayout(pnlPaymentDetails);
         pnlPaymentDetails.setLayout(pnlPaymentDetailsLayout);
         pnlPaymentDetailsLayout.setHorizontalGroup(
@@ -97,11 +111,13 @@ public class Transaction extends javax.swing.JFrame {
                                 .addComponent(rdoCash)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rdoCreditCard)))
-                        .addGap(37, 37, 37)
+                        .addGap(57, 57, 57)
                         .addGroup(pnlPaymentDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblPaymentDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtPassengerPayment))))
-                .addContainerGap(74, Short.MAX_VALUE))
+                            .addComponent(txtPassengerPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(82, 82, 82)
+                        .addComponent(txtCreditCardDetails)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlPaymentDetailsLayout.setVerticalGroup(
             pnlPaymentDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +125,8 @@ public class Transaction extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlPaymentDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblModeOfPayment)
-                    .addComponent(lblPaymentDetails))
+                    .addComponent(lblPaymentDetails)
+                    .addComponent(txtCreditCardDetails))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlPaymentDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdoCash)
@@ -122,23 +139,15 @@ public class Transaction extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        jLabel1.setText("jLabel1");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 456, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1)
-                .addContainerGap(213, Short.MAX_VALUE))
+            .addGap(0, 221, Short.MAX_VALUE)
         );
 
         pnlPaymentSummary.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -149,15 +158,15 @@ public class Transaction extends javax.swing.JFrame {
 
         if(AirlineType.cboAirlineType.getSelectedItem().equals("Regular")){
             transactionFee = 255.00;
-            transactionFormatted = decimalFormat.format(transactionFee);
+            formattedPrice = decimalFormat.format(transactionFee);
         }
         else if(AirlineType.cboAirlineType.getSelectedItem().equals("Private") || AirlineType.cboAirlineType.getSelectedItem().equals("Business")){
             transactionFee = 550.00;
-            transactionFormatted = decimalFormat.format(transactionFee);
+            formattedPrice = decimalFormat.format(transactionFee);
         }
         txtTransactionFee.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         txtTransactionFee.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtTransactionFee.setText(transactionFormatted);
+        txtTransactionFee.setText(formattedPrice);
         txtTransactionFee.setEnabled(false);
 
         lblPaymentSummary.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
@@ -168,59 +177,126 @@ public class Transaction extends javax.swing.JFrame {
 
         txtTaxFee.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         txtTaxFee.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        if(AirlineType.cboAirlineType.getSelectedItem().equals("Regular")){
-            taxFee = 2500.0 * Double.valueOf(AirlineType.passengerCount);
-        }
-        else if(AirlineType.cboAirlineType.getSelectedItem().equals("Business")){
-            taxFee = 5700.0 * Double.valueOf(AirlineType.passengerCount);
-        }
-        else if(AirlineType.cboAirlineType.getSelectedItem().equals("Private")){
-            taxFee = 4260.0 * Double.valueOf(AirlineType.passengerCount);
-        }
+        taxMethod();
 
         if(Destination.rdoRoundTrip.isSelected() == true){
             taxFee = taxFee * 2;
         }
 
-        taxFormatted = decimalFormat.format(taxFee);
-        txtTaxFee.setText(taxFormatted);
+        if(AirlineType.seniorCount != 0){
+            taxFee = taxFee - (taxFee * Double.valueOf(AirlineType.seniorCount));
+        }
+
+        formattedPrice = decimalFormat.format(taxFee);
+        txtTaxFee.setText(formattedPrice);
         txtTaxFee.setEnabled(false);
 
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jLabel2.setText("Travel Price:");
+        lblTravelPrice.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        lblTravelPrice.setText("Travel Price:");
 
-        jTextField1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        destinationPrice();
+        txtTravelPrice.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        txtTravelPrice.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        destinationPriceMethod();
         destinationPrice = destinationPrice * Double.valueOf(AirlineType.passengerCount);
 
         if(Destination.rdoRoundTrip.isSelected() == true){
             destinationPrice = destinationPrice * 2;
         }
 
-        desPriceFormatted = decimalFormat.format(destinationPrice);
-        jTextField1.setText(desPriceFormatted);
-        jTextField1.setEnabled(false);
+        if(AirlineType.seniorCount != 0){
+            destinationPrice = destinationPrice - ((destinationPrice * Double.valueOf(AirlineType.seniorCount))*0.2);
+        }
+
+        formattedPrice = decimalFormat.format(destinationPrice);
+        txtTravelPrice.setText(formattedPrice);
+        txtTravelPrice.setEnabled(false);
+
+        lblBaggageTotal.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        lblBaggageTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblBaggageTotal.setText("Baggage Total:");
+
+        txtBaggageTotal.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        txtBaggageTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        baggageMethod();
+
+        formattedPrice = decimalFormat.format(baggageTotal);
+        txtBaggageTotal.setText(formattedPrice);
+        txtBaggageTotal.setEnabled(false);
+
+        lblInsuranceTotal.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        lblInsuranceTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblInsuranceTotal.setText("Insurance Total:");
+
+        txtInsuranceTotal.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        txtInsuranceTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        insuranceMethod();
+        formattedPrice = decimalFormat.format(insuranceTotal);
+        txtInsuranceTotal.setText(formattedPrice);
+        txtInsuranceTotal.setEnabled(false);
+        txtInsuranceTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInsuranceTotalActionPerformed(evt);
+            }
+        });
+
+        lblTotal.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        lblTotal.setText("Total:");
+
+        txtTotal.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        txtTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        totalPrice = transactionFee + taxFee + destinationPrice + baggageTotal + insuranceTotal;
+        formattedPrice = decimalFormat.format(totalPrice);
+        txtTotal.setText(formattedPrice);
+        txtTotal.setEnabled(false);
+
+        btnPriceBreakdown.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnPriceBreakdown.setText("Price Breakdown >>");
+        btnPriceBreakdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPriceBreakdownActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlPaymentSummaryLayout = new javax.swing.GroupLayout(pnlPaymentSummary);
         pnlPaymentSummary.setLayout(pnlPaymentSummaryLayout);
         pnlPaymentSummaryLayout.setHorizontalGroup(
             pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPaymentSummaryLayout.createSequentialGroup()
-                .addContainerGap(200, Short.MAX_VALUE)
-                .addComponent(lblPaymentSummary)
-                .addGap(200, 200, 200))
+                .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlPaymentSummaryLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTravelPrice)
+                            .addComponent(lblTaxFee)
+                            .addComponent(lblTransactionFee))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTransactionFee)
+                            .addComponent(txtTaxFee, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                            .addComponent(txtTravelPrice))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPaymentSummaryLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnPriceBreakdown)
+                        .addGap(40, 40, 40)))
+                .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlPaymentSummaryLayout.createSequentialGroup()
+                        .addGap(0, 22, Short.MAX_VALUE)
+                        .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBaggageTotal, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblInsuranceTotal, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBaggageTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtInsuranceTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlPaymentSummaryLayout.createSequentialGroup()
+                        .addComponent(lblTotal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTotal)))
+                .addGap(20, 20, 20))
             .addGroup(pnlPaymentSummaryLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(lblTaxFee)
-                    .addComponent(lblTransactionFee))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtTransactionFee)
-                    .addComponent(txtTaxFee, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                .addGap(172, 172, 172)
+                .addComponent(lblPaymentSummary)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlPaymentSummaryLayout.setVerticalGroup(
@@ -228,18 +304,31 @@ public class Transaction extends javax.swing.JFrame {
             .addGroup(pnlPaymentSummaryLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblPaymentSummary)
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
                 .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTravelPrice)
+                    .addComponent(txtTravelPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBaggageTotal)
+                    .addComponent(txtBaggageTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTransactionFee)
-                    .addComponent(txtTransactionFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtTransactionFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblInsuranceTotal)
+                    .addComponent(txtInsuranceTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTaxFee)
                     .addComponent(txtTaxFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlPaymentSummaryLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTotal)
+                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlPaymentSummaryLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPriceBreakdown)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -248,18 +337,18 @@ public class Transaction extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlPaymentDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(30, 30, 30)
-                        .addComponent(pnlPaymentSummary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(435, 435, 435)
-                        .addComponent(lblBookingSummary)))
-                .addContainerGap(84, Short.MAX_VALUE))
+                        .addGap(382, 382, 382)
+                        .addComponent(lblBookingSummary))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(26, 26, 26)
+                            .addComponent(pnlPaymentSummary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnlPaymentDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,18 +357,28 @@ public class Transaction extends javax.swing.JFrame {
                 .addComponent(lblBookingSummary)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlPaymentSummary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addComponent(pnlPaymentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pnlPaymentSummary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(51, 51, 51))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(pnlPaymentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private static void destinationPrice(){
+    private void btnPriceBreakdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPriceBreakdownActionPerformed
+        PriceBreakdown pb = new PriceBreakdown();
+        pb.setVisible(true);
+    }//GEN-LAST:event_btnPriceBreakdownActionPerformed
+
+    private void txtInsuranceTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInsuranceTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtInsuranceTotalActionPerformed
+
+    private static void destinationPriceMethod(){
         double privatePrice[] = {8000.0, 9800.0, 9100.0, 9850.0, 27450.0, 30890.0, 40450.0, 43855.0, 8505.0, 14300.0};
         double businessPrice[] = {12500.0, 12950.0, 10500.0, 10975.0, 37390.0, 39650.0, 45355.0, 49780.0, 12345.0, 16320.0};
         double regularPrice[] = {3500.0, 3900.0, 3200.0, 3575.0, 12055.0, 13100.0, 27800.0, 29400.0, 3200.0, 4600.0};
@@ -408,6 +507,42 @@ public class Transaction extends javax.swing.JFrame {
             break;
         }
     }
+    
+    static void baggageMethod(){
+        if(AirlineType.cboAirlineType.getSelectedItem().equals("Regular")){
+            baggageTotal = 950.0 * Double.valueOf(AirlineType.passengerCount);
+        }
+        else if(AirlineType.cboAirlineType.getSelectedItem().equals("Business")){
+            baggageTotal = 2850.0 * Double.valueOf(AirlineType.passengerCount);
+        }
+        else if(AirlineType.cboAirlineType.getSelectedItem().equals("Private")){
+            baggageTotal = 1250.0 * Double.valueOf(AirlineType.passengerCount);
+        }
+    }
+    
+    static void taxMethod(){
+        if(AirlineType.cboAirlineType.getSelectedItem().equals("Regular")){
+            taxFee = 2500.0 * Double.valueOf(AirlineType.passengerCount);
+        }
+        else if(AirlineType.cboAirlineType.getSelectedItem().equals("Business")){
+            taxFee = 5700.0 * Double.valueOf(AirlineType.passengerCount);
+        }
+        else if(AirlineType.cboAirlineType.getSelectedItem().equals("Private")){
+            taxFee = 4260.0 * Double.valueOf(AirlineType.passengerCount);
+        }
+    }
+    
+    static void insuranceMethod(){
+        if(AirlineType.cboAirlineType.getSelectedItem().equals("Regular")){
+            insuranceTotal = 950.0 * Double.valueOf(Passengers.insuranceCounter);
+        }
+        else if(AirlineType.cboAirlineType.getSelectedItem().equals("Business")){
+            insuranceTotal = 6500.0 * Double.valueOf(Passengers.insuranceCounter);
+        }
+        else if(AirlineType.cboAirlineType.getSelectedItem().equals("Private")){
+            insuranceTotal = 4500.0 * Double.valueOf(Passengers.insuranceCounter);
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -442,22 +577,30 @@ public class Transaction extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPayment;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnPriceBreakdown;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblBaggageTotal;
     private javax.swing.JLabel lblBookingSummary;
+    private javax.swing.JLabel lblInsuranceTotal;
     private javax.swing.JLabel lblModeOfPayment;
     private javax.swing.JLabel lblPaymentDetails;
     private javax.swing.JLabel lblPaymentSummary;
     private javax.swing.JLabel lblTaxFee;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblTransactionFee;
+    private javax.swing.JLabel lblTravelPrice;
     private javax.swing.JPanel pnlPaymentDetails;
     private javax.swing.JPanel pnlPaymentSummary;
     private javax.swing.JRadioButton rdoCash;
     private javax.swing.JRadioButton rdoCreditCard;
+    private javax.swing.JTextField txtBaggageTotal;
+    private javax.swing.JLabel txtCreditCardDetails;
+    private javax.swing.JTextField txtInsuranceTotal;
     private javax.swing.JTextField txtPassengerPayment;
     private javax.swing.JTextField txtTaxFee;
+    private javax.swing.JTextField txtTotal;
     private javax.swing.JTextField txtTransactionFee;
+    private javax.swing.JTextField txtTravelPrice;
     // End of variables declaration//GEN-END:variables
 }

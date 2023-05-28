@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel2"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -24,22 +31,22 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="pnlPaymentDetails" max="32767" attributes="0"/>
-                          <Component id="jPanel1" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="pnlPaymentSummary" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="435" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="382" max="-2" attributes="0"/>
                       <Component id="lblBookingSummary" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="pnlPaymentSummary" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="pnlPaymentDetails" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="84" max="32767" attributes="0"/>
+              <EmptySpace pref="65" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -50,14 +57,15 @@
               <Component id="lblBookingSummary" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="pnlPaymentSummary" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="42" max="32767" attributes="0"/>
-                      <Component id="pnlPaymentDetails" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="pnlPaymentSummary" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="pnlPaymentDetails" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -98,14 +106,16 @@
                                   <Component id="rdoCreditCard" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="lblPaymentDetails" max="32767" attributes="0"/>
-                              <Component id="txtPassengerPayment" max="32767" attributes="0"/>
+                              <Component id="txtPassengerPayment" min="-2" pref="130" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="txtCreditCardDetails" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="74" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -116,6 +126,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblModeOfPayment" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblPaymentDetails" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCreditCardDetails" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -175,6 +186,14 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtPassengerPayment">
         </Component>
+        <Component class="javax.swing.JLabel" name="txtCreditCardDetails">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial Black" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Credit Card Details:"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel1">
@@ -189,30 +208,15 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="456" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="213" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="221" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
-          </Properties>
-        </Component>
-      </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlPaymentSummary">
       <Properties>
@@ -227,23 +231,52 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="200" max="32767" attributes="0"/>
-                  <Component id="lblPaymentSummary" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lblTravelPrice" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTaxFee" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTransactionFee" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtTransactionFee" max="32767" attributes="0"/>
+                              <Component id="txtTaxFee" pref="109" max="32767" attributes="0"/>
+                              <Component id="txtTravelPrice" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnPriceBreakdown" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblBaggageTotal" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblInsuranceTotal" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtBaggageTotal" min="-2" pref="109" max="-2" attributes="0"/>
+                              <Component id="txtInsuranceTotal" min="-2" pref="109" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblTotal" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtTotal" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblTaxFee" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblTransactionFee" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtTransactionFee" max="32767" attributes="0"/>
-                      <Component id="txtTaxFee" pref="109" max="32767" attributes="0"/>
-                      <Component id="jTextField1" max="32767" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
+                  <Component id="lblPaymentSummary" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -253,20 +286,37 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="lblPaymentSummary" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTravelPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTravelPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBaggageTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtBaggageTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblTransactionFee" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtTransactionFee" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblInsuranceTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtInsuranceTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblTaxFee" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtTaxFee" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTotal" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnPriceBreakdown" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -290,12 +340,12 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="transactionFormatted" type="code"/>
+              <Connection code="formattedPrice" type="code"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(AirlineType.cboAirlineType.getSelectedItem().equals(&quot;Regular&quot;)){&#xa;    transactionFee = 255.00;&#xa;    transactionFormatted = decimalFormat.format(transactionFee);&#xa;}&#xa;else if(AirlineType.cboAirlineType.getSelectedItem().equals(&quot;Private&quot;) || AirlineType.cboAirlineType.getSelectedItem().equals(&quot;Business&quot;)){&#xa;    transactionFee = 550.00;&#xa;    transactionFormatted = decimalFormat.format(transactionFee);&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(AirlineType.cboAirlineType.getSelectedItem().equals(&quot;Regular&quot;)){&#xa;    transactionFee = 255.00;&#xa;    formattedPrice = decimalFormat.format(transactionFee);&#xa;}&#xa;else if(AirlineType.cboAirlineType.getSelectedItem().equals(&quot;Private&quot;) || AirlineType.cboAirlineType.getSelectedItem().equals(&quot;Business&quot;)){&#xa;    transactionFee = 550.00;&#xa;    formattedPrice = decimalFormat.format(transactionFee);&#xa;}"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblPaymentSummary">
@@ -319,14 +369,14 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial Black" size="12" style="0"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="4" postCode="if(AirlineType.cboAirlineType.getSelectedItem().equals(&quot;Regular&quot;)){&#xa;    taxFee = 2500.0 * Double.valueOf(AirlineType.passengerCount);&#xa;}&#xa;else if(AirlineType.cboAirlineType.getSelectedItem().equals(&quot;Business&quot;)){&#xa;    taxFee = 5700.0 * Double.valueOf(AirlineType.passengerCount);&#xa;}&#xa;else if(AirlineType.cboAirlineType.getSelectedItem().equals(&quot;Private&quot;)){&#xa;    taxFee = 4260.0 * Double.valueOf(AirlineType.passengerCount);&#xa;}&#xa;&#xa;if(Destination.rdoRoundTrip.isSelected() == true){&#xa;    taxFee = taxFee * 2;&#xa;}&#xa;&#xa;taxFormatted = decimalFormat.format(taxFee);"/>
+            <Property name="horizontalAlignment" type="int" value="4" postCode="taxMethod();&#xa;&#xa;if(Destination.rdoRoundTrip.isSelected() == true){&#xa;    taxFee = taxFee * 2;&#xa;}&#xa;&#xa;if(AirlineType.seniorCount != 0){&#xa;    taxFee = taxFee - (taxFee * Double.valueOf(AirlineType.seniorCount));&#xa;}&#xa;&#xa;formattedPrice = decimalFormat.format(taxFee);"/>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="taxFormatted" type="code"/>
+              <Connection code="formattedPrice" type="code"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lblTravelPrice">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial Black" size="12" style="0"/>
@@ -334,17 +384,93 @@
             <Property name="text" type="java.lang.String" value="Travel Price:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="txtTravelPrice">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial Black" size="12" style="0"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="4" postCode="destinationPrice();&#xa;destinationPrice = destinationPrice * Double.valueOf(AirlineType.passengerCount);&#xa;&#xa;if(Destination.rdoRoundTrip.isSelected() == true){&#xa;    destinationPrice = destinationPrice * 2;&#xa;}&#xa;&#xa;desPriceFormatted = decimalFormat.format(destinationPrice);"/>
+            <Property name="horizontalAlignment" type="int" value="4" postCode="destinationPriceMethod();&#xa;destinationPrice = destinationPrice * Double.valueOf(AirlineType.passengerCount);&#xa;&#xa;if(Destination.rdoRoundTrip.isSelected() == true){&#xa;    destinationPrice = destinationPrice * 2;&#xa;}&#xa;&#xa;if(AirlineType.seniorCount != 0){&#xa;    destinationPrice = destinationPrice - ((destinationPrice * Double.valueOf(AirlineType.seniorCount))*0.2);&#xa;}&#xa;&#xa;formattedPrice = decimalFormat.format(destinationPrice);"/>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="desPriceFormatted" type="code"/>
+              <Connection code="formattedPrice" type="code"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblBaggageTotal">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial Black" size="12" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="text" type="java.lang.String" value="Baggage Total:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtBaggageTotal">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial Black" size="12" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4" postCode="baggageMethod();&#xa;&#xa;formattedPrice = decimalFormat.format(baggageTotal);"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="formattedPrice" type="code"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblInsuranceTotal">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial Black" size="12" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="text" type="java.lang.String" value="Insurance Total:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtInsuranceTotal">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial Black" size="12" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4" postCode="insuranceMethod();&#xa;formattedPrice = decimalFormat.format(insuranceTotal);"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="formattedPrice" type="code"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtInsuranceTotalActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTotal">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial Black" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Total:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTotal">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial Black" size="18" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4" postCode="totalPrice = transactionFee + taxFee + destinationPrice + baggageTotal + insuranceTotal;&#xa;formattedPrice = decimalFormat.format(totalPrice);"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="formattedPrice" type="code"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnPriceBreakdown">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial Black" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Price Breakdown &gt;&gt;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPriceBreakdownActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

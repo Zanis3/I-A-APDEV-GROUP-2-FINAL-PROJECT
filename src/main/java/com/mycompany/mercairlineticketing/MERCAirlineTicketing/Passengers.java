@@ -26,6 +26,7 @@ public class Passengers extends javax.swing.JFrame {
     public String oneWayRoundTrip;
     DefaultTableModel table = new DefaultTableModel();
     private String insurance;
+    protected static int insuranceCounter;
     private String passenger;
     private int minorCounter = 0;
     private int adultCounter = 0;
@@ -517,13 +518,16 @@ public class Passengers extends javax.swing.JFrame {
             
                 if(validation == true){
                     table.insertRow(table.getRowCount(), new Object[]{txtName.getText(), txtAge.getText(), insurance});
-                
                     txtName.setText("");
                     txtAge.setText("");
                     cboMM.setSelectedItem(null);
                     cboDD.setSelectedItem(null);
                     cboYYYY.setSelectedItem(null);
                     insuranceGroup.clearSelection();
+                    
+                    if(rdoYes.isSelected()){
+                        insuranceCounter++;
+                    }
                 }
                 else{
                     passengerCounter--;
