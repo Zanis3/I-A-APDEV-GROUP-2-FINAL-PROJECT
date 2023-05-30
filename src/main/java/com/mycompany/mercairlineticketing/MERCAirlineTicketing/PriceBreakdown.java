@@ -31,7 +31,7 @@ public class PriceBreakdown extends javax.swing.JFrame {
         btnConfirmAndExit = new javax.swing.JButton();
         lblPriceBreakdown = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tblPassengerBreakdown.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -536,6 +536,14 @@ public class Passengers extends javax.swing.JFrame {
             
                 if(table.getRowCount() == AirlineType.passengerCount){
                     btnProceed.setEnabled(true);
+                    txtName.setEditable(false);
+                    cboMM.setEnabled(false);
+                    cboDD.setEnabled(false);
+                    cboYYYY.setEnabled(false);
+                    rdoYes.setEnabled(false);
+                    rdoNo.setEnabled(false);
+                    btnAdd.setEnabled(false);
+                    lblPanelText.setText("(CLICK PROCEED BUTTON)");
                 }
             }
         }
