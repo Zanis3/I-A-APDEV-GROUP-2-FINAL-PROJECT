@@ -108,7 +108,7 @@
           <Font name="Arial Black" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Welcome to MERC Airline Ticket System!"/>
+        <Property name="text" type="java.lang.String" value="Welcome to Himpapawid Airlines!"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cboOrigin">

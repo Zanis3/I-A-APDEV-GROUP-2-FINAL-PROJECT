@@ -57,7 +57,7 @@ public class Destination extends javax.swing.JFrame {
 
         lblWelcomeText.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         lblWelcomeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWelcomeText.setText("Welcome to MERC Airline Ticket System!");
+        lblWelcomeText.setText("Welcome to Himpapawid Airlines!");
 
         cboOrigin.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         cboOrigin.setEnabled(false);
