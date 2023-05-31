@@ -15,7 +15,7 @@ public class MERCAirlineTicketing extends javax.swing.JFrame {
      * Creates new form MERCAirlineTicketing
      */
     public MERCAirlineTicketing() {
-        super("MERC Airline System");
+        super("Himpapawid Airlines Ticketing System");
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -46,16 +46,16 @@ public class MERCAirlineTicketing extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(132, 132, 132)
+                .addGap(139, 139, 139)
                 .addComponent(btnStart)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(219, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(133, 133, 133)
                 .addComponent(btnStart)
-                .addGap(53, 53, 53))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         pack();

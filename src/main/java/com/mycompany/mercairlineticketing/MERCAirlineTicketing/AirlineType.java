@@ -1,9 +1,6 @@
 package com.mycompany.mercairlineticketing.MERCAirlineTicketing;
 
 import java.awt.event.ItemEvent;
-import java.util.ArrayList;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /*
@@ -21,7 +18,7 @@ public class AirlineType extends javax.swing.JFrame {
      * Creates new form Passengers
      */
     public AirlineType() {
-        super("MERC Airline System");
+        super("Himpapawid Airlines Ticketing System");
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -95,11 +92,6 @@ public class AirlineType extends javax.swing.JFrame {
         cboAdultCount.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         cboAdultCount.setSelectedItem(null);
         cboAdultCount.setEnabled(false);
-        cboAdultCount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboAdultCountActionPerformed(evt);
-            }
-        });
 
         lblAdults.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
         lblAdults.setText("Adults (18-59)");
@@ -107,11 +99,6 @@ public class AirlineType extends javax.swing.JFrame {
         cboSeniorsCount.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         cboSeniorsCount.setSelectedItem(null);
         cboSeniorsCount.setEnabled(false);
-        cboSeniorsCount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboSeniorsCountActionPerformed(evt);
-            }
-        });
 
         lblSeniors.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
         lblSeniors.setText("Seniors (60+)");
@@ -244,10 +231,6 @@ public class AirlineType extends javax.swing.JFrame {
         btnProceed.setEnabled(true);
     }//GEN-LAST:event_cboAirlineTypeActionPerformed
 
-    private void cboSeniorsCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSeniorsCountActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboSeniorsCountActionPerformed
-
     private void cboAirlineTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboAirlineTypeItemStateChanged
         if(evt.getStateChange() == ItemEvent.SELECTED){
             if(cboAirlineType.getSelectedItem().toString().equals("Private")){
@@ -274,10 +257,6 @@ public class AirlineType extends javax.swing.JFrame {
             cboSeniorsCount.setSelectedItem(passengerSeat[0]);
         }
     }//GEN-LAST:event_cboAirlineTypeItemStateChanged
-
-    private void cboAdultCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboAdultCountActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboAdultCountActionPerformed
 
     /**
      * @param args the command line arguments

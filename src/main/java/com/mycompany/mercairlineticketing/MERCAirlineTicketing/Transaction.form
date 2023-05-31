@@ -497,7 +497,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial Black" size="12" style="0"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="4" postCode="taxMethod();&#xa;&#xa;if(Destination.rdoRoundTrip.isSelected() == true){&#xa;    taxFee = taxFee * 2;&#xa;}&#xa;&#xa;if(AirlineType.seniorCount != 0){&#xa;    taxFee = taxFee - (taxFee * Double.valueOf(AirlineType.seniorCount));&#xa;}&#xa;&#xa;formattedPrice = decimalFormat.format(taxFee);"/>
+            <Property name="horizontalAlignment" type="int" value="4" postCode="taxMethod();&#xa;formattedPrice = decimalFormat.format(taxFee);"/>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="formattedPrice" type="code"/>
             </Property>
@@ -517,7 +517,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial Black" size="12" style="0"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="4" postCode="destinationPriceMethod();&#xa;destinationPrice = destinationPrice * Double.valueOf(AirlineType.passengerCount);&#xa;&#xa;if(Destination.rdoRoundTrip.isSelected() == true){&#xa;    destinationPrice = destinationPrice * 2;&#xa;}&#xa;&#xa;if(AirlineType.seniorCount != 0){&#xa;    destinationPrice = destinationPrice - ((destinationPrice * Double.valueOf(AirlineType.seniorCount))*0.2);&#xa;}&#xa;&#xa;formattedPrice = decimalFormat.format(destinationPrice);"/>
+            <Property name="horizontalAlignment" type="int" value="4" postCode="destinationPriceMethod();&#xa;&#xa;formattedPrice = decimalFormat.format(destinationPrice);"/>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="formattedPrice" type="code"/>
             </Property>

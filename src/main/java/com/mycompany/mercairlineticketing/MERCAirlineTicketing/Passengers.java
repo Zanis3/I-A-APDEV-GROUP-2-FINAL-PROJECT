@@ -24,7 +24,7 @@ public class Passengers extends javax.swing.JFrame {
     private int days = 0;
     private int period = 0;
     protected static String oneWayRoundTrip;
-    DefaultTableModel table = new DefaultTableModel();
+    static DefaultTableModel table = new DefaultTableModel();
     private String insurance;
     protected static int insuranceCounter;
     private String passenger;
@@ -36,7 +36,7 @@ public class Passengers extends javax.swing.JFrame {
     private int passengerAge;
     
     public Passengers() {
-        super("MERC Airline System");
+        super("Himpapawid Airlines Ticketing System");
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -96,11 +96,6 @@ public class Passengers extends javax.swing.JFrame {
         txtPassengers.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtPassengers.setText(String.valueOf(AirlineType.passengerCount));
         txtPassengers.setEnabled(false);
-        txtPassengers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPassengersActionPerformed(evt);
-            }
-        });
 
         if(AirlineType.minorCount != 0){
             passenger = "Passenger 1: (Minor)";
@@ -122,11 +117,6 @@ public class Passengers extends javax.swing.JFrame {
 
         btnAdd.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         btnAdd.setText("Add >>");
-        btnAdd.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                btnAddItemStateChanged(evt);
-            }
-        });
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
@@ -140,31 +130,16 @@ public class Passengers extends javax.swing.JFrame {
         txtAge.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         txtAge.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtAge.setEnabled(false);
-        txtAge.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAgeActionPerformed(evt);
-            }
-        });
 
         pnlnsurance.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Insurance?", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial Black", 0, 14))); // NOI18N
 
         insuranceGroup.add(rdoYes);
         rdoYes.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         rdoYes.setText("Yes");
-        rdoYes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoYesActionPerformed(evt);
-            }
-        });
 
         insuranceGroup.add(rdoNo);
         rdoNo.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         rdoNo.setText("No");
-        rdoNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoNoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlnsuranceLayout = new javax.swing.GroupLayout(pnlnsurance);
         pnlnsurance.setLayout(pnlnsuranceLayout);
@@ -234,22 +209,12 @@ public class Passengers extends javax.swing.JFrame {
                 cboMMItemStateChanged(evt);
             }
         });
-        cboMM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboMMActionPerformed(evt);
-            }
-        });
 
         cboDD.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         cboDD.setSelectedItem(null);
         cboDD.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboDDItemStateChanged(evt);
-            }
-        });
-        cboDD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboDDActionPerformed(evt);
             }
         });
 
@@ -380,21 +345,11 @@ public class Passengers extends javax.swing.JFrame {
         txtFlight.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtFlight.setText(String.valueOf(Destination.cboOrigin.getSelectedItem()) + " to " + String.valueOf(Destination.cboDestination.getSelectedItem()));
         txtFlight.setEnabled(false);
-        txtFlight.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFlightActionPerformed(evt);
-            }
-        });
 
         txtAirlineType.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         txtAirlineType.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtAirlineType.setText(String.valueOf(AirlineType.cboAirlineType.getSelectedItem()));
         txtAirlineType.setEnabled(false);
-        txtAirlineType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAirlineTypeActionPerformed(evt);
-            }
-        });
 
         jTextField1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         if(Destination.rdoOneWay.isSelected() == true){
@@ -573,14 +528,6 @@ public class Passengers extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnProceedActionPerformed
 
-    private void rdoNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoNoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdoNoActionPerformed
-
-    private void cboMMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboMMActionPerformed
-
     private void cboMMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMMItemStateChanged
         if(evt.getStateChange() == ItemEvent.SELECTED){
             String selectedMonth = cboMM.getSelectedItem().toString();
@@ -647,18 +594,6 @@ public class Passengers extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cboYYYYItemStateChanged
 
-    private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
-        
-    }//GEN-LAST:event_txtAgeActionPerformed
-
-    private void cboDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDDActionPerformed
-
-    }//GEN-LAST:event_cboDDActionPerformed
-
-    private void txtAirlineTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAirlineTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAirlineTypeActionPerformed
-
     private void cboDDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDDItemStateChanged
         if(evt.getStateChange() == ItemEvent.SELECTED){
             if(cboDD.getSelectedItem() != null && cboMM.getSelectedItem() != null && cboYYYY.getSelectedItem() != null){
@@ -678,22 +613,6 @@ public class Passengers extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_cboDDItemStateChanged
-
-    private void btnAddItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnAddItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddItemStateChanged
-
-    private void txtPassengersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassengersActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPassengersActionPerformed
-
-    private void rdoYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoYesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdoYesActionPerformed
-
-    private void txtFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFlightActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFlightActionPerformed
 
     /**
      * @param args the command line arguments
@@ -756,7 +675,7 @@ public class Passengers extends javax.swing.JFrame {
     private javax.swing.JPanel pnlnsurance;
     private javax.swing.JRadioButton rdoNo;
     private javax.swing.JRadioButton rdoYes;
-    private javax.swing.JTable tblPassengerData;
+    protected static javax.swing.JTable tblPassengerData;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtAirlineType;
     protected static javax.swing.JTextField txtFlight;

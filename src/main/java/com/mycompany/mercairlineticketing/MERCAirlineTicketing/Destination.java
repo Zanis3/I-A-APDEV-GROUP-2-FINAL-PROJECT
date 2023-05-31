@@ -17,7 +17,7 @@ public class Destination extends javax.swing.JFrame {
     //DESIGN IS NOT FINAL
     
     public Destination() {
-        super("MERC Airline System");
+        super("Himpapawid Airlines Ticketing System");
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -125,7 +125,7 @@ public class Destination extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
-        lblFrom.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        lblFrom.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         lblFrom.setForeground(new java.awt.Color(252, 177, 48));
         lblFrom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFrom.setText("From:");
@@ -139,13 +139,8 @@ public class Destination extends javax.swing.JFrame {
                 cboOriginItemStateChanged(evt);
             }
         });
-        cboOrigin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboOriginActionPerformed(evt);
-            }
-        });
 
-        lblTo.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        lblTo.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         lblTo.setForeground(new java.awt.Color(252, 177, 48));
         lblTo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTo.setText("To:");
@@ -154,11 +149,6 @@ public class Destination extends javax.swing.JFrame {
         cboDestination.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         cboDestination.setForeground(new java.awt.Color(252, 177, 48));
         cboDestination.setEnabled(false);
-        cboDestination.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboDestinationActionPerformed(evt);
-            }
-        });
 
         rdoOneWay.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         rdoOneWay.setForeground(new java.awt.Color(252, 177, 48));
@@ -215,7 +205,6 @@ public class Destination extends javax.swing.JFrame {
                                 .addComponent(lblFrom)
                                 .addGap(5, 5, 5))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationColor2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblTo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -243,7 +232,7 @@ public class Destination extends javax.swing.JFrame {
                     .addComponent(rdoRoundTrip)
                     .addComponent(btnNext)
                     .addComponent(rdoOneWay))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -263,10 +252,6 @@ public class Destination extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cboOriginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboOriginActionPerformed
-        
-    }//GEN-LAST:event_cboOriginActionPerformed
 
     private void rdoLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoLocalActionPerformed
         cboOrigin.setEnabled(true);
@@ -311,10 +296,6 @@ public class Destination extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_cboOriginItemStateChanged
-
-    private void cboDestinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDestinationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboDestinationActionPerformed
 
     private void rdoOneWayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoOneWayActionPerformed
         if(rdoLocal.isSelected() == true || rdoInternational.isSelected() == true){

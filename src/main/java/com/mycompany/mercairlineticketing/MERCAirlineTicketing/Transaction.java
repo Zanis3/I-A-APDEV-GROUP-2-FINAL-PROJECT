@@ -18,12 +18,13 @@ public class Transaction extends javax.swing.JFrame {
     private static double baggageTotal = 0;
     private static double insuranceTotal = 0;
     private double totalPrice = 0;
+    private static double seniorsPrice = 0;
     
     DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
     private String formattedPrice;
     
     public Transaction() {
-        super("MERC Airline Ticketing System");
+        super("Himpapawid Airlines Ticketing System");
         
         initComponents();
         this.setLocationRelativeTo(null);
@@ -263,15 +264,6 @@ public class Transaction extends javax.swing.JFrame {
         txtTaxFee.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         txtTaxFee.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         taxMethod();
-
-        if(Destination.rdoRoundTrip.isSelected() == true){
-            taxFee = taxFee * 2;
-        }
-
-        if(AirlineType.seniorCount != 0){
-            taxFee = taxFee - (taxFee * Double.valueOf(AirlineType.seniorCount));
-        }
-
         formattedPrice = decimalFormat.format(taxFee);
         txtTaxFee.setText(formattedPrice);
         txtTaxFee.setEnabled(false);
@@ -282,15 +274,6 @@ public class Transaction extends javax.swing.JFrame {
         txtTravelPrice.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         txtTravelPrice.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         destinationPriceMethod();
-        destinationPrice = destinationPrice * Double.valueOf(AirlineType.passengerCount);
-
-        if(Destination.rdoRoundTrip.isSelected() == true){
-            destinationPrice = destinationPrice * 2;
-        }
-
-        if(AirlineType.seniorCount != 0){
-            destinationPrice = destinationPrice - ((destinationPrice * Double.valueOf(AirlineType.seniorCount))*0.2);
-        }
 
         formattedPrice = decimalFormat.format(destinationPrice);
         txtTravelPrice.setText(formattedPrice);
@@ -590,6 +573,13 @@ public class Transaction extends javax.swing.JFrame {
             }
             break;
         }
+        seniorsPrice = destinationPrice * Double.valueOf(AirlineType.seniorCount);
+        seniorsPrice = seniorsPrice - (seniorsPrice * 0.2);
+        destinationPrice = destinationPrice * Double.valueOf(AirlineType.passengerCount - AirlineType.seniorCount) + seniorsPrice;
+
+        if(Destination.rdoRoundTrip.isSelected() == true){
+            destinationPrice = destinationPrice * 2;
+        }
     }
     
     static void baggageMethod(){
@@ -606,13 +596,17 @@ public class Transaction extends javax.swing.JFrame {
     
     static void taxMethod(){
         if(AirlineType.cboAirlineType.getSelectedItem().equals("Regular")){
-            taxFee = 2500.0 * Double.valueOf(AirlineType.passengerCount);
+            taxFee = 2500.0 * Double.valueOf(AirlineType.passengerCount - AirlineType.seniorCount);
         }
         else if(AirlineType.cboAirlineType.getSelectedItem().equals("Business")){
-            taxFee = 5700.0 * Double.valueOf(AirlineType.passengerCount);
+            taxFee = 5700.0 * Double.valueOf(AirlineType.passengerCount - AirlineType.seniorCount);
         }
         else if(AirlineType.cboAirlineType.getSelectedItem().equals("Private")){
-            taxFee = 4260.0 * Double.valueOf(AirlineType.passengerCount);
+            taxFee = 4260.0 * Double.valueOf(AirlineType.passengerCount - AirlineType.seniorCount);
+        }
+        
+        if(Destination.rdoRoundTrip.isSelected() == true){
+            taxFee = taxFee * 2;
         }
     }
     

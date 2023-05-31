@@ -4,19 +4,26 @@
  */
 package com.mycompany.mercairlineticketing.MERCAirlineTicketing;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author user
  */
 public class PriceBreakdown extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PriceBreakdown
-     */
+    DefaultTableModel model = new DefaultTableModel();
+    private static int passengerCount = AirlineType.passengerCount;
+    protected static Object passengerNames[] = new Object[passengerCount];
+    protected static Object passengerAges[] = new Object[passengerCount];
+    
     public PriceBreakdown() {
+        super("Himpapawid Airlines Ticketing System");
         initComponents();
+        this.setLocationRelativeTo(null);
+        model = (DefaultTableModel) tblPassengerBreakdown.getModel();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,11 +45,11 @@ public class PriceBreakdown extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Passenger Name", "Passenger Type", "Trip Price", "Baggage Fee", "Insurance Fee", "Tax", "Total"
+                "Name", "Type", "Price", "Baggage", "Insurance", "Tax"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -99,9 +106,17 @@ public class PriceBreakdown extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnConfirmAndExitActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void TableData(){
+        int nameColumnIndex = 0;
+        int ageColumnIndex = 1;
+        
+        for(int a = 0;a < passengerCount;a++){
+            Object passengerNames = Passengers.table.getValueAt(a, nameColumnIndex);
+            Object passengerAges = Passengers.table.getValueAt(a, ageColumnIndex);
+
+            model.addRow(new Object[]{passengerNames, passengerAges, null, null, null, null});
+    	}
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -138,6 +153,6 @@ public class PriceBreakdown extends javax.swing.JFrame {
     private javax.swing.JButton btnConfirmAndExit;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblPriceBreakdown;
-    private javax.swing.JTable tblPassengerBreakdown;
+    private static javax.swing.JTable tblPassengerBreakdown;
     // End of variables declaration//GEN-END:variables
 }
