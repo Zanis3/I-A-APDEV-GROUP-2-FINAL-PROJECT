@@ -14,14 +14,18 @@ public class PriceBreakdown extends javax.swing.JFrame {
 
     DefaultTableModel model = new DefaultTableModel();
     private static int passengerCount = AirlineType.passengerCount;
-    protected static Object passengerNames[] = new Object[passengerCount];
-    protected static Object passengerAges[] = new Object[passengerCount];
+    protected String passengerType;
+    private static double price = 0;
+    private static double baggagePrice = 0;
+    private static double insurancePrice = 0;
+    private static double taxFee = 0;
     
     public PriceBreakdown() {
         super("Himpapawid Airlines Ticketing System");
         initComponents();
         this.setLocationRelativeTo(null);
         model = (DefaultTableModel) tblPassengerBreakdown.getModel();
+        TableData();
     }
     
     /**
@@ -40,6 +44,7 @@ public class PriceBreakdown extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        tblPassengerBreakdown.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         tblPassengerBreakdown.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -109,12 +114,44 @@ public class PriceBreakdown extends javax.swing.JFrame {
     private void TableData(){
         int nameColumnIndex = 0;
         int ageColumnIndex = 1;
+        int insuranceColumnIndex = 2;
         
         for(int a = 0;a < passengerCount;a++){
             Object passengerNames = Passengers.table.getValueAt(a, nameColumnIndex);
             Object passengerAges = Passengers.table.getValueAt(a, ageColumnIndex);
+            Object passengerInsurances = Passengers.table.getValueAt(a, insuranceColumnIndex);
+            
+            if(Integer.parseInt(passengerAges.toString()) > 0 && Integer.parseInt(passengerAges.toString()) < 18){
+                passengerType = "MINOR";
+            }
+            else if(Integer.parseInt(passengerAges.toString()) > 17 && Integer.parseInt(passengerAges.toString()) < 60){
+                passengerType = "ADULT";
+            }
+            else{
+                passengerType = "SENIOR";
+            }
+            
+            price = Transaction.initialPrice;
+            
+            
+            if(passengerInsurances.equals("Yes")){
+                insurancePrice = Transaction.initialInsurance;
+            }
+            else if(passengerInsurances.equals("No")){
+                insurancePrice = 0;
+            }
+            
+            taxFee = Transaction.taxFee / Double.valueOf(AirlineType.passengerCount - AirlineType.seniorCount);
+            
+            if(Integer.parseInt(passengerAges.toString()) >= 60){
+                price = price - (price * 0.2);
+                taxFee = 0;
+            }
+            
+            baggagePrice = Transaction.baggageTotal / passengerCount;
+            System.out.println("passengerInsurances: " + passengerInsurances);
 
-            model.addRow(new Object[]{passengerNames, passengerAges, null, null, null, null});
+            model.addRow(new Object[]{passengerNames, passengerType, price, baggagePrice, insurancePrice, taxFee});
     	}
     }
     public static void main(String args[]) {

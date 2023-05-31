@@ -195,6 +195,7 @@ public class Passengers extends javax.swing.JFrame {
         }
         cboYYYY.setModel(new javax.swing.DefaultComboBoxModel<>(yearChoices));
         cboYYYY.setSelectedItem(null);
+        cboYYYY.setEnabled(false);
         cboYYYY.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboYYYYItemStateChanged(evt);
@@ -212,6 +213,7 @@ public class Passengers extends javax.swing.JFrame {
 
         cboDD.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         cboDD.setSelectedItem(null);
+        cboDD.setEnabled(false);
         cboDD.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboDDItemStateChanged(evt);
@@ -555,6 +557,11 @@ public class Passengers extends javax.swing.JFrame {
         
             cboDD.setModel(new javax.swing.DefaultComboBoxModel<>(dayChoices));
             cboDD.setSelectedItem(null);
+            
+            if(cboMM.getSelectedItem() != null){
+                cboDD.setEnabled(true);
+                cboYYYY.setEnabled(true);
+            }
         
             if(cboDD.getSelectedItem() != null && cboMM.getSelectedItem() != null && cboYYYY.getSelectedItem() != null){
                 year = Integer.parseInt(cboYYYY.getSelectedItem().toString());
