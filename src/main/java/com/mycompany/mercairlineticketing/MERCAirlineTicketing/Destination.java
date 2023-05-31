@@ -14,9 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class Destination extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AirlineType
-     */
+    //DESIGN IS NOT FINAL
+    
     public Destination() {
         super("MERC Airline System");
         initComponents();
@@ -34,17 +33,19 @@ public class Destination extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        pnlDestinationColor1 = new javax.swing.JPanel();
         lblWelcomeText = new javax.swing.JLabel();
-        cboOrigin = new javax.swing.JComboBox<>();
-        cboDestination = new javax.swing.JComboBox<>();
+        pnlDestinationColor2 = new javax.swing.JPanel();
+        pnlLocalInternational = new javax.swing.JPanel();
+        rdoLocal = new javax.swing.JRadioButton();
+        rdoInternational = new javax.swing.JRadioButton();
         lblFrom = new javax.swing.JLabel();
+        cboOrigin = new javax.swing.JComboBox<>();
         lblTo = new javax.swing.JLabel();
+        cboDestination = new javax.swing.JComboBox<>();
         rdoOneWay = new javax.swing.JRadioButton();
         rdoRoundTrip = new javax.swing.JRadioButton();
         btnNext = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        rdoLocal = new javax.swing.JRadioButton();
-        rdoInternational = new javax.swing.JRadioButton();
 
         buttonGroup1.add(rdoLocal);
         buttonGroup1.add(rdoInternational);
@@ -53,13 +54,85 @@ public class Destination extends javax.swing.JFrame {
         buttonGroup2.add(rdoRoundTrip);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
         setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
 
-        lblWelcomeText.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        lblWelcomeText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnlDestinationColor1.setBackground(new java.awt.Color(252, 177, 48));
+
+        lblWelcomeText.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
+        lblWelcomeText.setForeground(new java.awt.Color(29, 72, 134));
+        lblWelcomeText.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblWelcomeText.setText("Welcome to Himpapawid Airlines!");
 
-        cboOrigin.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        javax.swing.GroupLayout pnlDestinationColor1Layout = new javax.swing.GroupLayout(pnlDestinationColor1);
+        pnlDestinationColor1.setLayout(pnlDestinationColor1Layout);
+        pnlDestinationColor1Layout.setHorizontalGroup(
+            pnlDestinationColor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationColor1Layout.createSequentialGroup()
+                .addContainerGap(108, Short.MAX_VALUE)
+                .addComponent(lblWelcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106))
+        );
+        pnlDestinationColor1Layout.setVerticalGroup(
+            pnlDestinationColor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationColor1Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(lblWelcomeText)
+                .addGap(28, 28, 28))
+        );
+
+        pnlDestinationColor2.setBackground(new java.awt.Color(29, 72, 134));
+
+        pnlLocalInternational.setBackground(new java.awt.Color(252, 177, 48));
+        pnlLocalInternational.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        rdoLocal.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
+        rdoLocal.setForeground(new java.awt.Color(29, 72, 134));
+        rdoLocal.setText("Local");
+        rdoLocal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoLocalActionPerformed(evt);
+            }
+        });
+
+        rdoInternational.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
+        rdoInternational.setForeground(new java.awt.Color(29, 72, 134));
+        rdoInternational.setText("International");
+        rdoInternational.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoInternationalActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlLocalInternationalLayout = new javax.swing.GroupLayout(pnlLocalInternational);
+        pnlLocalInternational.setLayout(pnlLocalInternationalLayout);
+        pnlLocalInternationalLayout.setHorizontalGroup(
+            pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLocalInternationalLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(rdoLocal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(rdoInternational)
+                .addGap(20, 20, 20))
+        );
+        pnlLocalInternationalLayout.setVerticalGroup(
+            pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLocalInternationalLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rdoLocal)
+                    .addComponent(rdoInternational))
+                .addGap(17, 17, 17))
+        );
+
+        lblFrom.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        lblFrom.setForeground(new java.awt.Color(252, 177, 48));
+        lblFrom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFrom.setText("From:");
+
+        cboOrigin.setBackground(new java.awt.Color(29, 72, 134));
+        cboOrigin.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
+        cboOrigin.setForeground(new java.awt.Color(252, 177, 48));
         cboOrigin.setEnabled(false);
         cboOrigin.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -72,7 +145,14 @@ public class Destination extends javax.swing.JFrame {
             }
         });
 
-        cboDestination.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        lblTo.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        lblTo.setForeground(new java.awt.Color(252, 177, 48));
+        lblTo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTo.setText("To:");
+
+        cboDestination.setBackground(new java.awt.Color(29, 72, 134));
+        cboDestination.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
+        cboDestination.setForeground(new java.awt.Color(252, 177, 48));
         cboDestination.setEnabled(false);
         cboDestination.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,15 +160,8 @@ public class Destination extends javax.swing.JFrame {
             }
         });
 
-        lblFrom.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        lblFrom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblFrom.setText("From:");
-
-        lblTo.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        lblTo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTo.setText("To:");
-
-        rdoOneWay.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        rdoOneWay.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
+        rdoOneWay.setForeground(new java.awt.Color(252, 177, 48));
         rdoOneWay.setText("One-Way");
         rdoOneWay.setEnabled(false);
         rdoOneWay.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +170,8 @@ public class Destination extends javax.swing.JFrame {
             }
         });
 
-        rdoRoundTrip.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        rdoRoundTrip.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
+        rdoRoundTrip.setForeground(new java.awt.Color(252, 177, 48));
         rdoRoundTrip.setText("Round-Trip");
         rdoRoundTrip.setEnabled(false);
         rdoRoundTrip.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +180,9 @@ public class Destination extends javax.swing.JFrame {
             }
         });
 
+        btnNext.setBackground(new java.awt.Color(252, 177, 48));
         btnNext.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnNext.setForeground(new java.awt.Color(29, 72, 134));
         btnNext.setText("Next >>");
         btnNext.setEnabled(false);
         btnNext.addActionListener(new java.awt.event.ActionListener() {
@@ -115,96 +191,74 @@ public class Destination extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-
-        rdoLocal.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        rdoLocal.setText("Local");
-        rdoLocal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoLocalActionPerformed(evt);
-            }
-        });
-
-        rdoInternational.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        rdoInternational.setText("International");
-        rdoInternational.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoInternationalActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(rdoLocal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(rdoInternational)
-                .addGap(20, 20, 20))
+        javax.swing.GroupLayout pnlDestinationColor2Layout = new javax.swing.GroupLayout(pnlDestinationColor2);
+        pnlDestinationColor2.setLayout(pnlDestinationColor2Layout);
+        pnlDestinationColor2Layout.setHorizontalGroup(
+            pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationColor2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rdoOneWay)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rdoRoundTrip)
+                .addGap(36, 36, 36)
+                .addComponent(btnNext)
+                .addGap(156, 156, 156))
+            .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
+                .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(pnlLocalInternational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
+                        .addGap(197, 197, 197)
+                        .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
+                                .addComponent(lblFrom)
+                                .addGap(5, 5, 5))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationColor2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cboDestination, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboOrigin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdoLocal)
-                    .addComponent(rdoInternational))
-                .addGap(17, 17, 17))
+        pnlDestinationColor2Layout.setVerticalGroup(
+            pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(pnlLocalInternational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(cboOrigin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFrom))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboDestination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTo))
+                .addGap(27, 27, 27)
+                .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rdoRoundTrip)
+                    .addComponent(btnNext)
+                    .addComponent(rdoOneWay))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFrom)
-                            .addComponent(lblTo))
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboOrigin, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboDestination, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(rdoOneWay)
-                        .addGap(18, 18, 18)
-                        .addComponent(rdoRoundTrip)
-                        .addGap(49, 49, 49)
-                        .addComponent(btnNext))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(lblWelcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(85, Short.MAX_VALUE))
+            .addComponent(pnlDestinationColor1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlDestinationColor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lblWelcomeText)
-                .addGap(33, 33, 33)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFrom)
-                    .addComponent(cboOrigin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboDestination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdoOneWay)
-                    .addComponent(rdoRoundTrip)
-                    .addComponent(btnNext))
-                .addGap(41, 41, 41))
+                .addComponent(pnlDestinationColor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(pnlDestinationColor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -332,10 +386,12 @@ public class Destination extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     public static javax.swing.JComboBox<String> cboDestination;
     public static javax.swing.JComboBox<String> cboOrigin;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblFrom;
     private javax.swing.JLabel lblTo;
     private javax.swing.JLabel lblWelcomeText;
+    private javax.swing.JPanel pnlDestinationColor1;
+    private javax.swing.JPanel pnlDestinationColor2;
+    private javax.swing.JPanel pnlLocalInternational;
     private javax.swing.JRadioButton rdoInternational;
     private javax.swing.JRadioButton rdoLocal;
     public static javax.swing.JRadioButton rdoOneWay;

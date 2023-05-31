@@ -23,7 +23,7 @@ public class Passengers extends javax.swing.JFrame {
     private String yearChoices[] = new String[117];
     private int days = 0;
     private int period = 0;
-    public String oneWayRoundTrip;
+    protected static String oneWayRoundTrip;
     DefaultTableModel table = new DefaultTableModel();
     private String insurance;
     protected static int insuranceCounter;
@@ -151,6 +151,11 @@ public class Passengers extends javax.swing.JFrame {
         insuranceGroup.add(rdoYes);
         rdoYes.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         rdoYes.setText("Yes");
+        rdoYes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoYesActionPerformed(evt);
+            }
+        });
 
         insuranceGroup.add(rdoNo);
         rdoNo.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -375,6 +380,11 @@ public class Passengers extends javax.swing.JFrame {
         txtFlight.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtFlight.setText(String.valueOf(Destination.cboOrigin.getSelectedItem()) + " to " + String.valueOf(Destination.cboDestination.getSelectedItem()));
         txtFlight.setEnabled(false);
+        txtFlight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFlightActionPerformed(evt);
+            }
+        });
 
         txtAirlineType.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         txtAirlineType.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -398,7 +408,7 @@ public class Passengers extends javax.swing.JFrame {
         jTextField1.setEnabled(false);
 
         lblPanelText.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        lblPanelText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPanelText.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblPanelText.setText(passenger);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -413,26 +423,25 @@ public class Passengers extends javax.swing.JFrame {
                         .addComponent(lblPassengerTitle)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlPassengerInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNoPassengers)
-                                .addGap(42, 42, 42)
-                                .addComponent(txtPassengers, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(lblFlight)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtFlight))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblAirlineType)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtAirlineType, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(122, 122, 122)
-                                .addComponent(lblPanelText)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(pnlPassengerInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblNoPassengers)
+                                    .addGap(42, 42, 42)
+                                    .addComponent(txtPassengers, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(49, 49, 49)
+                                    .addComponent(lblFlight)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtFlight))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblAirlineType)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtAirlineType, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
+                            .addComponent(lblPanelText))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -523,11 +532,11 @@ public class Passengers extends javax.swing.JFrame {
                     cboMM.setSelectedItem(null);
                     cboDD.setSelectedItem(null);
                     cboYYYY.setSelectedItem(null);
-                    insuranceGroup.clearSelection();
                     
                     if(rdoYes.isSelected()){
                         insuranceCounter++;
                     }
+                    insuranceGroup.clearSelection();
                 }
                 else{
                     passengerCounter--;
@@ -677,6 +686,14 @@ public class Passengers extends javax.swing.JFrame {
     private void txtPassengersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassengersActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPassengersActionPerformed
+
+    private void rdoYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoYesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdoYesActionPerformed
+
+    private void txtFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFlightActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFlightActionPerformed
 
     /**
      * @param args the command line arguments
