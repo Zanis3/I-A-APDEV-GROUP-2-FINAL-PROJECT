@@ -14,8 +14,11 @@ Problems yet to fix:<br />
   Passenger 6: (Adult)<br />
 
   Even though tama yung sequencing sa mismong panel, yung jLabel ay di nagwowork as intended.)<br />
+  
+ - Hindi gumagana pag binibuild yung project natin. I don't know why.
 
 To-do:<br />
 - Transaction.java<br />
 - Return buttons (get/set)<br />
-- Years sa passengers.java need daw ata pag minors, pwede lag iselect hanggang 2006 (17 years only) parang ganon.
+- Years sa passengers.java need daw ata pag minors, pwede lag iselect hanggang 2006 (17 years only) parang ganon.<br />
+- Project design.
