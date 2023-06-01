@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.mercairlineticketing.MERCAirlineTicketing;
+package com.iaapdevgroup2.mercairlineticketing;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -41,6 +41,7 @@ public class PriceBreakdown extends javax.swing.JFrame {
         tblPassengerBreakdown = new javax.swing.JTable();
         btnConfirmAndExit = new javax.swing.JButton();
         lblPriceBreakdown = new javax.swing.JLabel();
+        lblNote = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -75,6 +76,9 @@ public class PriceBreakdown extends javax.swing.JFrame {
         lblPriceBreakdown.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPriceBreakdown.setText("PRICE BREAKDOWN");
 
+        lblNote.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        lblNote.setText("*Please take note of the Transaction fee present on the \"Payment Summary\" tab.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,17 +93,22 @@ public class PriceBreakdown extends javax.swing.JFrame {
                         .addComponent(btnConfirmAndExit))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(297, 297, 297)
-                        .addComponent(lblPriceBreakdown)))
+                        .addComponent(lblPriceBreakdown))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(lblNote)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addComponent(lblPriceBreakdown)
+                .addGap(4, 4, 4)
+                .addComponent(lblNote)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConfirmAndExit)
                 .addGap(37, 37, 37))
         );
@@ -189,6 +198,7 @@ public class PriceBreakdown extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmAndExit;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblNote;
     private javax.swing.JLabel lblPriceBreakdown;
     private static javax.swing.JTable tblPassengerBreakdown;
     // End of variables declaration//GEN-END:variables

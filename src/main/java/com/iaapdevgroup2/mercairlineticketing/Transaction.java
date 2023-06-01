@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.mercairlineticketing.MERCAirlineTicketing;
+package com.iaapdevgroup2.mercairlineticketing;
 
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
@@ -42,7 +42,6 @@ public class Transaction extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
         paymentTypeGroupings = new javax.swing.ButtonGroup();
         lblBookingSummary = new javax.swing.JLabel();
         pnlPaymentDetails = new javax.swing.JPanel();
@@ -73,6 +72,8 @@ public class Transaction extends javax.swing.JFrame {
         txtRegularPrivateBusiness = new javax.swing.JTextField();
         txtPassengerCount = new javax.swing.JTextField();
         lblPassengers = new javax.swing.JLabel();
+        lblTransactionNumber = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         pnlPaymentSummary = new javax.swing.JPanel();
         lblTransactionFee = new javax.swing.JLabel();
         txtTransactionFee = new javax.swing.JTextField();
@@ -88,8 +89,6 @@ public class Transaction extends javax.swing.JFrame {
         lblTotal = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         btnPriceBreakdown = new javax.swing.JButton();
-
-        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -350,41 +349,58 @@ public class Transaction extends javax.swing.JFrame {
         lblPassengers.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblPassengers.setText("Passengers:");
 
+        lblTransactionNumber.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        lblTransactionNumber.setText("Transaction Number:");
+
+        jTextField1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField1.setEnabled(false);
+
         javax.swing.GroupLayout pnlFlightDetailsLayout = new javax.swing.GroupLayout(pnlFlightDetails);
         pnlFlightDetails.setLayout(pnlFlightDetailsLayout);
         pnlFlightDetailsLayout.setHorizontalGroup(
             pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFlightDetailsLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblPassengers)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPassengerCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFlightDetailsLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(179, Short.MAX_VALUE)
+                .addComponent(lblSummary)
+                .addGap(193, 193, 193))
+            .addGroup(pnlFlightDetailsLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFlightDetailsLayout.createSequentialGroup()
-                        .addComponent(lblSummary)
-                        .addGap(193, 193, 193))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFlightDetailsLayout.createSequentialGroup()
-                        .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFlightType)
-                            .addComponent(lblFlight))
+                    .addGroup(pnlFlightDetailsLayout.createSequentialGroup()
+                        .addComponent(lblTransactionNumber)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRegularPrivateBusiness, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlFlightDetailsLayout.createSequentialGroup()
-                                .addComponent(txtFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtOneWayRoundTrip, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(54, 54, 54))))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlFlightDetailsLayout.createSequentialGroup()
+                            .addComponent(lblPassengers)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtPassengerCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(286, 286, 286))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFlightDetailsLayout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblFlightType)
+                                .addComponent(lblFlight))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtRegularPrivateBusiness, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(pnlFlightDetailsLayout.createSequentialGroup()
+                                    .addComponent(txtFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtOneWayRoundTrip, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlFlightDetailsLayout.setVerticalGroup(
             pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFlightDetailsLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(lblSummary)
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
+                .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTransactionNumber)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassengers)
                     .addComponent(txtPassengerCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -397,7 +413,7 @@ public class Transaction extends javax.swing.JFrame {
                 .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRegularPrivateBusiness, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFlightType))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlPaymentSummary.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -500,12 +516,11 @@ public class Transaction extends javax.swing.JFrame {
                         .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtTransactionFee)
                             .addComponent(txtTaxFee, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                            .addComponent(txtTravelPrice))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPaymentSummaryLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnPriceBreakdown)
-                        .addGap(40, 40, 40)))
+                            .addComponent(txtTravelPrice)))
+                    .addGroup(pnlPaymentSummaryLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(btnPriceBreakdown)))
+                .addGap(18, 18, 18)
                 .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlPaymentSummaryLayout.createSequentialGroup()
                         .addGap(0, 26, Short.MAX_VALUE)
@@ -547,12 +562,12 @@ public class Transaction extends javax.swing.JFrame {
                 .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTaxFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTaxFee))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
                 .addGroup(pnlPaymentSummaryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPriceBreakdown)
                     .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTotal))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -570,7 +585,7 @@ public class Transaction extends javax.swing.JFrame {
                         .addGap(382, 382, 382)
                         .addComponent(lblBookingSummary))
                     .addComponent(pnlPaymentDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -578,14 +593,12 @@ public class Transaction extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(lblBookingSummary)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlPaymentSummary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlFlightDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(pnlFlightDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(pnlPaymentDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -853,7 +866,7 @@ public class Transaction extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPayment;
     private javax.swing.JButton btnPriceBreakdown;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl16DigitInstructions;
     private javax.swing.JLabel lblBaggageTotal;
     private javax.swing.JLabel lblBookingSummary;
@@ -872,6 +885,7 @@ public class Transaction extends javax.swing.JFrame {
     private javax.swing.JLabel lblTaxFee;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblTransactionFee;
+    private javax.swing.JLabel lblTransactionNumber;
     private javax.swing.JLabel lblTravelPrice;
     private javax.swing.ButtonGroup paymentTypeGroupings;
     private javax.swing.JPanel pnlCreditCardDetails;

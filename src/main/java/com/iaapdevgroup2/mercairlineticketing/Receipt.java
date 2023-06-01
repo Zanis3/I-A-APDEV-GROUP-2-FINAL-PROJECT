@@ -1,20 +1,19 @@
-package com.mycompany.mercairlineticketing.MERCAirlineTicketing;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-//test comment Ireneo(JohnyBricky)
+package com.iaapdevgroup2.mercairlineticketing;
+
 /**
  *
  * @author user
  */
-public class MERCAirlineTicketing extends javax.swing.JFrame {
+public class Receipt extends javax.swing.JFrame {
 
     /**
-     * Creates new form MERCAirlineTicketing
+     * Creates new form Receipt
      */
-    public MERCAirlineTicketing() {
+    public Receipt() {
         super("Himpapawid Airlines Ticketing System");
         initComponents();
         this.setLocationRelativeTo(null);
@@ -29,43 +28,33 @@ public class MERCAirlineTicketing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnStart = new javax.swing.JButton();
+        lblResibo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnStart.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnStart.setText(">>START<<");
-        btnStart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartActionPerformed(evt);
-            }
-        });
+        lblResibo.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        lblResibo.setForeground(new java.awt.Color(255, 255, 102));
+        lblResibo.setText("RESIBO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addComponent(btnStart)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addGap(120, 120, 120)
+                .addComponent(lblResibo)
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addComponent(btnStart)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGap(121, 121, 121)
+                .addComponent(lblResibo)
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        Destination d = new Destination();
-        d.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnStartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -84,25 +73,25 @@ public class MERCAirlineTicketing extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MERCAirlineTicketing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Receipt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MERCAirlineTicketing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Receipt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MERCAirlineTicketing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Receipt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MERCAirlineTicketing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Receipt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MERCAirlineTicketing().setVisible(true);
+                new Receipt().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnStart;
+    private javax.swing.JLabel lblResibo;
     // End of variables declaration//GEN-END:variables
 }

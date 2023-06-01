@@ -1,4 +1,4 @@
-package com.mycompany.mercairlineticketing.MERCAirlineTicketing;
+package com.iaapdevgroup2.mercairlineticketing;
 
 import java.awt.event.ItemEvent;
 import javax.swing.JOptionPane;
