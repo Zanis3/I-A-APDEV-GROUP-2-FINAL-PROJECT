@@ -1,20 +1,24 @@
 package com.iaapdevgroup2.mercairlineticketing;
 
+import com.iaapdevgroup2.mercairlineticketing.AirlineType;
 import java.awt.event.ItemEvent;
 import javax.swing.JOptionPane;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author user
- */
 public class Destination extends javax.swing.JFrame {
-
-    //DESIGN IS NOT FINAL
+    
+    private int oneWayDay;
+    private int oneWayMonth;
+    private int oneWayYear;
+    private int roundTripDay;
+    private int roundTripMonth;
+    private int roundTripYear;
+    private int monthCount;
+    private int compareDates;
+    private int compareDatesNow;
+    private String formattedDate;
+    private String returnDateFormat;
     
     public Destination() {
         super("Himpapawid Airlines Ticketing System");
@@ -31,27 +35,33 @@ public class Destination extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         pnlDestinationColor1 = new javax.swing.JPanel();
         lblWelcomeText = new javax.swing.JLabel();
         pnlDestinationColor2 = new javax.swing.JPanel();
         pnlLocalInternational = new javax.swing.JPanel();
-        rdoLocal = new javax.swing.JRadioButton();
-        rdoInternational = new javax.swing.JRadioButton();
+        cboLocalInternational = new javax.swing.JComboBox<>();
+        pnlFlightTitleBar = new javax.swing.JPanel();
+        lblFlightInstruction1 = new javax.swing.JLabel();
         lblFrom = new javax.swing.JLabel();
         cboOrigin = new javax.swing.JComboBox<>();
-        lblTo = new javax.swing.JLabel();
         cboDestination = new javax.swing.JComboBox<>();
-        rdoOneWay = new javax.swing.JRadioButton();
-        rdoRoundTrip = new javax.swing.JRadioButton();
+        lblTo = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
-
-        buttonGroup1.add(rdoLocal);
-        buttonGroup1.add(rdoInternational);
-
-        buttonGroup2.add(rdoOneWay);
-        buttonGroup2.add(rdoRoundTrip);
+        pnlDate = new javax.swing.JPanel();
+        pnlFlightTitleBar1 = new javax.swing.JPanel();
+        lblFlightInstruction2 = new javax.swing.JLabel();
+        cboOneWayRoundTrip = new javax.swing.JComboBox<>();
+        lblYear = new javax.swing.JLabel();
+        cboOneWayYear = new javax.swing.JComboBox<>();
+        cboRoundTripYear = new javax.swing.JComboBox<>();
+        lblMonth = new javax.swing.JLabel();
+        cboOneWayMM = new javax.swing.JComboBox<>();
+        cboRoundTripMM = new javax.swing.JComboBox<>();
+        lblDay = new javax.swing.JLabel();
+        cboOneWayDD = new javax.swing.JComboBox<>();
+        cboRoundTripDD = new javax.swing.JComboBox<>();
+        lblDepart = new javax.swing.JLabel();
+        lblReturn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -59,7 +69,7 @@ public class Destination extends javax.swing.JFrame {
 
         pnlDestinationColor1.setBackground(new java.awt.Color(252, 177, 48));
 
-        lblWelcomeText.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
+        lblWelcomeText.setFont(new java.awt.Font("SansSerif", 3, 36)); // NOI18N
         lblWelcomeText.setForeground(new java.awt.Color(29, 72, 134));
         lblWelcomeText.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblWelcomeText.setText("Welcome to Himpapawid Airlines!");
@@ -69,9 +79,9 @@ public class Destination extends javax.swing.JFrame {
         pnlDestinationColor1Layout.setHorizontalGroup(
             pnlDestinationColor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationColor1Layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
-                .addComponent(lblWelcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblWelcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101))
         );
         pnlDestinationColor1Layout.setVerticalGroup(
             pnlDestinationColor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,46 +93,41 @@ public class Destination extends javax.swing.JFrame {
 
         pnlDestinationColor2.setBackground(new java.awt.Color(29, 72, 134));
 
-        pnlLocalInternational.setBackground(new java.awt.Color(252, 177, 48));
-        pnlLocalInternational.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        pnlLocalInternational.setBackground(new java.awt.Color(29, 72, 134));
+        pnlLocalInternational.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(252, 177, 48), 3));
 
-        rdoLocal.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
-        rdoLocal.setForeground(new java.awt.Color(29, 72, 134));
-        rdoLocal.setText("Local");
-        rdoLocal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoLocalActionPerformed(evt);
+        cboLocalInternational.setBackground(new java.awt.Color(29, 72, 134));
+        cboLocalInternational.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
+        cboLocalInternational.setForeground(new java.awt.Color(252, 177, 48));
+        cboLocalInternational.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Local", "International" }));
+        cboLocalInternational.setSelectedItem(null);
+        cboLocalInternational.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboLocalInternationalItemStateChanged(evt);
             }
         });
 
-        rdoInternational.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
-        rdoInternational.setForeground(new java.awt.Color(29, 72, 134));
-        rdoInternational.setText("International");
-        rdoInternational.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoInternationalActionPerformed(evt);
-            }
-        });
+        pnlFlightTitleBar.setBackground(new java.awt.Color(252, 177, 48));
 
-        javax.swing.GroupLayout pnlLocalInternationalLayout = new javax.swing.GroupLayout(pnlLocalInternational);
-        pnlLocalInternational.setLayout(pnlLocalInternationalLayout);
-        pnlLocalInternationalLayout.setHorizontalGroup(
-            pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLocalInternationalLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(rdoLocal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(rdoInternational)
-                .addGap(20, 20, 20))
+        lblFlightInstruction1.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        lblFlightInstruction1.setForeground(new java.awt.Color(29, 72, 134));
+        lblFlightInstruction1.setText("First, select your flight...");
+
+        javax.swing.GroupLayout pnlFlightTitleBarLayout = new javax.swing.GroupLayout(pnlFlightTitleBar);
+        pnlFlightTitleBar.setLayout(pnlFlightTitleBarLayout);
+        pnlFlightTitleBarLayout.setHorizontalGroup(
+            pnlFlightTitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFlightTitleBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFlightInstruction1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pnlLocalInternationalLayout.setVerticalGroup(
-            pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLocalInternationalLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdoLocal)
-                    .addComponent(rdoInternational))
-                .addGap(17, 17, 17))
+        pnlFlightTitleBarLayout.setVerticalGroup(
+            pnlFlightTitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFlightTitleBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFlightInstruction1)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         lblFrom.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
@@ -140,38 +145,56 @@ public class Destination extends javax.swing.JFrame {
             }
         });
 
-        lblTo.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
-        lblTo.setForeground(new java.awt.Color(252, 177, 48));
-        lblTo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTo.setText("To:");
-
         cboDestination.setBackground(new java.awt.Color(29, 72, 134));
         cboDestination.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         cboDestination.setForeground(new java.awt.Color(252, 177, 48));
         cboDestination.setEnabled(false);
 
-        rdoOneWay.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
-        rdoOneWay.setForeground(new java.awt.Color(252, 177, 48));
-        rdoOneWay.setText("One-Way");
-        rdoOneWay.setEnabled(false);
-        rdoOneWay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoOneWayActionPerformed(evt);
-            }
-        });
+        lblTo.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        lblTo.setForeground(new java.awt.Color(252, 177, 48));
+        lblTo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTo.setText("To:");
 
-        rdoRoundTrip.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
-        rdoRoundTrip.setForeground(new java.awt.Color(252, 177, 48));
-        rdoRoundTrip.setText("Round-Trip");
-        rdoRoundTrip.setEnabled(false);
-        rdoRoundTrip.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoRoundTripActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout pnlLocalInternationalLayout = new javax.swing.GroupLayout(pnlLocalInternational);
+        pnlLocalInternational.setLayout(pnlLocalInternationalLayout);
+        pnlLocalInternationalLayout.setHorizontalGroup(
+            pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlFlightTitleBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlLocalInternationalLayout.createSequentialGroup()
+                .addGroup(pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlLocalInternationalLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboOrigin, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblFrom))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTo)
+                            .addComponent(cboDestination, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlLocalInternationalLayout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(cboLocalInternational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        pnlLocalInternationalLayout.setVerticalGroup(
+            pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLocalInternationalLayout.createSequentialGroup()
+                .addComponent(pnlFlightTitleBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cboLocalInternational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFrom)
+                    .addComponent(lblTo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboOrigin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboDestination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38))
+        );
 
         btnNext.setBackground(new java.awt.Color(252, 177, 48));
-        btnNext.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnNext.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
         btnNext.setForeground(new java.awt.Color(29, 72, 134));
         btnNext.setText("Next >>");
         btnNext.setEnabled(false);
@@ -181,58 +204,215 @@ public class Destination extends javax.swing.JFrame {
             }
         });
 
+        pnlDate.setBackground(new java.awt.Color(29, 72, 134));
+        pnlDate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(252, 177, 48), 3));
+
+        pnlFlightTitleBar1.setBackground(new java.awt.Color(252, 177, 48));
+
+        lblFlightInstruction2.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        lblFlightInstruction2.setForeground(new java.awt.Color(29, 72, 134));
+        lblFlightInstruction2.setText("Then, choose the date of your flight...");
+
+        javax.swing.GroupLayout pnlFlightTitleBar1Layout = new javax.swing.GroupLayout(pnlFlightTitleBar1);
+        pnlFlightTitleBar1.setLayout(pnlFlightTitleBar1Layout);
+        pnlFlightTitleBar1Layout.setHorizontalGroup(
+            pnlFlightTitleBar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFlightTitleBar1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFlightInstruction2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlFlightTitleBar1Layout.setVerticalGroup(
+            pnlFlightTitleBar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFlightTitleBar1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFlightInstruction2)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        cboOneWayRoundTrip.setBackground(new java.awt.Color(29, 72, 134));
+        cboOneWayRoundTrip.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
+        cboOneWayRoundTrip.setForeground(new java.awt.Color(252, 177, 48));
+        cboOneWayRoundTrip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "One-Way", "Round-Trip" }));
+        cboOneWayRoundTrip.setSelectedItem(null);
+        cboOneWayRoundTrip.setEnabled(false);
+        cboOneWayRoundTrip.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboOneWayRoundTripItemStateChanged(evt);
+            }
+        });
+
+        lblYear.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblYear.setForeground(new java.awt.Color(252, 177, 48));
+        lblYear.setText("YYYY");
+
+        cboOneWayYear.setBackground(new java.awt.Color(29, 72, 134));
+        cboOneWayYear.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        cboOneWayYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024" }));
+        cboOneWayYear.setSelectedItem(null);
+        cboOneWayYear.setEnabled(false);
+        cboOneWayYear.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboOneWayYearItemStateChanged(evt);
+            }
+        });
+
+        cboRoundTripYear.setBackground(new java.awt.Color(29, 72, 134));
+        cboRoundTripYear.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        cboRoundTripYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024" }));
+        cboRoundTripYear.setSelectedItem(null);
+        cboRoundTripYear.setEnabled(false);
+        cboRoundTripYear.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboRoundTripYearItemStateChanged(evt);
+            }
+        });
+
+        lblMonth.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblMonth.setForeground(new java.awt.Color(252, 177, 48));
+        lblMonth.setText("MM");
+
+        cboOneWayMM.setBackground(new java.awt.Color(29, 72, 134));
+        cboOneWayMM.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        cboOneWayMM.setSelectedItem(null);
+        cboOneWayMM.setEnabled(false);
+        cboOneWayMM.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboOneWayMMItemStateChanged(evt);
+            }
+        });
+
+        cboRoundTripMM.setBackground(new java.awt.Color(29, 72, 134));
+        cboRoundTripMM.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        cboRoundTripMM.setSelectedItem(null);
+        cboRoundTripMM.setEnabled(false);
+        cboRoundTripMM.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboRoundTripMMItemStateChanged(evt);
+            }
+        });
+
+        lblDay.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblDay.setForeground(new java.awt.Color(252, 177, 48));
+        lblDay.setText("DD");
+
+        cboOneWayDD.setBackground(new java.awt.Color(29, 72, 134));
+        cboOneWayDD.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        cboOneWayDD.setEnabled(false);
+        cboOneWayDD.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboOneWayDDItemStateChanged(evt);
+            }
+        });
+
+        cboRoundTripDD.setBackground(new java.awt.Color(29, 72, 134));
+        cboRoundTripDD.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        cboRoundTripDD.setEnabled(false);
+        cboRoundTripDD.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboRoundTripDDItemStateChanged(evt);
+            }
+        });
+
+        lblDepart.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
+        lblDepart.setForeground(new java.awt.Color(252, 177, 48));
+        lblDepart.setText("Depart:");
+
+        lblReturn.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
+        lblReturn.setForeground(new java.awt.Color(252, 177, 48));
+        lblReturn.setText("Return:");
+
+        javax.swing.GroupLayout pnlDateLayout = new javax.swing.GroupLayout(pnlDate);
+        pnlDate.setLayout(pnlDateLayout);
+        pnlDateLayout.setHorizontalGroup(
+            pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlFlightTitleBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDateLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDateLayout.createSequentialGroup()
+                        .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDepart)
+                            .addComponent(lblReturn))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cboRoundTripYear, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboOneWayYear, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlDateLayout.createSequentialGroup()
+                                .addComponent(cboOneWayMM, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cboOneWayDD, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlDateLayout.createSequentialGroup()
+                                .addComponent(cboRoundTripMM, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cboRoundTripDD, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDateLayout.createSequentialGroup()
+                        .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cboOneWayRoundTrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlDateLayout.createSequentialGroup()
+                                .addComponent(lblYear)
+                                .addGap(67, 67, 67)
+                                .addComponent(lblMonth)
+                                .addGap(8, 8, 8)))
+                        .addGap(75, 75, 75)
+                        .addComponent(lblDay)
+                        .addGap(52, 52, 52))))
+        );
+        pnlDateLayout.setVerticalGroup(
+            pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDateLayout.createSequentialGroup()
+                .addComponent(pnlFlightTitleBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cboOneWayRoundTrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblYear)
+                    .addComponent(lblMonth)
+                    .addComponent(lblDay))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboOneWayDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboOneWayMM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboOneWayYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDepart))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboRoundTripDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboRoundTripMM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboRoundTripYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblReturn))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pnlDestinationColor2Layout = new javax.swing.GroupLayout(pnlDestinationColor2);
         pnlDestinationColor2.setLayout(pnlDestinationColor2Layout);
         pnlDestinationColor2Layout.setHorizontalGroup(
             pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationColor2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rdoOneWay)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rdoRoundTrip)
-                .addGap(36, 36, 36)
-                .addComponent(btnNext)
-                .addGap(156, 156, 156))
             .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
                 .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(pnlLocalInternational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addComponent(pnlLocalInternational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(pnlDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
-                        .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
-                                .addComponent(lblFrom)
-                                .addGap(5, 5, 5))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationColor2Layout.createSequentialGroup()
-                                .addComponent(lblTo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cboDestination, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboOrigin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(332, 332, 332)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         pnlDestinationColor2Layout.setVerticalGroup(
             pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(pnlLocalInternational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(cboOrigin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblFrom))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboDestination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTo))
-                .addGap(27, 27, 27)
-                .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdoRoundTrip)
-                    .addComponent(btnNext)
-                    .addComponent(rdoOneWay))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlLocalInternational, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addComponent(btnNext)
+                .addGap(58, 58, 58))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -253,26 +433,11 @@ public class Destination extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rdoLocalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoLocalActionPerformed
-        cboOrigin.setEnabled(true);
-        cboOrigin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manila", "Batanes", "Palawan" }));
-        cboOrigin.setSelectedItem(null);
-        cboDestination.setSelectedItem(null);
-        
-    }//GEN-LAST:event_rdoLocalActionPerformed
-
-    private void rdoInternationalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoInternationalActionPerformed
-        cboOrigin.setEnabled(true);
-        cboOrigin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manila", "South Korea", "Japan", "Vietnam" }));
-        cboOrigin.setSelectedItem(null);
-        cboDestination.setSelectedItem(null);
-    }//GEN-LAST:event_rdoInternationalActionPerformed
-
     private void cboOriginItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboOriginItemStateChanged
         if(evt.getStateChange() == ItemEvent.SELECTED){
             cboDestination.setEnabled(true);
         
-            if(rdoLocal.isSelected() == true){
+            if(cboLocalInternational.getSelectedItem().equals("Local")){
                 if(cboOrigin.getSelectedItem().toString().equals("Manila")) {
                     cboDestination.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Batanes", "Palawan" }));
                 }
@@ -281,7 +446,7 @@ public class Destination extends javax.swing.JFrame {
                 }
             }
         
-            else if(rdoInternational.isSelected() == true) {
+            else if(cboLocalInternational.getSelectedItem().equals("International")) {
                 if(cboOrigin.getSelectedItem().toString().equals("Manila")) {
                     cboDestination.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "South Korea", "Japan", "Vietnam" }));
                 }
@@ -291,43 +456,350 @@ public class Destination extends javax.swing.JFrame {
             }
             
             if(cboDestination.getSelectedItem() != null){
-                rdoOneWay.setEnabled(true);
-                rdoRoundTrip.setEnabled(true);
+                cboOneWayRoundTrip.setEnabled(true);
             }
         }
     }//GEN-LAST:event_cboOriginItemStateChanged
 
-    private void rdoOneWayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoOneWayActionPerformed
-        if(rdoLocal.isSelected() == true || rdoInternational.isSelected() == true){
-            if(cboOrigin.getSelectedItem() != null && cboDestination.getSelectedItem() != null){
-                btnNext.setEnabled(true);
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if(oneWayYear == 2023){
+            oneWayMonth = cboOneWayMM.getSelectedIndex()+6;   
+        }
+        else if(oneWayYear == 2024){
+            oneWayMonth = cboOneWayMM.getSelectedIndex()+1;
+        }
+        oneWayDay = Integer.parseInt(cboOneWayDD.getSelectedItem().toString());
+        
+        LocalDate departDate = LocalDate.of(oneWayYear, oneWayMonth, oneWayDay);
+        oneWayYear = departDate.getYear();
+        oneWayMonth = departDate.getMonthValue();
+        oneWayDay = departDate.getDayOfMonth();
+        
+        LocalDate currentDate = LocalDate.now();
+        
+        compareDatesNow = currentDate.compareTo(departDate);
+        
+        if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+            try{
+                if(roundTripYear == 2023){
+                    roundTripMonth = cboRoundTripMM.getSelectedIndex()+6;
+                }
+                else if(roundTripYear == 2024){
+                    roundTripMonth = cboRoundTripMM.getSelectedIndex()+1;
+                }
+                roundTripDay = Integer.parseInt(cboRoundTripDD.getSelectedItem().toString());
+
+                LocalDate returnDate = LocalDate.of(roundTripYear, roundTripMonth, roundTripDay);
+                roundTripYear = returnDate.getYear();
+                roundTripMonth = returnDate.getMonthValue();
+                roundTripDay = returnDate.getDayOfMonth();
+        
+                compareDates = returnDate.compareTo(departDate);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                formattedDate = departDate.format(formatter);
+                returnDateFormat = returnDate.format(formatter);
+                }
+            catch(NullPointerException e){
+                JOptionPane.showMessageDialog(null, "Please fill the dates properly before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_rdoOneWayActionPerformed
-
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        System.out.println(formattedDate + " " + returnDateFormat);
+        
         if(cboOrigin.getSelectedItem() == null || cboDestination.getSelectedItem() == null){
             JOptionPane.showMessageDialog(null, "Please select an Origin/Destination before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
-        if(cboOrigin.getSelectedItem() != null && cboDestination.getSelectedItem() != null) {
-            AirlineType p = new AirlineType();
-            p.setVisible(true);
-            this.dispose();
+        if(cboOneWayYear.getSelectedItem() == null || cboOneWayDD.getSelectedItem()== null || cboOneWayMM.getSelectedItem()== null){
+            if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+                if(cboRoundTripYear.getSelectedItem() == null || cboRoundTripMM.getSelectedItem() == null || cboRoundTripDD.getSelectedItem() == null){
+                    JOptionPane.showMessageDialog(null, "Please fill the dates properly before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else if(cboOneWayRoundTrip.getSelectedItem().equals("One-Way")){
+                JOptionPane.showMessageDialog(null, "Please fill the dates properly before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+        if(cboOrigin.getSelectedItem() != null && cboDestination.getSelectedItem() != null && cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null) {
+            if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+                if(cboRoundTripYear.getSelectedItem() != null && cboRoundTripMM.getSelectedItem() != null && cboRoundTripDD.getSelectedItem() != null){
+                    if(compareDatesNow > 0){
+                        JOptionPane.showMessageDialog(null, "The date you inputted is before the current date. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    else{
+                        if(compareDates < 0){
+                            JOptionPane.showMessageDialog(null, "The return date you inputted is before the depart date. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                        else{
+                            AirlineType p = new AirlineType();
+                            p.setVisible(true);
+                            this.dispose();
+                        }
+                    }
+                }
+            }
+            if(cboOneWayRoundTrip.getSelectedItem().equals("One-Way")){
+                if(compareDatesNow > 0){
+                    JOptionPane.showMessageDialog(null, "The date you inputted is before the current date. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                    AirlineType p = new AirlineType();
+                    p.setVisible(true);
+                    this.dispose();
+                }
+            }
         }
     }//GEN-LAST:event_btnNextActionPerformed
 
-    private void rdoRoundTripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoRoundTripActionPerformed
-        if(rdoLocal.isSelected() == true || rdoInternational.isSelected() == true){
-            if(cboOrigin.getSelectedItem() != null && cboDestination.getSelectedItem() != null){
-                btnNext.setEnabled(true);
+    private void cboLocalInternationalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboLocalInternationalItemStateChanged
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            if(cboLocalInternational.getSelectedItem().equals("Local")){
+                cboOrigin.setEnabled(true);
+                cboOrigin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manila", "Batanes", "Palawan" }));
+                cboOrigin.setSelectedItem(null);
+                cboDestination.setSelectedItem(null);
+            }
+            else if(cboLocalInternational.getSelectedItem().equals("International")){
+                cboOrigin.setEnabled(true);
+                cboOrigin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manila", "South Korea", "Japan", "Vietnam" }));
+                cboOrigin.setSelectedItem(null);
+                cboDestination.setSelectedItem(null);
             }
         }
-    }//GEN-LAST:event_rdoRoundTripActionPerformed
+    }//GEN-LAST:event_cboLocalInternationalItemStateChanged
 
-    /**
-     * @param args the command line arguments
-     */
+    private void cboOneWayRoundTripItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboOneWayRoundTripItemStateChanged
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            cboOneWayYear.setEnabled(true);
+            
+            if(cboOneWayRoundTrip.getSelectedItem().equals("One-Way")){
+                cboRoundTripYear.setEnabled(false);
+                cboRoundTripYear.setSelectedItem(null);
+                cboRoundTripMM.setSelectedItem(null);
+                cboRoundTripDD.setSelectedItem(null);
+            }
+            else if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+                cboRoundTripYear.setEnabled(true);
+            }
+        }
+    }//GEN-LAST:event_cboOneWayRoundTripItemStateChanged
+
+    private void cboOneWayMMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboOneWayMMItemStateChanged
+        if(evt.getStateChange()== ItemEvent.SELECTED){
+            String oneWaySelectedMonth = cboOneWayMM.getSelectedItem().toString();
+            cboOneWayDD.setSelectedItem(null);
+            
+            switch(oneWaySelectedMonth){
+                case "Jan":
+                case "Mar":
+                case "May":
+                case "Jul":
+                case "Aug":
+                case "Oct":
+                case "Dec":
+                    monthCount = 31;
+                    break;
+                case "Apr":
+                case "Jun":
+                case "Sept":
+                case "Nov":
+                    monthCount = 30;
+                    break;
+                case "Feb":
+                    if(Double.parseDouble(cboOneWayYear.getSelectedItem().toString()) % 4 == 0){
+                        monthCount = 29;
+                    }
+                    else{
+                        monthCount = 28;
+                    }
+                    break;
+            }
+            
+            String oneWayDays[] = new String[monthCount];
+            
+            for(int a = 0; a < oneWayDays.length; a++){
+                if(a < 9){
+                    oneWayDays[a] = "0" + String.valueOf(a+1);
+                }
+                else{
+                    oneWayDays[a] = String.valueOf(a+1);
+                }
+            }
+            
+            cboOneWayDD.setModel(new javax.swing.DefaultComboBoxModel<>(oneWayDays));
+            cboOneWayDD.setSelectedItem(null);
+            
+            if(cboOneWayMM.getSelectedItem() != null){
+                cboOneWayDD.setEnabled(true);
+            }
+            
+            if(cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null){
+                if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+                    if(cboRoundTripYear.getSelectedItem() != null && cboRoundTripMM.getSelectedItem() != null && cboRoundTripDD.getSelectedItem() != null){
+                        btnNext.setEnabled(true);
+                    }
+                }
+                else{
+                    btnNext.setEnabled(true);
+                }
+            }
+            
+        }
+    }//GEN-LAST:event_cboOneWayMMItemStateChanged
+
+    private void cboOneWayYearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboOneWayYearItemStateChanged
+        if(evt.getStateChange()== ItemEvent.SELECTED){
+            oneWayYear = Integer.parseInt(cboOneWayYear.getSelectedItem().toString());
+            cboOneWayMM.setEnabled(true);
+            
+            if(oneWayYear == 2023){
+                cboOneWayMM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"}));
+                cboOneWayMM.setSelectedItem(null);
+                cboOneWayDD.setSelectedItem(null);
+            }
+            else if(oneWayYear == 2024){
+                cboOneWayMM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun"}));
+                cboOneWayMM.setSelectedItem(null);
+                cboOneWayDD.setSelectedItem(null);
+            }
+            
+            if(cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null){
+                if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+                    if(cboRoundTripYear.getSelectedItem() != null && cboRoundTripMM.getSelectedItem() != null && cboRoundTripDD.getSelectedItem() != null){
+                        btnNext.setEnabled(true);
+                    }
+                }
+                else{
+                    btnNext.setEnabled(true);
+                }
+            }
+            
+        }
+    }//GEN-LAST:event_cboOneWayYearItemStateChanged
+
+    private void cboRoundTripYearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboRoundTripYearItemStateChanged
+        if(evt.getStateChange()== ItemEvent.SELECTED){
+            roundTripYear = Integer.parseInt(cboRoundTripYear.getSelectedItem().toString());
+            cboRoundTripMM.setEnabled(true);
+            
+            if(roundTripYear == 2023){
+                cboRoundTripMM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"}));
+                cboRoundTripMM.setSelectedItem(null);
+                cboRoundTripDD.setSelectedItem(null);
+            }
+            else if(roundTripYear == 2024){
+                cboRoundTripMM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun"}));
+                cboRoundTripMM.setSelectedItem(null);
+                cboRoundTripDD.setSelectedItem(null);
+            }
+            
+            if(cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null){
+                if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+                    if(cboRoundTripYear.getSelectedItem() != null && cboRoundTripMM.getSelectedItem() != null && cboRoundTripDD.getSelectedItem() != null){
+                        btnNext.setEnabled(true);
+                    }
+                }
+                else{
+                    btnNext.setEnabled(true);
+                }
+            }
+            
+        }
+    }//GEN-LAST:event_cboRoundTripYearItemStateChanged
+
+    private void cboRoundTripMMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboRoundTripMMItemStateChanged
+       if(evt.getStateChange()== ItemEvent.SELECTED){
+            String oneWaySelectedMonth = cboRoundTripMM.getSelectedItem().toString();
+            cboRoundTripDD.setSelectedItem(null);
+            
+            switch(oneWaySelectedMonth){
+                case "Jan":
+                case "Mar":
+                case "May":
+                case "Jul":
+                case "Aug":
+                case "Oct":
+                case "Dec":
+                    monthCount = 31;
+                    break;
+                case "Apr":
+                case "Jun":
+                case "Sept":
+                case "Nov":
+                    monthCount = 30;
+                    break;
+                case "Feb":
+                    if(Double.parseDouble(cboRoundTripYear.getSelectedItem().toString()) % 4 == 0){
+                        monthCount = 29;
+                    }
+                    else{
+                        monthCount = 28;
+                    }
+                    break;
+            }
+            
+            String roundTripDays[] = new String[monthCount];
+            
+            for(int a = 0; a < roundTripDays.length; a++){
+                if(a < 9){
+                    roundTripDays[a] = "0" + String.valueOf(a+1);
+                }
+                else{
+                    roundTripDays[a] = String.valueOf(a+1);
+                }
+            }
+            
+            cboRoundTripDD.setModel(new javax.swing.DefaultComboBoxModel<>(roundTripDays));
+            cboRoundTripDD.setSelectedItem(null);
+            
+            if(cboRoundTripMM.getSelectedItem() != null){
+                cboRoundTripDD.setEnabled(true);
+            }
+            
+            if(cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null){
+                if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+                    if(cboRoundTripYear.getSelectedItem() != null && cboRoundTripMM.getSelectedItem() != null && cboRoundTripDD.getSelectedItem() != null){
+                        btnNext.setEnabled(true);
+                    }
+                }
+                else{
+                    btnNext.setEnabled(true);
+                }
+            }
+            
+        }
+    }//GEN-LAST:event_cboRoundTripMMItemStateChanged
+
+    private void cboOneWayDDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboOneWayDDItemStateChanged
+        if(evt.getStateChange()== ItemEvent.SELECTED){
+           if(cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null){
+                if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+                    if(cboRoundTripYear.getSelectedItem() != null && cboRoundTripMM.getSelectedItem() != null && cboRoundTripDD.getSelectedItem() != null){
+                        btnNext.setEnabled(true);
+                    }
+                }
+                else{
+                    btnNext.setEnabled(true);
+                }
+            } 
+        }
+    }//GEN-LAST:event_cboOneWayDDItemStateChanged
+
+    private void cboRoundTripDDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboRoundTripDDItemStateChanged
+        if(evt.getStateChange()== ItemEvent.SELECTED){
+           if(cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null){
+                if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+                    if(cboRoundTripYear.getSelectedItem() != null && cboRoundTripMM.getSelectedItem() != null && cboRoundTripDD.getSelectedItem() != null){
+                        btnNext.setEnabled(true);
+                    }
+                }
+                else{
+                    btnNext.setEnabled(true);
+                }
+            } 
+        }
+    }//GEN-LAST:event_cboRoundTripDDItemStateChanged
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -363,19 +835,31 @@ public class Destination extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
     public static javax.swing.JComboBox<String> cboDestination;
+    private javax.swing.JComboBox<String> cboLocalInternational;
+    private javax.swing.JComboBox<String> cboOneWayDD;
+    private javax.swing.JComboBox<String> cboOneWayMM;
+    protected static javax.swing.JComboBox<String> cboOneWayRoundTrip;
+    private javax.swing.JComboBox<String> cboOneWayYear;
     public static javax.swing.JComboBox<String> cboOrigin;
+    private javax.swing.JComboBox<String> cboRoundTripDD;
+    private javax.swing.JComboBox<String> cboRoundTripMM;
+    private javax.swing.JComboBox<String> cboRoundTripYear;
+    private javax.swing.JLabel lblDay;
+    private javax.swing.JLabel lblDepart;
+    private javax.swing.JLabel lblFlightInstruction1;
+    private javax.swing.JLabel lblFlightInstruction2;
     private javax.swing.JLabel lblFrom;
+    private javax.swing.JLabel lblMonth;
+    private javax.swing.JLabel lblReturn;
     private javax.swing.JLabel lblTo;
     private javax.swing.JLabel lblWelcomeText;
+    private javax.swing.JLabel lblYear;
+    private javax.swing.JPanel pnlDate;
     private javax.swing.JPanel pnlDestinationColor1;
     private javax.swing.JPanel pnlDestinationColor2;
+    private javax.swing.JPanel pnlFlightTitleBar;
+    private javax.swing.JPanel pnlFlightTitleBar1;
     private javax.swing.JPanel pnlLocalInternational;
-    private javax.swing.JRadioButton rdoInternational;
-    private javax.swing.JRadioButton rdoLocal;
-    public static javax.swing.JRadioButton rdoOneWay;
-    protected static javax.swing.JRadioButton rdoRoundTrip;
     // End of variables declaration//GEN-END:variables
 }

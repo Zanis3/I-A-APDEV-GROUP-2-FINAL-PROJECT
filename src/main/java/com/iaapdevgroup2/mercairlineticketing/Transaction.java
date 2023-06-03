@@ -6,6 +6,7 @@ package com.iaapdevgroup2.mercairlineticketing;
 
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
+import java.util.Random;
 
 /**
  *
@@ -127,16 +128,15 @@ public class Transaction extends javax.swing.JFrame {
         pnlModeOfPaymentLayout.setHorizontalGroup(
             pnlModeOfPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlModeOfPaymentLayout.createSequentialGroup()
-                .addGroup(pnlModeOfPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlModeOfPaymentLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblModeOfPayment))
-                    .addGroup(pnlModeOfPaymentLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(rdoCash)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rdoCreditCard)))
+                .addContainerGap()
+                .addComponent(lblModeOfPayment)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlModeOfPaymentLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rdoCash)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rdoCreditCard)
+                .addGap(27, 27, 27))
         );
         pnlModeOfPaymentLayout.setVerticalGroup(
             pnlModeOfPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,6 +157,7 @@ public class Transaction extends javax.swing.JFrame {
 
         txtPassengerPayment.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         txtPassengerPayment.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtPassengerPayment.setEnabled(false);
         txtPassengerPayment.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPassengerPaymentKeyTyped(evt);
@@ -190,13 +191,13 @@ public class Transaction extends javax.swing.JFrame {
             pnlPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPaymentLayout.createSequentialGroup()
                 .addComponent(lblPaymentDetails)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEnterPayment)
                     .addComponent(txtPassengerPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPayInstructions)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         btnPayment.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
@@ -216,6 +217,11 @@ public class Transaction extends javax.swing.JFrame {
         txtCreditCardNumber.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         txtCreditCardNumber.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtCreditCardNumber.setEnabled(false);
+        txtCreditCardNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCreditCardNumberActionPerformed(evt);
+            }
+        });
 
         lbl16DigitInstructions.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         lbl16DigitInstructions.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -260,7 +266,7 @@ public class Transaction extends javax.swing.JFrame {
                 .addGap(89, 89, 89))
             .addGroup(pnlCreditCardDetailsLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(lbl16DigitInstructions)
+                .addComponent(lbl16DigitInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCreditCardDetailsLayout.setVerticalGroup(
@@ -618,12 +624,14 @@ public class Transaction extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPassengerPaymentKeyTyped
 
     private void rdoCreditCardItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdoCreditCardItemStateChanged
+        txtPassengerPayment.setEnabled(true);
         txtCreditCardNumber.setEnabled(true);
         txtExpiryDate.setEnabled(true);
         txtCVV.setEnabled(true);
     }//GEN-LAST:event_rdoCreditCardItemStateChanged
 
     private void rdoCashItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdoCashItemStateChanged
+        txtPassengerPayment.setEnabled(true);
         txtCreditCardNumber.setEnabled(false);
         txtExpiryDate.setEnabled(false);
         txtCVV.setEnabled(false);
@@ -644,6 +652,10 @@ public class Transaction extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btnPaymentActionPerformed
+
+    private void txtCreditCardNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCreditCardNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCreditCardNumberActionPerformed
 
     private static void destinationPriceMethod(){
         double privatePrice[] = {8000.0, 9800.0, 9100.0, 9850.0, 27450.0, 30890.0, 40450.0, 43855.0, 8505.0, 14300.0};
@@ -774,14 +786,14 @@ public class Transaction extends javax.swing.JFrame {
             break;
         }
         initialPrice = destinationPrice;
-        if(Destination.rdoRoundTrip.isSelected() == true){
+        if(Destination.cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
             initialPrice = initialPrice*2;
         }
         seniorsPrice = destinationPrice * Double.valueOf(AirlineType.seniorCount);
         seniorsPrice = seniorsPrice - (seniorsPrice * 0.2);
         destinationPrice = destinationPrice * Double.valueOf(AirlineType.passengerCount - AirlineType.seniorCount) + seniorsPrice;
 
-        if(Destination.rdoRoundTrip.isSelected() == true){
+        if(Destination.cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
             destinationPrice = destinationPrice * 2;
         }
     }
@@ -796,6 +808,10 @@ public class Transaction extends javax.swing.JFrame {
         else if(AirlineType.cboAirlineType.getSelectedItem().equals("Private")){
             baggageTotal = 1250.0 * Double.valueOf(AirlineType.passengerCount);
         }
+        
+        if(Destination.cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+            baggageTotal = baggageTotal * 2;
+        }
     }
     
     static void taxMethod(){
@@ -809,7 +825,7 @@ public class Transaction extends javax.swing.JFrame {
             taxFee = 4260.0 * Double.valueOf(AirlineType.passengerCount - AirlineType.seniorCount);
         }
         
-        if(Destination.rdoRoundTrip.isSelected() == true){
+        if(Destination.cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
             taxFee = taxFee * 2;
         }
     }
@@ -825,12 +841,21 @@ public class Transaction extends javax.swing.JFrame {
             insuranceTotal = 4500.0 * Double.valueOf(Passengers.insuranceCounter);
         }
         
-        if(Destination.rdoRoundTrip.isSelected() == true){
+        if(Destination.cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
             insuranceTotal = insuranceTotal * 2;
         }
         
         initialInsurance = insuranceTotal / Double.valueOf(Passengers.insuranceCounter);
     }
+    
+    private static String automatedNumber(){
+       StringBuilder sb = new StringBuilder(); 
+       
+       
+       
+       return sb.toString();
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

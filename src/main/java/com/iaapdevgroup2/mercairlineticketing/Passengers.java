@@ -81,7 +81,7 @@ public class Passengers extends javax.swing.JFrame {
         lblFlight = new javax.swing.JLabel();
         txtFlight = new javax.swing.JTextField();
         txtAirlineType = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        txtOneWayRoundTrip = new javax.swing.JTextField();
         lblPanelText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -353,16 +353,16 @@ public class Passengers extends javax.swing.JFrame {
         txtAirlineType.setText(String.valueOf(AirlineType.cboAirlineType.getSelectedItem()));
         txtAirlineType.setEnabled(false);
 
-        jTextField1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        if(Destination.rdoOneWay.isSelected() == true){
+        txtOneWayRoundTrip.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        if(Destination.cboOneWayRoundTrip.getSelectedItem().equals("One-Way")){
             oneWayRoundTrip = "One-Way";
         }
-        else{
-            oneWayRoundTrip = "Round Trip";
+        else if(Destination.cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+            oneWayRoundTrip = "Round-Trip";
         }
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText(oneWayRoundTrip);
-        jTextField1.setEnabled(false);
+        txtOneWayRoundTrip.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtOneWayRoundTrip.setText(oneWayRoundTrip);
+        txtOneWayRoundTrip.setEnabled(false);
 
         lblPanelText.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblPanelText.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -397,7 +397,7 @@ public class Passengers extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(txtAirlineType, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
+                                    .addComponent(txtOneWayRoundTrip, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
                             .addComponent(lblPanelText))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -432,7 +432,7 @@ public class Passengers extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAirlineType)
                             .addComponent(txtAirlineType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtOneWayRoundTrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblPanelText)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -664,7 +664,6 @@ public class Passengers extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboYYYY;
     private javax.swing.ButtonGroup insuranceGroup;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblAirlineType;
     private javax.swing.JLabel lblBirthday;
@@ -687,6 +686,7 @@ public class Passengers extends javax.swing.JFrame {
     private javax.swing.JTextField txtAirlineType;
     protected static javax.swing.JTextField txtFlight;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtOneWayRoundTrip;
     private javax.swing.JTextField txtPassengers;
     // End of variables declaration//GEN-END:variables
 }

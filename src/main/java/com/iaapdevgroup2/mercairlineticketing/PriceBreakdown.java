@@ -158,7 +158,6 @@ public class PriceBreakdown extends javax.swing.JFrame {
             }
             
             baggagePrice = Transaction.baggageTotal / passengerCount;
-            System.out.println("passengerInsurances: " + passengerInsurances);
 
             model.addRow(new Object[]{passengerNames, passengerType, price, baggagePrice, insurancePrice, taxFee});
     	}

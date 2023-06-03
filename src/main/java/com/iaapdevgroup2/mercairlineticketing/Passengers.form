@@ -55,7 +55,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtAirlineType" min="-2" pref="88" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField1" pref="0" max="32767" attributes="0"/>
+                                  <Component id="txtOneWayRoundTrip" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="lblPanelText" min="-2" max="-2" attributes="0"/>
@@ -103,7 +103,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblAirlineType" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtAirlineType" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtOneWayRoundTrip" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="lblPanelText" min="-2" max="-2" attributes="0"/>
@@ -608,9 +608,9 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="txtOneWayRoundTrip">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="if(Destination.rdoOneWay.isSelected() == true){&#xa;    oneWayRoundTrip = &quot;One-Way&quot;;&#xa;}&#xa;else{&#xa;    oneWayRoundTrip = &quot;Round Trip&quot;;&#xa;}">
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="if(Destination.cboOneWayRoundTrip.getSelectedItem().equals(&quot;One-Way&quot;)){&#xa;    oneWayRoundTrip = &quot;One-Way&quot;;&#xa;}&#xa;else if(Destination.cboOneWayRoundTrip.getSelectedItem().equals(&quot;Round-Trip&quot;)){&#xa;    oneWayRoundTrip = &quot;Round-Trip&quot;;&#xa;}">
           <Font name="Arial Black" size="14" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
