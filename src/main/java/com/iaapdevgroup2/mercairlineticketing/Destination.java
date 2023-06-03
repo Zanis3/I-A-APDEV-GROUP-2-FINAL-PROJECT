@@ -81,14 +81,14 @@ public class Destination extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationColor1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblWelcomeText, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
+                .addGap(119, 119, 119))
         );
         pnlDestinationColor1Layout.setVerticalGroup(
             pnlDestinationColor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDestinationColor1Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+            .addGroup(pnlDestinationColor1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addComponent(lblWelcomeText)
-                .addGap(28, 28, 28))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pnlDestinationColor2.setBackground(new java.awt.Color(29, 72, 134));
@@ -495,9 +495,6 @@ public class Destination extends javax.swing.JFrame {
                 roundTripDay = returnDate.getDayOfMonth();
         
                 compareDates = returnDate.compareTo(departDate);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-                formattedDate = departDate.format(formatter);
-                returnDateFormat = returnDate.format(formatter);
                 }
             catch(NullPointerException e){
                 JOptionPane.showMessageDialog(null, "Please fill the dates properly before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);

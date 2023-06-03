@@ -642,11 +642,11 @@ public class Transaction extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "The payment you inputted is less than the total price.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
-        if(txtPassengerPayment.equals(null) || txtCreditCardNumber.equals(null) || txtExpiryDate.equals(null) || txtCVV.equals(null)){
+        if(txtPassengerPayment == null || txtCreditCardNumber == null || txtExpiryDate == null || txtCVV == null){
             JOptionPane.showMessageDialog(null,"One of the necessary fields is empty. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
-        if(!txtPassengerPayment.equals(null) && !txtCreditCardNumber.equals(null) && !txtExpiryDate.equals(null) && !txtCVV.equals(null) && Double.valueOf(txtPassengerPayment.toString()) >= Double.valueOf(txtTotal.toString())){
+        if(txtPassengerPayment != null && txtCreditCardNumber != null && txtExpiryDate != null && txtCVV != null && Double.valueOf(txtPassengerPayment.toString()) >= Double.valueOf(txtTotal.toString())){
             Receipt p = new Receipt();
             p.setVisible(true);
             this.dispose();
