@@ -4,9 +4,13 @@
  */
 package com.iaapdevgroup2.mercairlineticketing;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
-import java.util.Random;
 
 /**
  *
@@ -23,9 +27,12 @@ public class Transaction extends javax.swing.JFrame {
     private static double seniorsPrice = 0;
     protected static double initialPrice;
     protected static double initialInsurance;
+    private static int currentNumber = automatedNumberReader();
     
     DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+    private static final DecimalFormat TRANSACTION_FORMAT = new DecimalFormat("0000");
     private String formattedPrice;
+    private String formattedTransactionNumber;
     
     public Transaction() {
         super("Himpapawid Airlines Ticketing System");
@@ -74,7 +81,7 @@ public class Transaction extends javax.swing.JFrame {
         txtPassengerCount = new javax.swing.JTextField();
         lblPassengers = new javax.swing.JLabel();
         lblTransactionNumber = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtTransactionNumber = new javax.swing.JTextField();
         pnlPaymentSummary = new javax.swing.JPanel();
         lblTransactionFee = new javax.swing.JLabel();
         txtTransactionFee = new javax.swing.JTextField();
@@ -358,9 +365,12 @@ public class Transaction extends javax.swing.JFrame {
         lblTransactionNumber.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblTransactionNumber.setText("Transaction Number:");
 
-        jTextField1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField1.setEnabled(false);
+        txtTransactionNumber.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        txtTransactionNumber.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        automatedNumber(currentNumber);
+        formattedTransactionNumber = TRANSACTION_FORMAT.format(currentNumber);
+        txtTransactionNumber.setText(formattedTransactionNumber);
+        txtTransactionNumber.setEnabled(false);
 
         javax.swing.GroupLayout pnlFlightDetailsLayout = new javax.swing.GroupLayout(pnlFlightDetails);
         pnlFlightDetails.setLayout(pnlFlightDetailsLayout);
@@ -373,10 +383,6 @@ public class Transaction extends javax.swing.JFrame {
             .addGroup(pnlFlightDetailsLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlFlightDetailsLayout.createSequentialGroup()
-                        .addComponent(lblTransactionNumber)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlFlightDetailsLayout.createSequentialGroup()
                             .addComponent(lblPassengers)
@@ -394,7 +400,11 @@ public class Transaction extends javax.swing.JFrame {
                                 .addGroup(pnlFlightDetailsLayout.createSequentialGroup()
                                     .addComponent(txtFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtOneWayRoundTrip, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtOneWayRoundTrip, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(pnlFlightDetailsLayout.createSequentialGroup()
+                        .addComponent(lblTransactionNumber)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTransactionNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlFlightDetailsLayout.setVerticalGroup(
@@ -405,7 +415,7 @@ public class Transaction extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTransactionNumber)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTransactionNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlFlightDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassengers)
@@ -848,12 +858,32 @@ public class Transaction extends javax.swing.JFrame {
         initialInsurance = insuranceTotal / Double.valueOf(Passengers.insuranceCounter);
     }
     
-    private static String automatedNumber(){
-       StringBuilder sb = new StringBuilder(); 
-       
-       
-       
-       return sb.toString();
+    private static void automatedNumber(int number){
+        try{
+            number = automatedNumberReader();
+            number++;
+            if (number > 9999) {
+                number = 0;
+            }
+            BufferedWriter writer = new BufferedWriter(new FileWriter("transactionNumber.txt"));
+            writer.write(String.valueOf(number) + "\n");
+            writer.close();
+            
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
+    private static int automatedNumberReader() {
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader("transactionNumber.txt"));
+            String line = reader.readLine();
+            return Integer.parseInt(line);
+        } 
+        catch (IOException | NumberFormatException e) {
+            return 0;
+        }
     }
     
     public static void main(String args[]) {
@@ -891,7 +921,6 @@ public class Transaction extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPayment;
     private javax.swing.JButton btnPriceBreakdown;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl16DigitInstructions;
     private javax.swing.JLabel lblBaggageTotal;
     private javax.swing.JLabel lblBookingSummary;
@@ -935,6 +964,7 @@ public class Transaction extends javax.swing.JFrame {
     private javax.swing.JTextField txtTaxFee;
     private javax.swing.JTextField txtTotal;
     private javax.swing.JTextField txtTransactionFee;
+    private javax.swing.JTextField txtTransactionNumber;
     private javax.swing.JTextField txtTravelPrice;
     // End of variables declaration//GEN-END:variables
 }
