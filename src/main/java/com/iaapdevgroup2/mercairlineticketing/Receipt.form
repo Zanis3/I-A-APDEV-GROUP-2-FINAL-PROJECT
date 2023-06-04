@@ -41,7 +41,7 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="pnlReceiptBackground = new receiptMainBackgroundGraphics();"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="pnlReceiptBackground = new ReceiptMainBackgroundGraphics();"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
       </AuxValues>
 
@@ -50,39 +50,41 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblTransactionNumber" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblReceiptTransactionNumber" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblDate" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblDateOfTransaction" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="279" max="-2" attributes="0"/>
+                          <Component id="btnContinue" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTagLine" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="lblTransactionNumber" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="pnlLogo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblReceiptTransactionNumber" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="lblDate" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblDateOfTransaction" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               </Group>
                               <Component id="pnlFlightOne" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="40" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="pnlGuests" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="pnlGuests" max="32767" attributes="0"/>
                               <Component id="pnlFlightTwo" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTagLine" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlLogo" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -91,8 +93,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pnlLogo" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
+                      <Component id="pnlLogo" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                           <Component id="lblTagLine" min="-2" max="-2" attributes="0"/>
@@ -111,7 +113,12 @@
                   <Component id="pnlFlightTwo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="pnlGuests" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnContinue" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -143,7 +150,7 @@
               <Font name="Segoe UI" size="36" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="86" green="48" red="1d" type="rgb"/>
+              <Color blue="30" green="b1" red="fc" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="AIRLINE AIRLINES"/>
           </Properties>
@@ -154,7 +161,7 @@
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="86" green="48" red="1d" type="rgb"/>
+              <Color blue="30" green="b1" red="fc" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="SAMPLE TAGLINE HERE"/>
           </Properties>
@@ -165,7 +172,7 @@
               <Font name="Segoe UI" size="12" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="86" green="48" red="1d" type="rgb"/>
+              <Color blue="30" green="b1" red="fc" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Transaction Number:"/>
           </Properties>
@@ -176,7 +183,7 @@
               <Font name="Segoe UI" size="12" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="86" green="48" red="1d" type="rgb"/>
+              <Color blue="30" green="b1" red="fc" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Date:"/>
           </Properties>
@@ -189,7 +196,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder thickness="4">
-                  <Color PropertyName="color" blue="30" green="b1" red="fc" type="rgb"/>
+                  <Color PropertyName="color" blue="86" green="48" red="1d" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -210,13 +217,10 @@
                           <Component id="lblDepartLocationOne" min="-2" max="-2" attributes="0"/>
                           <Component id="lblAirlineTypeFlightOne" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="lblDateofDepartureOne" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="79" pref="79" max="-2" attributes="0"/>
-                              <Component id="lblFlightOneArrive" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblFlightOneArrive" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -254,7 +258,7 @@
             <Container class="javax.swing.JPanel" name="pnlFlighOneBar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="30" green="b1" red="fc" type="rgb"/>
+                  <Color blue="86" green="48" red="1d" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -285,7 +289,7 @@
                       <Font name="Segoe UI" size="18" style="3"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="86" green="48" red="1d" type="rgb"/>
+                      <Color blue="30" green="b1" red="fc" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value="Flight One"/>
@@ -299,7 +303,7 @@
                   <Font name="Segoe UI" size="14" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Depart:"/>
               </Properties>
@@ -310,7 +314,7 @@
                   <Font name="Segoe UI" size="14" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Arrive:"/>
               </Properties>
@@ -321,7 +325,7 @@
                   <Font name="Segoe UI" size="14" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Airline Type:"/>
               </Properties>
@@ -332,7 +336,7 @@
                   <Font name="Segoe UI" size="14" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Date of Departure:"/>
               </Properties>
@@ -343,9 +347,11 @@
                   <Font name="Segoe UI" size="24" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="a"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Destination.cboOrigin.getSelectedItem().toString()" type="code"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblArriveLocationOne">
@@ -354,9 +360,11 @@
                   <Font name="Segoe UI" size="24" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="a"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Destination.cboDestination.getSelectedItem().toString()" type="code"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblDepartureDate">
@@ -364,10 +372,12 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="3"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor" postCode="dateFormatter();">
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="a"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="flightOne" type="code"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblAirlineTypeFlightOne">
@@ -376,9 +386,11 @@
                   <Font name="Segoe UI" size="24" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="a"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="AirlineType.cboAirlineType.getSelectedItem().toString()" type="code"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -391,41 +403,50 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder thickness="4">
-                  <Color PropertyName="color" blue="30" green="b1" red="fc" type="rgb"/>
+                  <Color PropertyName="color" blue="86" green="48" red="1d" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="pnlFlightTwo.setVisible(false);"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnlFlightTwoBar" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblReceiptAirlineTypeTwo" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFlightTwoDepart" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblDepartLocationTwo" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAirlineTypeFlightTwo" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="lblDateOfDepartureTwo" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="79" pref="79" max="-2" attributes="0"/>
-                              <Component id="lblFlightTwoArrive" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="lblReceiptAirlineTypeTwo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblAirlineTypeFlightTwo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                              <Component id="lblFlightTwoDepart" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblDepartLocationTwo" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblArriveLocationTwo" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblArrivalDate" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                              <Component id="lblFlightTwoArrive" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblArriveLocationTwo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="lblDateOfDepartureTwo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblArrivalDate" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="39" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -433,21 +454,34 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnlFlightTwoBar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblFlightTwoDepart" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFlightTwoArrive" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDepartLocationTwo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblArriveLocationTwo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblReceiptAirlineTypeTwo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDateOfDepartureTwo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblArrivalDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAirlineTypeFlightTwo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="lblFlightTwoDepart" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDepartLocationTwo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblFlightTwoArrive" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblArriveLocationTwo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="0" pref="46" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblReceiptAirlineTypeTwo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAirlineTypeFlightTwo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="46" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblDateOfDepartureTwo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblArrivalDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -456,7 +490,7 @@
             <Container class="javax.swing.JPanel" name="pnlFlightTwoBar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="30" green="b1" red="fc" type="rgb"/>
+                  <Color blue="86" green="48" red="1d" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -466,7 +500,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblFlightTwo" min="-2" pref="101" max="-2" attributes="0"/>
-                          <EmptySpace pref="493" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -487,7 +521,7 @@
                       <Font name="Segoe UI" size="18" style="3"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="86" green="48" red="1d" type="rgb"/>
+                      <Color blue="30" green="b1" red="fc" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value="Flight Two"/>
@@ -501,7 +535,7 @@
                   <Font name="Segoe UI" size="14" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Depart:"/>
               </Properties>
@@ -512,7 +546,7 @@
                   <Font name="Segoe UI" size="14" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Arrive:"/>
               </Properties>
@@ -523,7 +557,7 @@
                   <Font name="Segoe UI" size="14" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Airline Type:"/>
               </Properties>
@@ -534,7 +568,7 @@
                   <Font name="Segoe UI" size="14" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Date of Departure:"/>
               </Properties>
@@ -545,9 +579,11 @@
                   <Font name="Segoe UI" size="24" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="a"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Destination.cboDestination.getSelectedItem().toString()" type="code"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblArriveLocationTwo">
@@ -556,9 +592,11 @@
                   <Font name="Segoe UI" size="24" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="a"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Destination.cboOrigin.getSelectedItem().toString()" type="code"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblArrivalDate">
@@ -566,10 +604,12 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="3"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor" postCode="dateFormatter();">
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="a"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="flightTwo" type="code"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblAirlineTypeFlightTwo">
@@ -578,9 +618,11 @@
                   <Font name="Segoe UI" size="24" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="48" red="1d" type="rgb"/>
+                  <Color blue="30" green="b1" red="fc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="a"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="AirlineType.cboAirlineType.getSelectedItem().toString()" type="code"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -593,7 +635,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder thickness="4">
-                  <Color PropertyName="color" blue="30" green="b1" red="fc" type="rgb"/>
+                  <Color PropertyName="color" blue="86" green="48" red="1d" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -615,8 +657,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnlGuestsBar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="67" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="147" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -625,7 +667,7 @@
             <Container class="javax.swing.JPanel" name="pnlGuestsBar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="30" green="b1" red="fc" type="rgb"/>
+                  <Color blue="86" green="48" red="1d" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -635,7 +677,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblGuests" min="-2" pref="101" max="-2" attributes="0"/>
-                          <EmptySpace pref="493" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -656,7 +698,7 @@
                       <Font name="Segoe UI" size="18" style="3"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="86" green="48" red="1d" type="rgb"/>
+                      <Color blue="30" green="b1" red="fc" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value="Guests"/>
@@ -671,9 +713,18 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="TtxtaGuests">
+                <Component class="javax.swing.JTextArea" name="txtGuests">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="3"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="30" green="b1" red="fc" type="rgb"/>
+                    </Property>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
                 </Component>
@@ -687,9 +738,11 @@
               <Font name="SansSerif" size="24" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="86" green="48" red="1d" type="rgb"/>
+              <Color blue="30" green="b1" red="fc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="a"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="CURRENT_DATE_FORMATTED" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblReceiptTransactionNumber">
@@ -698,9 +751,39 @@
               <Font name="SansSerif" size="24" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="30" green="b1" red="fc" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Transaction.txtTransactionNumber.getText()" type="code"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnContinue">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="86" green="48" red="1d" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="a"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="3"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="30" green="b1" red="fc" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Continue&gt;&gt;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnContinueActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="3"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="30" green="b1" red="fc" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Airline Airlines Automated Receipt"/>
           </Properties>
         </Component>
       </SubComponents>

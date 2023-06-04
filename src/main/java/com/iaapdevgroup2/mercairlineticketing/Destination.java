@@ -1,10 +1,8 @@
 package com.iaapdevgroup2.mercairlineticketing;
 
-import com.iaapdevgroup2.mercairlineticketing.AirlineType;
 import java.awt.event.ItemEvent;
 import javax.swing.JOptionPane;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class Destination extends javax.swing.JFrame {
     
@@ -16,9 +14,7 @@ public class Destination extends javax.swing.JFrame {
     private int roundTripYear;
     private int monthCount;
     private int compareDates;
-    private int compareDatesNow;
-    private String formattedDate;
-    private String returnDateFormat;
+    private int compareDatesNow;;
     
     public Destination() {
         super("Himpapawid Airlines Ticketing System");
@@ -500,7 +496,6 @@ public class Destination extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Please fill the dates properly before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-        System.out.println(formattedDate + " " + returnDateFormat);
         
         if(cboOrigin.getSelectedItem() == null || cboDestination.getSelectedItem() == null){
             JOptionPane.showMessageDialog(null, "Please select an Origin/Destination before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -834,14 +829,14 @@ public class Destination extends javax.swing.JFrame {
     private javax.swing.JButton btnNext;
     public static javax.swing.JComboBox<String> cboDestination;
     private javax.swing.JComboBox<String> cboLocalInternational;
-    private javax.swing.JComboBox<String> cboOneWayDD;
-    private javax.swing.JComboBox<String> cboOneWayMM;
+    protected static javax.swing.JComboBox<String> cboOneWayDD;
+    protected static javax.swing.JComboBox<String> cboOneWayMM;
     protected static javax.swing.JComboBox<String> cboOneWayRoundTrip;
-    private javax.swing.JComboBox<String> cboOneWayYear;
+    protected static javax.swing.JComboBox<String> cboOneWayYear;
     public static javax.swing.JComboBox<String> cboOrigin;
-    private javax.swing.JComboBox<String> cboRoundTripDD;
-    private javax.swing.JComboBox<String> cboRoundTripMM;
-    private javax.swing.JComboBox<String> cboRoundTripYear;
+    protected static javax.swing.JComboBox<String> cboRoundTripDD;
+    protected static javax.swing.JComboBox<String> cboRoundTripMM;
+    protected static javax.swing.JComboBox<String> cboRoundTripYear;
     private javax.swing.JLabel lblDay;
     private javax.swing.JLabel lblDepart;
     private javax.swing.JLabel lblFlightInstruction1;
