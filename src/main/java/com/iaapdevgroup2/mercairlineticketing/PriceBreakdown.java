@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 public class PriceBreakdown extends javax.swing.JFrame {
 
     DefaultTableModel model = new DefaultTableModel();
-    private static int passengerCount = AirlineType.passengerCount;
+    protected static int passengerCount = AirlineType.passengerCount;
     protected String passengerType;
     private static double price = 0;
     private static double baggagePrice = 0;
