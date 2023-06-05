@@ -397,7 +397,7 @@ public class Destination extends javax.swing.JFrame {
                     .addGroup(pnlDestinationColor2Layout.createSequentialGroup()
                         .addGap(332, 332, 332)
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
         pnlDestinationColor2Layout.setVerticalGroup(
             pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
