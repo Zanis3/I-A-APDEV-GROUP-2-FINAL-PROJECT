@@ -14,7 +14,7 @@ public class Destination extends javax.swing.JFrame {
     private int roundTripYear;
     private int monthCount;
     private int compareDates;
-    private int compareDatesNow;;
+    private int compareDatesNow;
     
     public Destination() {
         super("Himpapawid Airlines Ticketing System");
@@ -665,7 +665,6 @@ public class Destination extends javax.swing.JFrame {
                     btnNext.setEnabled(true);
                 }
             }
-            
         }
     }//GEN-LAST:event_cboOneWayYearItemStateChanged
 

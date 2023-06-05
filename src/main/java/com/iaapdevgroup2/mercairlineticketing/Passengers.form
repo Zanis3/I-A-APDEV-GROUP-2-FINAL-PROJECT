@@ -153,9 +153,6 @@
           </Border>
         </Property>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(AirlineType.minorCount != 0){&#xa;    passenger = &quot;Passenger 1: (Minor)&quot;;&#xa;}&#xa;else if(AirlineType.adultCount != 0){&#xa;    passenger = &quot;Passenger 1: (Adult)&quot;;&#xa;}&#xa;else if(AirlineType.seniorCount != 0){&#xa;    passenger = &quot;Passenger 1: (Senior)&quot;;&#xa;}"/>
-      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -439,11 +436,11 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cboYYYY">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="for(int b = 0; b &lt; yearChoices.length; b++){&#xa;    yearChoices[b] = String.valueOf(2023 - b);&#xa;}">
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="for(int b = 0; b &lt; YEAR_CHOICES.length; b++){&#xa;    YEAR_CHOICES[b] = String.valueOf(2023 - b);&#xa;}">
               <Font name="Arial Black" size="14" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(yearChoices)" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(YEAR_CHOICES)" type="code"/>
             </Property>
             <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="null" type="code"/>
@@ -625,7 +622,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Black" size="14" style="0"/>
         </Property>
-        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="horizontalAlignment" type="int" value="2" postCode="passengerTitleMethod();"/>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="passenger" type="code"/>
         </Property>
