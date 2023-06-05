@@ -20,7 +20,7 @@ public class Passengers extends javax.swing.JFrame {
     private static int day;
     private static int month;
     private static int year;
-    private String yearChoices[] = new String[117];
+    private final String[] YEAR_CHOICES = new String[117];
     private int days = 0;
     private int period = 0;
     protected static String oneWayRoundTrip;
@@ -97,15 +97,6 @@ public class Passengers extends javax.swing.JFrame {
         txtPassengers.setText(String.valueOf(AirlineType.passengerCount));
         txtPassengers.setEnabled(false);
 
-        if(AirlineType.minorCount != 0){
-            passenger = "Passenger 1: (Minor)";
-        }
-        else if(AirlineType.adultCount != 0){
-            passenger = "Passenger 1: (Adult)";
-        }
-        else if(AirlineType.seniorCount != 0){
-            passenger = "Passenger 1: (Senior)";
-        }
         pnlPassengerInput.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         lblName.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -190,10 +181,10 @@ public class Passengers extends javax.swing.JFrame {
         lblYYYY.setToolTipText("");
 
         cboYYYY.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        for(int b = 0; b < yearChoices.length; b++){
-            yearChoices[b] = String.valueOf(2023 - b);
+        for(int b = 0; b < YEAR_CHOICES.length; b++){
+            YEAR_CHOICES[b] = String.valueOf(2023 - b);
         }
-        cboYYYY.setModel(new javax.swing.DefaultComboBoxModel<>(yearChoices));
+        cboYYYY.setModel(new javax.swing.DefaultComboBoxModel<>(YEAR_CHOICES));
         cboYYYY.setSelectedItem(null);
         cboYYYY.setEnabled(false);
         cboYYYY.addItemListener(new java.awt.event.ItemListener() {
@@ -366,6 +357,7 @@ public class Passengers extends javax.swing.JFrame {
 
         lblPanelText.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblPanelText.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        passengerTitleMethod();
         lblPanelText.setText(passenger);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -454,30 +446,29 @@ public class Passengers extends javax.swing.JFrame {
                 else if(rdoNo.isSelected()){
                     insurance = rdoNo.getText();
                 }
-
+                
                 validation = false;
                 passengerAge = Integer.parseInt(txtAge.getText());
-                
                 passengerCounter++;
-            
-                if(AirlineType.minorCount != 0 && minorCounter < AirlineType.minorCount){
+                
+                if(minorCounter < AirlineType.minorCount && AirlineType.minorCount != 0){
                     if(passengerAge >= 0 && passengerAge <= 17){
-                        minorCounter++;
                         lblPanelText.setText("Passenger " + Integer.toString(passengerCounter) + ": (Minor)");
+                        minorCounter++;
                         validation = true;
                     }
                 }
-                else if(AirlineType.adultCount != 0 && adultCounter < AirlineType.adultCount){
+                else if(adultCounter < AirlineType.adultCount && AirlineType.adultCount != 0){
                     if(passengerAge >= 18 && passengerAge <= 59){
-                        adultCounter++;
                         lblPanelText.setText("Passenger " + Integer.toString(passengerCounter) + ": (Adult)");
+                        adultCounter++;
                         validation = true;
                     }
                 }
-                else if(AirlineType.seniorCount != 0 && seniorCounter < AirlineType.seniorCount){
+                else if(seniorCounter < AirlineType.seniorCount && AirlineType.seniorCount != 0){
                     if(passengerAge >= 60){
-                        seniorCounter++;
                         lblPanelText.setText("Passenger " + Integer.toString(passengerCounter) + ": (Senior)");
+                        seniorCounter++;
                         validation = true;
                     }
                 }
@@ -620,7 +611,19 @@ public class Passengers extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_cboDDItemStateChanged
-
+    
+    private void passengerTitleMethod(){
+        if(AirlineType.minorCount != 0){
+            passenger = "Passenger 1: (Minor)";
+        }
+        else if(AirlineType.adultCount != 0){
+            passenger = "Passenger 1: (Adult)";
+        }
+        else if(AirlineType.seniorCount != 0){
+            passenger = "Passenger 1: (Senior)";
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

@@ -81,6 +81,7 @@ public class Receipt extends javax.swing.JFrame {
         pnlLogo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(654, 950));
 
         pnlReceiptBackground.setBackground(new java.awt.Color(255, 255, 255));
         pnlReceiptBackground.setToolTipText("");
