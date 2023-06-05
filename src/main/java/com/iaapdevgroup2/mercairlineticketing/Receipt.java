@@ -4,6 +4,7 @@
  */
 package com.iaapdevgroup2.mercairlineticketing;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -74,11 +75,12 @@ public class Receipt extends javax.swing.JFrame {
         lblDateOfTransaction = new javax.swing.JLabel();
         lblReceiptTransactionNumber = new javax.swing.JLabel();
         btnContinue = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        lblAutoReceipt = new javax.swing.JLabel();
+        pnlTopBar = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         lblTagLine = new javax.swing.JLabel();
-        pnlLogo = new javax.swing.JPanel();
+        pnlIcon = new javax.swing.JPanel();
+        lblIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(654, 950));
@@ -414,63 +416,65 @@ public class Receipt extends javax.swing.JFrame {
         pnlReceiptBackground.add(btnContinue);
         btnContinue.setBounds(523, 877, 107, 27);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(252, 177, 48));
-        jLabel1.setText("Airline Airlines Automated Receipt");
-        pnlReceiptBackground.add(jLabel1);
-        jLabel1.setBounds(22, 880, 222, 20);
+        lblAutoReceipt.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblAutoReceipt.setForeground(new java.awt.Color(252, 177, 48));
+        lblAutoReceipt.setText("Airline Airlines Automated Receipt");
+        pnlReceiptBackground.add(lblAutoReceipt);
+        lblAutoReceipt.setBounds(20, 870, 222, 20);
 
-        jPanel2.setBackground(new java.awt.Color(29, 72, 134));
+        pnlTopBar.setBackground(new java.awt.Color(29, 72, 134));
+        pnlTopBar.setLayout(null);
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(252, 177, 48));
         lblTitle.setText("AIRLINE AIRLINES");
+        pnlTopBar.add(lblTitle);
+        lblTitle.setBounds(197, 28, 301, 48);
 
         lblTagLine.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         lblTagLine.setForeground(new java.awt.Color(252, 177, 48));
         lblTagLine.setText("SAMPLE TAGLINE HERE");
+        pnlTopBar.add(lblTagLine);
+        lblTagLine.setBounds(297, 82, 201, 25);
 
-        pnlLogo.setBackground(new java.awt.Color(255, 102, 102));
+        pnlIcon.setBackground(new java.awt.Color(29, 72, 134));
 
-        javax.swing.GroupLayout pnlLogoLayout = new javax.swing.GroupLayout(pnlLogo);
-        pnlLogo.setLayout(pnlLogoLayout);
-        pnlLogoLayout.setHorizontalGroup(
-            pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        pnlLogoLayout.setVerticalGroup(
-            pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        lblIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        String imagePath = "com" + File.separator + "iaapdevgroup2" + File.separator + "mercairlineticketing" + File.separator + "LogoWName.png";
+        lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/iaapdevgroup2/mercairlineticketing/resources/LogoWName.png"))); // NOI18N
+        lblIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblIcon.setIconTextGap(0);
+        int iconWidth = lblIcon.getIcon().getIconWidth();
+        int iconHeight = lblIcon.getIcon().getIconHeight();
+        lblIcon.setPreferredSize(new java.awt.Dimension(iconWidth, iconHeight));
+        lblIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(215, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitle, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTagLine, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+        javax.swing.GroupLayout pnlIconLayout = new javax.swing.GroupLayout(pnlIcon);
+        pnlIcon.setLayout(pnlIconLayout);
+        pnlIconLayout.setHorizontalGroup(
+            pnlIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 112, Short.MAX_VALUE)
+            .addGroup(pnlIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlIconLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTagLine))
-                    .addComponent(pnlLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+        pnlIconLayout.setVerticalGroup(
+            pnlIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 112, Short.MAX_VALUE)
+            .addGroup(pnlIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlIconLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        pnlReceiptBackground.add(jPanel2);
-        jPanel2.setBounds(0, 0, 654, 146);
+        pnlTopBar.add(pnlIcon);
+        pnlIcon.setBounds(510, 20, 112, 112);
+
+        pnlReceiptBackground.add(pnlTopBar);
+        pnlTopBar.setBounds(0, 0, 654, 140);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -643,14 +647,13 @@ public class Receipt extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinue;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAirlineTypeFlightOne;
     private javax.swing.JLabel lblAirlineTypeFlightTwo;
     private javax.swing.JLabel lblArrivalDate;
     private javax.swing.JLabel lblArriveLocationOne;
     private javax.swing.JLabel lblArriveLocationTwo;
+    private javax.swing.JLabel lblAutoReceipt;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDateOfDepartureTwo;
     private javax.swing.JLabel lblDateOfTransaction;
@@ -665,6 +668,7 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JLabel lblFlightTwoArrive;
     private javax.swing.JLabel lblFlightTwoDepart;
     private javax.swing.JLabel lblGuests;
+    private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblReceiptAirlineTypeOne;
     private javax.swing.JLabel lblReceiptAirlineTypeTwo;
     private javax.swing.JLabel lblReceiptTransactionNumber;
@@ -677,8 +681,9 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JPanel pnlFlightTwoBar;
     private javax.swing.JPanel pnlGuests;
     private javax.swing.JPanel pnlGuestsBar;
-    private javax.swing.JPanel pnlLogo;
+    private javax.swing.JPanel pnlIcon;
     protected static javax.swing.JPanel pnlReceiptBackground;
+    private javax.swing.JPanel pnlTopBar;
     private javax.swing.JTextArea txtGuests;
     // End of variables declaration//GEN-END:variables
 }
