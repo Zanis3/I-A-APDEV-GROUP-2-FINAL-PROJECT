@@ -4,9 +4,11 @@
  */
 package com.iaapdevgroup2.mercairlineticketing;
 
-import java.io.File;
+import java.awt.Image;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 /**
  *
@@ -15,7 +17,7 @@ import javax.swing.JOptionPane;
 public class Receipt extends javax.swing.JFrame {
 
     LocalDate currentDate = LocalDate.now();
-    DateTimeFormatter dateFormatted = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter dateFormatted = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     private final String CURRENT_DATE_FORMATTED = currentDate.format(dateFormatted);
     private int flightOneDay;
     private int flightOneMonth;
@@ -30,7 +32,16 @@ public class Receipt extends javax.swing.JFrame {
         super("Himpapawid Airlines Ticketing System");
         initComponents();
         this.setLocationRelativeTo(null);
-        setSize(654, 950);
+        setSize(654, 770);
+        
+        ImageIcon himpapawidTopIcon = new ImageIcon(getClass().getResource("/images/LogoWName.png"));
+        setIconImage(himpapawidTopIcon.getImage());
+        
+        Icon icon = lblLogo.getIcon();
+        ImageIcon airlineLogo = (ImageIcon)icon;
+        Image image = airlineLogo.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
+        
+        lblLogo.setIcon(new ImageIcon (image));
     }
 
     /**
@@ -79,8 +90,7 @@ public class Receipt extends javax.swing.JFrame {
         pnlTopBar = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         lblTagLine = new javax.swing.JLabel();
-        pnlIcon = new javax.swing.JPanel();
-        lblIcon = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(654, 950));
@@ -93,13 +103,13 @@ public class Receipt extends javax.swing.JFrame {
         lblTransactionNumber.setForeground(new java.awt.Color(252, 177, 48));
         lblTransactionNumber.setText("Transaction Number:");
         pnlReceiptBackground.add(lblTransactionNumber);
-        lblTransactionNumber.setBounds(40, 164, 119, 16);
+        lblTransactionNumber.setBounds(20, 160, 119, 20);
 
         lblDate.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         lblDate.setForeground(new java.awt.Color(252, 177, 48));
         lblDate.setText("Date:");
         pnlReceiptBackground.add(lblDate);
-        lblDate.setBounds(428, 164, 30, 16);
+        lblDate.setBounds(440, 160, 30, 16);
 
         pnlFlightOne.setBackground(new java.awt.Color(255, 255, 255));
         pnlFlightOne.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(29, 72, 134), 4));
@@ -118,7 +128,7 @@ public class Receipt extends javax.swing.JFrame {
             .addGroup(pnlFlighOneBarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblFlightOne, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(493, Short.MAX_VALUE))
         );
         pnlFlighOneBarLayout.setVerticalGroup(
             pnlFlighOneBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +177,7 @@ public class Receipt extends javax.swing.JFrame {
             pnlFlightOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlFlighOneBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlFlightOneLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(22, 22, 22)
                 .addGroup(pnlFlightOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblReceiptAirlineTypeOne)
                     .addComponent(lblFlightOneDepart))
@@ -183,32 +193,33 @@ public class Receipt extends javax.swing.JFrame {
                 .addGroup(pnlFlightOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblArriveLocationOne)
                     .addComponent(lblDepartureDate))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlFlightOneLayout.setVerticalGroup(
             pnlFlightOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFlightOneLayout.createSequentialGroup()
                 .addComponent(pnlFlighOneBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlFlightOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFlightOneDepart)
                     .addComponent(lblFlightOneArrive)
                     .addComponent(lblDepartLocationOne)
                     .addComponent(lblArriveLocationOne))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlFlightOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblReceiptAirlineTypeOne)
                     .addComponent(lblDateofDepartureOne)
                     .addComponent(lblDepartureDate)
                     .addComponent(lblAirlineTypeFlightOne))
-                .addGap(0, 46, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         pnlReceiptBackground.add(pnlFlightOne);
-        pnlFlightOne.setBounds(22, 202, 608, 204);
+        pnlFlightOne.setBounds(20, 190, 608, 140);
 
         pnlFlightTwo.setBackground(new java.awt.Color(255, 255, 255));
         pnlFlightTwo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(29, 72, 134), 4));
+        pnlFlightTwo.setMinimumSize(new java.awt.Dimension(608, 140));
         if(Destination.cboOneWayRoundTrip.getSelectedItem().equals("One-Way")){
             pnlFlightTwo.setVisible(false);
         }
@@ -305,7 +316,7 @@ public class Receipt extends javax.swing.JFrame {
             pnlFlightTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFlightTwoLayout.createSequentialGroup()
                 .addComponent(pnlFlightTwoBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlFlightTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFlightTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblFlightTwoDepart)
@@ -313,22 +324,19 @@ public class Receipt extends javax.swing.JFrame {
                     .addGroup(pnlFlightTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblFlightTwoArrive)
                         .addComponent(lblArriveLocationTwo)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlFlightTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlFlightTwoLayout.createSequentialGroup()
-                        .addGroup(pnlFlightTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblReceiptAirlineTypeTwo)
-                            .addComponent(lblAirlineTypeFlightTwo))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlFlightTwoLayout.createSequentialGroup()
-                        .addGroup(pnlFlightTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDateOfDepartureTwo)
-                            .addComponent(lblArrivalDate))
-                        .addContainerGap(46, Short.MAX_VALUE))))
+                    .addGroup(pnlFlightTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblReceiptAirlineTypeTwo)
+                        .addComponent(lblAirlineTypeFlightTwo))
+                    .addGroup(pnlFlightTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDateOfDepartureTwo)
+                        .addComponent(lblArrivalDate)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pnlReceiptBackground.add(pnlFlightTwo);
-        pnlFlightTwo.setBounds(22, 424, 608, 204);
+        pnlFlightTwo.setBounds(20, 350, 608, 140);
 
         pnlGuests.setBackground(new java.awt.Color(255, 255, 255));
         pnlGuests.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(29, 72, 134), 4));
@@ -367,7 +375,6 @@ public class Receipt extends javax.swing.JFrame {
         txtGuests.setForeground(new java.awt.Color(252, 177, 48));
         txtGuests.setRows(5);
         txtGuests.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        txtGuests.setEnabled(false);
         jScrollPane1.setViewportView(txtGuests);
 
         javax.swing.GroupLayout pnlGuestsLayout = new javax.swing.GroupLayout(pnlGuests);
@@ -390,19 +397,19 @@ public class Receipt extends javax.swing.JFrame {
         );
 
         pnlReceiptBackground.add(pnlGuests);
-        pnlGuests.setBounds(22, 646, 608, 204);
+        pnlGuests.setBounds(20, 510, 608, 204);
 
         lblDateOfTransaction.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
         lblDateOfTransaction.setForeground(new java.awt.Color(252, 177, 48));
         lblDateOfTransaction.setText(CURRENT_DATE_FORMATTED);
         pnlReceiptBackground.add(lblDateOfTransaction);
-        lblDateOfTransaction.setBounds(464, 152, 146, 32);
+        lblDateOfTransaction.setBounds(480, 150, 146, 32);
 
         lblReceiptTransactionNumber.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
         lblReceiptTransactionNumber.setForeground(new java.awt.Color(252, 177, 48));
         lblReceiptTransactionNumber.setText(Transaction.txtTransactionNumber.getText());
         pnlReceiptBackground.add(lblReceiptTransactionNumber);
-        lblReceiptTransactionNumber.setBounds(165, 152, 146, 32);
+        lblReceiptTransactionNumber.setBounds(150, 150, 146, 30);
 
         btnContinue.setBackground(new java.awt.Color(29, 72, 134));
         btnContinue.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -414,64 +421,32 @@ public class Receipt extends javax.swing.JFrame {
             }
         });
         pnlReceiptBackground.add(btnContinue);
-        btnContinue.setBounds(523, 877, 107, 27);
+        btnContinue.setBounds(520, 730, 107, 27);
 
         lblAutoReceipt.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lblAutoReceipt.setForeground(new java.awt.Color(252, 177, 48));
-        lblAutoReceipt.setText("Airline Airlines Automated Receipt");
+        lblAutoReceipt.setText("Himpapawid Airlines Automated Receipt");
         pnlReceiptBackground.add(lblAutoReceipt);
-        lblAutoReceipt.setBounds(20, 870, 222, 20);
+        lblAutoReceipt.setBounds(20, 730, 270, 20);
 
         pnlTopBar.setBackground(new java.awt.Color(29, 72, 134));
         pnlTopBar.setLayout(null);
 
-        lblTitle.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("SansSerif", 3, 36)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(252, 177, 48));
-        lblTitle.setText("AIRLINE AIRLINES");
+        lblTitle.setText("Himpapawid Airlines");
         pnlTopBar.add(lblTitle);
-        lblTitle.setBounds(197, 28, 301, 48);
+        lblTitle.setBounds(160, 30, 360, 47);
 
-        lblTagLine.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        lblTagLine.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         lblTagLine.setForeground(new java.awt.Color(252, 177, 48));
-        lblTagLine.setText("SAMPLE TAGLINE HERE");
+        lblTagLine.setText("Taking care to the new heights");
         pnlTopBar.add(lblTagLine);
-        lblTagLine.setBounds(297, 82, 201, 25);
+        lblTagLine.setBounds(250, 80, 270, 25);
 
-        pnlIcon.setBackground(new java.awt.Color(29, 72, 134));
-
-        lblIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        String imagePath = "com" + File.separator + "iaapdevgroup2" + File.separator + "mercairlineticketing" + File.separator + "LogoWName.png";
-        lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/iaapdevgroup2/mercairlineticketing/resources/LogoWName.png"))); // NOI18N
-        lblIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblIcon.setIconTextGap(0);
-        int iconWidth = lblIcon.getIcon().getIconWidth();
-        int iconHeight = lblIcon.getIcon().getIconHeight();
-        lblIcon.setPreferredSize(new java.awt.Dimension(iconWidth, iconHeight));
-        lblIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-
-        javax.swing.GroupLayout pnlIconLayout = new javax.swing.GroupLayout(pnlIcon);
-        pnlIcon.setLayout(pnlIconLayout);
-        pnlIconLayout.setHorizontalGroup(
-            pnlIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 112, Short.MAX_VALUE)
-            .addGroup(pnlIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlIconLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        pnlIconLayout.setVerticalGroup(
-            pnlIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 112, Short.MAX_VALUE)
-            .addGroup(pnlIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlIconLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lblIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        pnlTopBar.add(pnlIcon);
-        pnlIcon.setBounds(510, 20, 112, 112);
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogoWName.png")));
+        pnlTopBar.add(lblLogo);
+        lblLogo.setBounds(520, 20, 110, 100);
 
         pnlReceiptBackground.add(pnlTopBar);
         pnlTopBar.setBounds(0, 0, 654, 140);
@@ -480,11 +455,11 @@ public class Receipt extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlReceiptBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlReceiptBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlReceiptBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlReceiptBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
         );
 
         pack();
@@ -668,7 +643,7 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JLabel lblFlightTwoArrive;
     private javax.swing.JLabel lblFlightTwoDepart;
     private javax.swing.JLabel lblGuests;
-    private javax.swing.JLabel lblIcon;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblReceiptAirlineTypeOne;
     private javax.swing.JLabel lblReceiptAirlineTypeTwo;
     private javax.swing.JLabel lblReceiptTransactionNumber;
@@ -681,7 +656,6 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JPanel pnlFlightTwoBar;
     private javax.swing.JPanel pnlGuests;
     private javax.swing.JPanel pnlGuestsBar;
-    private javax.swing.JPanel pnlIcon;
     protected static javax.swing.JPanel pnlReceiptBackground;
     private javax.swing.JPanel pnlTopBar;
     private javax.swing.JTextArea txtGuests;

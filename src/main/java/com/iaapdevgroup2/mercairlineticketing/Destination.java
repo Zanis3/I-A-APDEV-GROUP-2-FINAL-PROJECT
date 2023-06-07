@@ -3,6 +3,7 @@ package com.iaapdevgroup2.mercairlineticketing;
 import java.awt.event.ItemEvent;
 import javax.swing.JOptionPane;
 import java.time.LocalDate;
+import javax.swing.ImageIcon;
 
 public class Destination extends javax.swing.JFrame {
     
@@ -16,9 +17,25 @@ public class Destination extends javax.swing.JFrame {
     private int compareDates;
     private int compareDatesNow;
     
+    private int nextYearDay;
+    private int nextYearMonth;
+    private int nextYearYear;
+    
     public Destination() {
         super("Himpapawid Airlines Ticketing System");
         initComponents();
+        
+        ImageIcon himpapawidTopIcon = new ImageIcon(getClass().getResource("/images/LogoWName.png"));
+        setIconImage(himpapawidTopIcon.getImage());
+        
+        //WIP
+        LocalDate dateNow = LocalDate.now();
+        LocalDate nextYear = LocalDate.of(nextYearYear, nextYearMonth, nextYearDay);
+        
+        nextYearDay = dateNow.getDayOfMonth();
+        nextYearMonth = dateNow.getMonthValue();
+        nextYearYear = dateNow.getYear() + 1;
+        
         this.setLocationRelativeTo(null);
     }
 
@@ -47,17 +64,20 @@ public class Destination extends javax.swing.JFrame {
         pnlFlightTitleBar1 = new javax.swing.JPanel();
         lblFlightInstruction2 = new javax.swing.JLabel();
         cboOneWayRoundTrip = new javax.swing.JComboBox<>();
-        lblYear = new javax.swing.JLabel();
         cboOneWayYear = new javax.swing.JComboBox<>();
         cboRoundTripYear = new javax.swing.JComboBox<>();
-        lblMonth = new javax.swing.JLabel();
         cboOneWayMM = new javax.swing.JComboBox<>();
         cboRoundTripMM = new javax.swing.JComboBox<>();
-        lblDay = new javax.swing.JLabel();
         cboOneWayDD = new javax.swing.JComboBox<>();
         cboRoundTripDD = new javax.swing.JComboBox<>();
         lblDepart = new javax.swing.JLabel();
         lblReturn = new javax.swing.JLabel();
+        lblRoundTripYear = new javax.swing.JLabel();
+        lblRoundTripMonth = new javax.swing.JLabel();
+        lblRoundTripDay = new javax.swing.JLabel();
+        lblOneWayYear = new javax.swing.JLabel();
+        lblOneWayMonth = new javax.swing.JLabel();
+        lblOneWayDay = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -159,18 +179,18 @@ public class Destination extends javax.swing.JFrame {
             .addGroup(pnlLocalInternationalLayout.createSequentialGroup()
                 .addGroup(pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlLocalInternationalLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(120, 120, 120)
+                        .addComponent(cboLocalInternational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlLocalInternationalLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
                         .addGroup(pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cboOrigin, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblFrom))
                         .addGap(18, 18, 18)
                         .addGroup(pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTo)
-                            .addComponent(cboDestination, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlLocalInternationalLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(cboLocalInternational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                            .addComponent(cboDestination, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         pnlLocalInternationalLayout.setVerticalGroup(
             pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +198,7 @@ public class Destination extends javax.swing.JFrame {
                 .addComponent(pnlFlightTitleBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cboLocalInternational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
                 .addGroup(pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFrom)
                     .addComponent(lblTo))
@@ -186,7 +206,7 @@ public class Destination extends javax.swing.JFrame {
                 .addGroup(pnlLocalInternationalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboOrigin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboDestination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnNext.setBackground(new java.awt.Color(252, 177, 48));
@@ -238,10 +258,6 @@ public class Destination extends javax.swing.JFrame {
             }
         });
 
-        lblYear.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        lblYear.setForeground(new java.awt.Color(252, 177, 48));
-        lblYear.setText("YYYY");
-
         cboOneWayYear.setBackground(new java.awt.Color(29, 72, 134));
         cboOneWayYear.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         cboOneWayYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024" }));
@@ -264,10 +280,6 @@ public class Destination extends javax.swing.JFrame {
             }
         });
 
-        lblMonth.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        lblMonth.setForeground(new java.awt.Color(252, 177, 48));
-        lblMonth.setText("MM");
-
         cboOneWayMM.setBackground(new java.awt.Color(29, 72, 134));
         cboOneWayMM.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         cboOneWayMM.setSelectedItem(null);
@@ -287,10 +299,6 @@ public class Destination extends javax.swing.JFrame {
                 cboRoundTripMMItemStateChanged(evt);
             }
         });
-
-        lblDay.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        lblDay.setForeground(new java.awt.Color(252, 177, 48));
-        lblDay.setText("DD");
 
         cboOneWayDD.setBackground(new java.awt.Color(29, 72, 134));
         cboOneWayDD.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -317,6 +325,30 @@ public class Destination extends javax.swing.JFrame {
         lblReturn.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         lblReturn.setForeground(new java.awt.Color(252, 177, 48));
         lblReturn.setText("Return:");
+
+        lblRoundTripYear.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblRoundTripYear.setForeground(new java.awt.Color(252, 177, 48));
+        lblRoundTripYear.setText("YYYY");
+
+        lblRoundTripMonth.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblRoundTripMonth.setForeground(new java.awt.Color(252, 177, 48));
+        lblRoundTripMonth.setText("MM");
+
+        lblRoundTripDay.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblRoundTripDay.setForeground(new java.awt.Color(252, 177, 48));
+        lblRoundTripDay.setText("DD");
+
+        lblOneWayYear.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblOneWayYear.setForeground(new java.awt.Color(252, 177, 48));
+        lblOneWayYear.setText("YYYY");
+
+        lblOneWayMonth.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblOneWayMonth.setForeground(new java.awt.Color(252, 177, 48));
+        lblOneWayMonth.setText("MM");
+
+        lblOneWayDay.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblOneWayDay.setForeground(new java.awt.Color(252, 177, 48));
+        lblOneWayDay.setText("DD");
 
         javax.swing.GroupLayout pnlDateLayout = new javax.swing.GroupLayout(pnlDate);
         pnlDate.setLayout(pnlDateLayout);
@@ -346,15 +378,21 @@ public class Destination extends javax.swing.JFrame {
                                 .addComponent(cboRoundTripDD, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(19, 19, 19))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDateLayout.createSequentialGroup()
-                        .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cboOneWayRoundTrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlDateLayout.createSequentialGroup()
-                                .addComponent(lblYear)
-                                .addGap(67, 67, 67)
-                                .addComponent(lblMonth)
-                                .addGap(8, 8, 8)))
-                        .addGap(75, 75, 75)
-                        .addComponent(lblDay)
+                        .addComponent(cboOneWayRoundTrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(147, 147, 147))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDateLayout.createSequentialGroup()
+                        .addComponent(lblRoundTripYear)
+                        .addGap(67, 67, 67)
+                        .addComponent(lblRoundTripMonth)
+                        .addGap(83, 83, 83)
+                        .addComponent(lblRoundTripDay)
+                        .addGap(52, 52, 52))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDateLayout.createSequentialGroup()
+                        .addComponent(lblOneWayYear)
+                        .addGap(67, 67, 67)
+                        .addComponent(lblOneWayMonth)
+                        .addGap(83, 83, 83)
+                        .addComponent(lblOneWayDay)
                         .addGap(52, 52, 52))))
         );
         pnlDateLayout.setVerticalGroup(
@@ -365,22 +403,27 @@ public class Destination extends javax.swing.JFrame {
                 .addComponent(cboOneWayRoundTrip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblYear)
-                    .addComponent(lblMonth)
-                    .addComponent(lblDay))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboOneWayDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboOneWayMM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboOneWayYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDepart))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(2, 2, 2)
+                .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblOneWayYear)
+                    .addComponent(lblOneWayMonth)
+                    .addComponent(lblOneWayDay))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboRoundTripDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboRoundTripMM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboRoundTripYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblReturn))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRoundTripYear)
+                    .addComponent(lblRoundTripMonth)
+                    .addComponent(lblRoundTripDay))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlDestinationColor2Layout = new javax.swing.GroupLayout(pnlDestinationColor2);
@@ -406,7 +449,7 @@ public class Destination extends javax.swing.JFrame {
                 .addGroup(pnlDestinationColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlLocalInternational, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(btnNext)
                 .addGap(58, 58, 58))
         );
@@ -836,16 +879,19 @@ public class Destination extends javax.swing.JFrame {
     protected static javax.swing.JComboBox<String> cboRoundTripDD;
     protected static javax.swing.JComboBox<String> cboRoundTripMM;
     protected static javax.swing.JComboBox<String> cboRoundTripYear;
-    private javax.swing.JLabel lblDay;
     private javax.swing.JLabel lblDepart;
     private javax.swing.JLabel lblFlightInstruction1;
     private javax.swing.JLabel lblFlightInstruction2;
     private javax.swing.JLabel lblFrom;
-    private javax.swing.JLabel lblMonth;
+    private javax.swing.JLabel lblOneWayDay;
+    private javax.swing.JLabel lblOneWayMonth;
+    private javax.swing.JLabel lblOneWayYear;
     private javax.swing.JLabel lblReturn;
+    private javax.swing.JLabel lblRoundTripDay;
+    private javax.swing.JLabel lblRoundTripMonth;
+    private javax.swing.JLabel lblRoundTripYear;
     private javax.swing.JLabel lblTo;
     private javax.swing.JLabel lblWelcomeText;
-    private javax.swing.JLabel lblYear;
     private javax.swing.JPanel pnlDate;
     private javax.swing.JPanel pnlDestinationColor1;
     private javax.swing.JPanel pnlDestinationColor2;

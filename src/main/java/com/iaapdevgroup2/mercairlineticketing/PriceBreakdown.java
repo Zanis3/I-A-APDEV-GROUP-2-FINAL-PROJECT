@@ -4,7 +4,10 @@
  */
 package com.iaapdevgroup2.mercairlineticketing;
 
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -23,9 +26,20 @@ public class PriceBreakdown extends javax.swing.JFrame {
     public PriceBreakdown() {
         super("Himpapawid Airlines Ticketing System");
         initComponents();
+        
+        ImageIcon himpapawidTopIcon = new ImageIcon(getClass().getResource("/images/LogoWName.png"));
+        setIconImage(himpapawidTopIcon.getImage());
+        
         this.setLocationRelativeTo(null);
         model = (DefaultTableModel) tblPassengerBreakdown.getModel();
         TableData();
+        
+        DefaultTableCellRenderer rightAligner = new DefaultTableCellRenderer();
+        rightAligner.setHorizontalAlignment(SwingConstants.RIGHT);
+        tblPassengerBreakdown.getColumnModel().getColumn(2).setCellRenderer(rightAligner);
+        tblPassengerBreakdown.getColumnModel().getColumn(3).setCellRenderer(rightAligner);
+        tblPassengerBreakdown.getColumnModel().getColumn(4).setCellRenderer(rightAligner);
+        tblPassengerBreakdown.getColumnModel().getColumn(5).setCellRenderer(rightAligner);
     }
     
     /**
@@ -37,15 +51,29 @@ public class PriceBreakdown extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        lblPriceBreakdown = new javax.swing.JLabel();
+        lblNote = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPassengerBreakdown = new javax.swing.JTable();
         btnConfirmAndExit = new javax.swing.JButton();
-        lblPriceBreakdown = new javax.swing.JLabel();
-        lblNote = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(29, 72, 134));
+
+        lblPriceBreakdown.setFont(new java.awt.Font("SansSerif", 3, 36)); // NOI18N
+        lblPriceBreakdown.setForeground(new java.awt.Color(252, 177, 48));
+        lblPriceBreakdown.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPriceBreakdown.setText("PRICE BREAKDOWN");
+
+        lblNote.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        lblNote.setForeground(new java.awt.Color(252, 177, 48));
+        lblNote.setText("*Please take note of the Transaction fee present on the \"Payment Summary\" tab.");
+
+        tblPassengerBreakdown.setBackground(new java.awt.Color(29, 72, 134));
         tblPassengerBreakdown.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        tblPassengerBreakdown.setForeground(new java.awt.Color(252, 177, 48));
         tblPassengerBreakdown.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -64,7 +92,9 @@ public class PriceBreakdown extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblPassengerBreakdown);
 
-        btnConfirmAndExit.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        btnConfirmAndExit.setBackground(new java.awt.Color(252, 177, 48));
+        btnConfirmAndExit.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        btnConfirmAndExit.setForeground(new java.awt.Color(29, 72, 134));
         btnConfirmAndExit.setText(">>CONFIRM AND EXIT<<");
         btnConfirmAndExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,45 +102,52 @@ public class PriceBreakdown extends javax.swing.JFrame {
             }
         });
 
-        lblPriceBreakdown.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        lblPriceBreakdown.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPriceBreakdown.setText("PRICE BREAKDOWN");
-
-        lblNote.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        lblNote.setText("*Please take note of the Transaction fee present on the \"Payment Summary\" tab.");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(323, 323, 323)
-                        .addComponent(btnConfirmAndExit))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(297, 297, 297)
-                        .addComponent(lblPriceBreakdown))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(lblNote)))
-                .addContainerGap(51, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblPriceBreakdown)
+                        .addGap(246, 246, 246))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(lblNote))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(304, 304, 304)
+                        .addComponent(btnConfirmAndExit)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addComponent(lblPriceBreakdown)
-                .addGap(4, 4, 4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNote)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConfirmAndExit)
-                .addGap(37, 37, 37))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -196,6 +233,7 @@ public class PriceBreakdown extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmAndExit;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblNote;
     private javax.swing.JLabel lblPriceBreakdown;
