@@ -4,15 +4,15 @@
  */
 package com.iaapdevgroup2.mercairlineticketing;
 
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
+import java.text.DecimalFormat;
+import javax.swing.table.JTableHeader;
 
-/**
- *
- * @author user
- */
 public class PriceBreakdown extends javax.swing.JFrame {
 
     DefaultTableModel model = new DefaultTableModel();
@@ -22,6 +22,15 @@ public class PriceBreakdown extends javax.swing.JFrame {
     private static double baggagePrice = 0;
     private static double insurancePrice = 0;
     private static double taxFee = 0;
+    
+    Color sgBlue = new Color(29,72,134);
+    
+    DecimalFormat formattedPrices = new DecimalFormat("#,##0.00");
+    
+    private static String stringPrice;
+    private static String stringBaggagePrice;
+    private static String stringInsurancePrice;
+    private static String stringTaxFee;
     
     public PriceBreakdown() {
         super("Himpapawid Airlines Ticketing System");
@@ -33,6 +42,11 @@ public class PriceBreakdown extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         model = (DefaultTableModel) tblPassengerBreakdown.getModel();
         TableData();
+        
+        JTableHeader header = tblPassengerBreakdown.getTableHeader();
+
+        header.setForeground(sgBlue);
+        header.setFont(new Font("SansSerif", 3, 18));
         
         DefaultTableCellRenderer rightAligner = new DefaultTableCellRenderer();
         rightAligner.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -51,7 +65,7 @@ public class PriceBreakdown extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnlPriceBreakdownBackground = new javax.swing.JPanel();
         lblPriceBreakdown = new javax.swing.JLabel();
         lblNote = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -60,7 +74,7 @@ public class PriceBreakdown extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(29, 72, 134));
+        pnlPriceBreakdownBackground.setBackground(new java.awt.Color(29, 72, 134));
 
         lblPriceBreakdown.setFont(new java.awt.Font("SansSerif", 3, 36)); // NOI18N
         lblPriceBreakdown.setForeground(new java.awt.Color(252, 177, 48));
@@ -102,32 +116,32 @@ public class PriceBreakdown extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlPriceBreakdownBackgroundLayout = new javax.swing.GroupLayout(pnlPriceBreakdownBackground);
+        pnlPriceBreakdownBackground.setLayout(pnlPriceBreakdownBackgroundLayout);
+        pnlPriceBreakdownBackgroundLayout.setHorizontalGroup(
+            pnlPriceBreakdownBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPriceBreakdownBackgroundLayout.createSequentialGroup()
                 .addContainerGap(44, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(pnlPriceBreakdownBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPriceBreakdownBackgroundLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPriceBreakdownBackgroundLayout.createSequentialGroup()
                         .addComponent(lblPriceBreakdown)
                         .addGap(246, 246, 246))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(pnlPriceBreakdownBackgroundLayout.createSequentialGroup()
+                .addGroup(pnlPriceBreakdownBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlPriceBreakdownBackgroundLayout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addComponent(lblNote))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(pnlPriceBreakdownBackgroundLayout.createSequentialGroup()
                         .addGap(304, 304, 304)
                         .addComponent(btnConfirmAndExit)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnlPriceBreakdownBackgroundLayout.setVerticalGroup(
+            pnlPriceBreakdownBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPriceBreakdownBackgroundLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblPriceBreakdown)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -143,11 +157,11 @@ public class PriceBreakdown extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlPriceBreakdownBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlPriceBreakdownBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -195,8 +209,13 @@ public class PriceBreakdown extends javax.swing.JFrame {
             }
             
             baggagePrice = Transaction.baggageTotal / passengerCount;
+            
+            stringPrice = formattedPrices.format(price);
+            stringBaggagePrice = formattedPrices.format(baggagePrice);
+            stringInsurancePrice = formattedPrices.format(insurancePrice);
+            stringTaxFee = formattedPrices.format(taxFee);
 
-            model.addRow(new Object[]{passengerNames, passengerType, price, baggagePrice, insurancePrice, taxFee});
+            model.addRow(new Object[]{passengerNames, passengerType, stringPrice, stringBaggagePrice, stringInsurancePrice, stringTaxFee});
     	}
     }
     public static void main(String args[]) {
@@ -233,10 +252,10 @@ public class PriceBreakdown extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmAndExit;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblNote;
     private javax.swing.JLabel lblPriceBreakdown;
+    private javax.swing.JPanel pnlPriceBreakdownBackground;
     private static javax.swing.JTable tblPassengerBreakdown;
     // End of variables declaration//GEN-END:variables
 }

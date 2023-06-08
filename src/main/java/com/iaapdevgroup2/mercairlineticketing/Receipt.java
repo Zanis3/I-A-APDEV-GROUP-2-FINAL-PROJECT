@@ -32,7 +32,7 @@ public class Receipt extends javax.swing.JFrame {
         super("Himpapawid Airlines Ticketing System");
         initComponents();
         this.setLocationRelativeTo(null);
-        setSize(654, 770);
+        setSize(654, 800);
         
         ImageIcon himpapawidTopIcon = new ImageIcon(getClass().getResource("/images/LogoWName.png"));
         setIconImage(himpapawidTopIcon.getImage());
@@ -99,24 +99,24 @@ public class Receipt extends javax.swing.JFrame {
         pnlReceiptBackground.setToolTipText("");
         pnlReceiptBackground.setLayout(null);
 
-        lblTransactionNumber.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        lblTransactionNumber.setFont(new java.awt.Font("SansSerif", 3, 12)); // NOI18N
         lblTransactionNumber.setForeground(new java.awt.Color(252, 177, 48));
         lblTransactionNumber.setText("Transaction Number:");
         pnlReceiptBackground.add(lblTransactionNumber);
-        lblTransactionNumber.setBounds(20, 160, 119, 20);
+        lblTransactionNumber.setBounds(19, 160, 130, 20);
 
-        lblDate.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        lblDate.setFont(new java.awt.Font("SansSerif", 3, 12)); // NOI18N
         lblDate.setForeground(new java.awt.Color(252, 177, 48));
         lblDate.setText("Date:");
         pnlReceiptBackground.add(lblDate);
-        lblDate.setBounds(440, 160, 30, 16);
+        lblDate.setBounds(430, 160, 40, 16);
 
         pnlFlightOne.setBackground(new java.awt.Color(255, 255, 255));
         pnlFlightOne.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(29, 72, 134), 4));
 
         pnlFlighOneBar.setBackground(new java.awt.Color(29, 72, 134));
 
-        lblFlightOne.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        lblFlightOne.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         lblFlightOne.setForeground(new java.awt.Color(252, 177, 48));
         lblFlightOne.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblFlightOne.setText("Flight One");
@@ -138,36 +138,36 @@ public class Receipt extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lblFlightOneDepart.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblFlightOneDepart.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         lblFlightOneDepart.setForeground(new java.awt.Color(252, 177, 48));
         lblFlightOneDepart.setText("Depart:");
 
-        lblFlightOneArrive.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblFlightOneArrive.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         lblFlightOneArrive.setForeground(new java.awt.Color(252, 177, 48));
         lblFlightOneArrive.setText("Arrive:");
 
-        lblReceiptAirlineTypeOne.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblReceiptAirlineTypeOne.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         lblReceiptAirlineTypeOne.setForeground(new java.awt.Color(252, 177, 48));
         lblReceiptAirlineTypeOne.setText("Airline Type:");
 
-        lblDateofDepartureOne.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblDateofDepartureOne.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         lblDateofDepartureOne.setForeground(new java.awt.Color(252, 177, 48));
         lblDateofDepartureOne.setText("Date of Departure:");
 
-        lblDepartLocationOne.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        lblDepartLocationOne.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
         lblDepartLocationOne.setForeground(new java.awt.Color(252, 177, 48));
         lblDepartLocationOne.setText(Destination.cboOrigin.getSelectedItem().toString());
 
-        lblArriveLocationOne.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        lblArriveLocationOne.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
         lblArriveLocationOne.setForeground(new java.awt.Color(252, 177, 48));
         lblArriveLocationOne.setText(Destination.cboDestination.getSelectedItem().toString());
 
-        lblDepartureDate.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        lblDepartureDate.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
         lblDepartureDate.setForeground(new java.awt.Color(252, 177, 48));
         dateFormatter();
         lblDepartureDate.setText(flightOne);
 
-        lblAirlineTypeFlightOne.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        lblAirlineTypeFlightOne.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
         lblAirlineTypeFlightOne.setForeground(new java.awt.Color(252, 177, 48));
         lblAirlineTypeFlightOne.setText(AirlineType.cboAirlineType.getSelectedItem().toString());
 
@@ -211,7 +211,7 @@ public class Receipt extends javax.swing.JFrame {
                     .addComponent(lblDateofDepartureOne)
                     .addComponent(lblDepartureDate)
                     .addComponent(lblAirlineTypeFlightOne))
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         pnlReceiptBackground.add(pnlFlightOne);
@@ -226,7 +226,7 @@ public class Receipt extends javax.swing.JFrame {
 
         pnlFlightTwoBar.setBackground(new java.awt.Color(29, 72, 134));
 
-        lblFlightTwo.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        lblFlightTwo.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         lblFlightTwo.setForeground(new java.awt.Color(252, 177, 48));
         lblFlightTwo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblFlightTwo.setText("Flight Two");
@@ -248,36 +248,36 @@ public class Receipt extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lblFlightTwoDepart.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblFlightTwoDepart.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         lblFlightTwoDepart.setForeground(new java.awt.Color(252, 177, 48));
         lblFlightTwoDepart.setText("Depart:");
 
-        lblFlightTwoArrive.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblFlightTwoArrive.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         lblFlightTwoArrive.setForeground(new java.awt.Color(252, 177, 48));
         lblFlightTwoArrive.setText("Arrive:");
 
-        lblReceiptAirlineTypeTwo.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblReceiptAirlineTypeTwo.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         lblReceiptAirlineTypeTwo.setForeground(new java.awt.Color(252, 177, 48));
         lblReceiptAirlineTypeTwo.setText("Airline Type:");
 
-        lblDateOfDepartureTwo.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblDateOfDepartureTwo.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         lblDateOfDepartureTwo.setForeground(new java.awt.Color(252, 177, 48));
         lblDateOfDepartureTwo.setText("Date of Departure:");
 
-        lblDepartLocationTwo.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        lblDepartLocationTwo.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
         lblDepartLocationTwo.setForeground(new java.awt.Color(252, 177, 48));
         lblDepartLocationTwo.setText(Destination.cboDestination.getSelectedItem().toString());
 
-        lblArriveLocationTwo.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        lblArriveLocationTwo.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
         lblArriveLocationTwo.setForeground(new java.awt.Color(252, 177, 48));
         lblArriveLocationTwo.setText(Destination.cboOrigin.getSelectedItem().toString());
 
-        lblArrivalDate.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        lblArrivalDate.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
         lblArrivalDate.setForeground(new java.awt.Color(252, 177, 48));
         dateFormatter();
         lblArrivalDate.setText(flightTwo);
 
-        lblAirlineTypeFlightTwo.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        lblAirlineTypeFlightTwo.setFont(new java.awt.Font("SansSerif", 3, 24)); // NOI18N
         lblAirlineTypeFlightTwo.setForeground(new java.awt.Color(252, 177, 48));
         lblAirlineTypeFlightTwo.setText(AirlineType.cboAirlineType.getSelectedItem().toString());
 
@@ -310,7 +310,7 @@ public class Receipt extends javax.swing.JFrame {
                         .addComponent(lblDateOfDepartureTwo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblArrivalDate)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         pnlFlightTwoLayout.setVerticalGroup(
             pnlFlightTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,7 +332,7 @@ public class Receipt extends javax.swing.JFrame {
                     .addGroup(pnlFlightTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblDateOfDepartureTwo)
                         .addComponent(lblArrivalDate)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pnlReceiptBackground.add(pnlFlightTwo);
@@ -343,7 +343,7 @@ public class Receipt extends javax.swing.JFrame {
 
         pnlGuestsBar.setBackground(new java.awt.Color(29, 72, 134));
 
-        lblGuests.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        lblGuests.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         lblGuests.setForeground(new java.awt.Color(252, 177, 48));
         lblGuests.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblGuests.setText("Guests");
@@ -371,7 +371,7 @@ public class Receipt extends javax.swing.JFrame {
         txtGuests.setEditable(false);
         txtGuests.setBackground(new java.awt.Color(255, 255, 255));
         txtGuests.setColumns(20);
-        txtGuests.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        txtGuests.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         txtGuests.setForeground(new java.awt.Color(252, 177, 48));
         txtGuests.setRows(5);
         txtGuests.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -392,7 +392,7 @@ public class Receipt extends javax.swing.JFrame {
             .addGroup(pnlGuestsLayout.createSequentialGroup()
                 .addComponent(pnlGuestsBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -412,7 +412,7 @@ public class Receipt extends javax.swing.JFrame {
         lblReceiptTransactionNumber.setBounds(150, 150, 146, 30);
 
         btnContinue.setBackground(new java.awt.Color(29, 72, 134));
-        btnContinue.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        btnContinue.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         btnContinue.setForeground(new java.awt.Color(252, 177, 48));
         btnContinue.setText("Continue>>");
         btnContinue.addActionListener(new java.awt.event.ActionListener() {
@@ -421,13 +421,13 @@ public class Receipt extends javax.swing.JFrame {
             }
         });
         pnlReceiptBackground.add(btnContinue);
-        btnContinue.setBounds(520, 730, 107, 27);
+        btnContinue.setBounds(500, 730, 130, 31);
 
-        lblAutoReceipt.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblAutoReceipt.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         lblAutoReceipt.setForeground(new java.awt.Color(252, 177, 48));
         lblAutoReceipt.setText("Himpapawid Airlines Automated Receipt");
         pnlReceiptBackground.add(lblAutoReceipt);
-        lblAutoReceipt.setBounds(20, 730, 270, 20);
+        lblAutoReceipt.setBounds(20, 730, 270, 19);
 
         pnlTopBar.setBackground(new java.awt.Color(29, 72, 134));
         pnlTopBar.setLayout(null);
@@ -478,45 +478,8 @@ public class Receipt extends javax.swing.JFrame {
     }//GEN-LAST:event_btnContinueActionPerformed
     
     private void dateFormatter(){
-        switch(Destination.cboOneWayMM.getSelectedItem().toString()){
-            case "Jan":
-                flightOneMonth = 1;
-                break;
-            case "Feb":
-                flightOneMonth = 2;
-                break;
-            case "Mar":
-                flightOneMonth = 3;
-                break;
-            case "Apr":
-                flightOneMonth = 4;
-                break;
-            case "May":
-                flightOneMonth = 5;
-                break;
-            case "Jun":
-                flightOneMonth = 6;
-                break;
-            case "Jul":
-                flightOneMonth = 7;
-                break;
-            case "Aug":
-                flightOneMonth = 8;
-                break;
-            case "Sept":
-                flightOneMonth = 9;
-                break;
-            case "Oct":
-                flightOneMonth = 10;
-                break;
-            case "Nov":
-                flightOneMonth = 11;
-                break;
-            case "Dec":
-                flightOneMonth = 12;
-                break;
-        }
         flightOneDay = Integer.parseInt(Destination.cboOneWayDD.getSelectedItem().toString());
+        flightOneMonth = Integer.parseInt(Destination.cboOneWayMM.getSelectedItem().toString());
         flightOneYear = Integer.parseInt(Destination.cboOneWayYear.getSelectedItem().toString());
         LocalDate flightOneDate = LocalDate.of(flightOneYear, flightOneMonth, flightOneDay);
         
@@ -527,45 +490,8 @@ public class Receipt extends javax.swing.JFrame {
         flightOne = flightOneDate.format(dateFormatted);
         
         if(Destination.cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
-            switch(Destination.cboRoundTripMM.getSelectedItem().toString()){
-                case "Jan":
-                    flightTwoMonth = 1;
-                    break;
-                case "Feb":
-                    flightTwoMonth = 2;
-                    break;
-                case "Mar":
-                    flightTwoMonth = 3;
-                    break;
-                case "Apr":
-                    flightTwoMonth = 4;
-                    break;
-                case "May":
-                    flightTwoMonth = 5;
-                    break;
-                case "Jun":
-                    flightTwoMonth = 6;
-                    break;
-                case "Jul":
-                    flightTwoMonth = 7;
-                    break;
-                case "Aug":
-                    flightTwoMonth = 8;
-                    break;
-                case "Sept":
-                    flightTwoMonth = 9;
-                    break;
-                case "Oct":
-                    flightTwoMonth = 10;
-                    break;
-                case "Nov":
-                    flightTwoMonth = 11;
-                    break;
-                case "Dec":
-                    flightTwoMonth = 12;
-                    break;
-            }
             flightTwoDay = Integer.parseInt(Destination.cboRoundTripDD.getSelectedItem().toString());
+            flightTwoMonth = Integer.parseInt(Destination.cboRoundTripMM.getSelectedItem().toString());
             flightTwoYear = Integer.parseInt(Destination.cboRoundTripYear.getSelectedItem().toString());
             LocalDate flightTwoDate = LocalDate.of(flightTwoYear, flightTwoMonth, flightTwoDay);
             

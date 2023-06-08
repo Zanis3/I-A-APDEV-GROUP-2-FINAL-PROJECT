@@ -1,5 +1,7 @@
 package com.iaapdevgroup2.mercairlineticketing;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ItemEvent;
 import java.time.LocalDate;
@@ -8,6 +10,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -38,6 +41,8 @@ public class Passengers extends javax.swing.JFrame {
     private boolean validation;
     private int passengerAge;
     
+    Color sgBlue = new Color(29,72,134);;
+    
     public Passengers() {
         super("Himpapawid Airlines Ticketing System");
         initComponents();
@@ -49,6 +54,12 @@ public class Passengers extends javax.swing.JFrame {
         ImageIcon airlineLogo = (ImageIcon)icon;
         Image image = airlineLogo.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
         lblLogo.setIcon(new ImageIcon (image));
+        
+        table = (DefaultTableModel) tblPassengerData.getModel();
+        JTableHeader header = tblPassengerData.getTableHeader();
+
+        header.setForeground(sgBlue);
+        header.setFont(new Font("SansSerif", 3, 18));
         
         this.setLocationRelativeTo(null);
     }
@@ -493,9 +504,6 @@ public class Passengers extends javax.swing.JFrame {
                                 .addComponent(txtFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(pnlPassengerBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlPassengerBackgroundLayout.createSequentialGroup()
-                                .addGap(154, 154, 154)
-                                .addComponent(btnProceed))
-                            .addGroup(pnlPassengerBackgroundLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(pnlPassengerBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pnlPassengerBackgroundLayout.createSequentialGroup()
@@ -504,7 +512,10 @@ public class Passengers extends javax.swing.JFrame {
                                         .addComponent(txtAirlineType, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtOneWayRoundTrip, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnlPassengerBackgroundLayout.createSequentialGroup()
+                                .addGap(144, 144, 144)
+                                .addComponent(btnProceed)))))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         pnlPassengerBackgroundLayout.setVerticalGroup(
@@ -543,11 +554,11 @@ public class Passengers extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(pnlPassengerBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlPassengerTopBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(pnlPassengerBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlPassengerTopBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

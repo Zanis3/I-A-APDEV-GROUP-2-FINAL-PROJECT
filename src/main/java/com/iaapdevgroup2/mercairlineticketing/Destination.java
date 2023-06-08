@@ -17,9 +17,14 @@ public class Destination extends javax.swing.JFrame {
     private int compareDates;
     private int compareDatesNow;
     
-    private int nextYearDay;
-    private int nextYearMonth;
-    private int nextYearYear;
+    private int currentDay;
+    private int currentMonth;
+    private int currentYear;
+    
+    private int nextYear;
+    
+    private final LocalDate DATE_NOW = LocalDate.now();
+    private LocalDate END_DATE = DATE_NOW.plusYears(1);
     
     public Destination() {
         super("Himpapawid Airlines Ticketing System");
@@ -27,16 +32,6 @@ public class Destination extends javax.swing.JFrame {
         
         ImageIcon himpapawidTopIcon = new ImageIcon(getClass().getResource("/images/LogoWName.png"));
         setIconImage(himpapawidTopIcon.getImage());
-        
-        //WIP
-        LocalDate dateNow = LocalDate.now();
-        LocalDate nextYear = LocalDate.of(nextYearYear, nextYearMonth, nextYearDay);
-        
-        nextYearDay = dateNow.getDayOfMonth();
-        nextYearMonth = dateNow.getMonthValue();
-        nextYearYear = dateNow.getYear() + 1;
-        
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -260,7 +255,7 @@ public class Destination extends javax.swing.JFrame {
 
         cboOneWayYear.setBackground(new java.awt.Color(29, 72, 134));
         cboOneWayYear.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        cboOneWayYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024" }));
+        oneWayDateMethod();
         cboOneWayYear.setSelectedItem(null);
         cboOneWayYear.setEnabled(false);
         cboOneWayYear.addItemListener(new java.awt.event.ItemListener() {
@@ -271,7 +266,7 @@ public class Destination extends javax.swing.JFrame {
 
         cboRoundTripYear.setBackground(new java.awt.Color(29, 72, 134));
         cboRoundTripYear.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        cboRoundTripYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024" }));
+        roundTripDateMethod();
         cboRoundTripYear.setSelectedItem(null);
         cboRoundTripYear.setEnabled(false);
         cboRoundTripYear.addItemListener(new java.awt.event.ItemListener() {
@@ -501,89 +496,56 @@ public class Destination extends javax.swing.JFrame {
     }//GEN-LAST:event_cboOriginItemStateChanged
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if(oneWayYear == 2023){
-            oneWayMonth = cboOneWayMM.getSelectedIndex()+6;   
-        }
-        else if(oneWayYear == 2024){
-            oneWayMonth = cboOneWayMM.getSelectedIndex()+1;
-        }
+        
         oneWayDay = Integer.parseInt(cboOneWayDD.getSelectedItem().toString());
+        oneWayMonth = Integer.parseInt(cboOneWayMM.getSelectedItem().toString());
+        oneWayYear = Integer.parseInt(cboOneWayYear.getSelectedItem().toString());
+        
+        boolean validation = false;
         
         LocalDate departDate = LocalDate.of(oneWayYear, oneWayMonth, oneWayDay);
-        oneWayYear = departDate.getYear();
-        oneWayMonth = departDate.getMonthValue();
-        oneWayDay = departDate.getDayOfMonth();
-        
-        LocalDate currentDate = LocalDate.now();
-        
-        compareDatesNow = currentDate.compareTo(departDate);
         
         if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
-            try{
-                if(roundTripYear == 2023){
-                    roundTripMonth = cboRoundTripMM.getSelectedIndex()+6;
-                }
-                else if(roundTripYear == 2024){
-                    roundTripMonth = cboRoundTripMM.getSelectedIndex()+1;
-                }
-                roundTripDay = Integer.parseInt(cboRoundTripDD.getSelectedItem().toString());
-
-                LocalDate returnDate = LocalDate.of(roundTripYear, roundTripMonth, roundTripDay);
-                roundTripYear = returnDate.getYear();
-                roundTripMonth = returnDate.getMonthValue();
-                roundTripDay = returnDate.getDayOfMonth();
+            roundTripYear = Integer.parseInt(cboRoundTripYear.getSelectedItem().toString());
+            roundTripMonth = Integer.parseInt(cboRoundTripMM.getSelectedItem().toString());
+            roundTripDay = Integer.parseInt(cboRoundTripDD.getSelectedItem().toString());
+            
+            LocalDate returnDate = LocalDate.of(roundTripYear, roundTripMonth, roundTripDay);
+            compareDates = returnDate.compareTo(departDate);
+        }
         
-                compareDates = returnDate.compareTo(departDate);
-                }
-            catch(NullPointerException e){
+        if(cboOneWayRoundTrip.getSelectedItem().equals("One-Way")){
+            if(cboOneWayYear == null || cboOneWayMM == null || cboOneWayDD == null){
                 JOptionPane.showMessageDialog(null, "Please fill the dates properly before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                validation = true;
+            }
+        }
+        
+        if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
+            if(cboOneWayYear == null || cboOneWayMM == null || cboOneWayDD == null || cboRoundTripYear == null || cboRoundTripMM == null || cboRoundTripDD == null){
+                JOptionPane.showMessageDialog(null, "Please fill the dates properly before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else if(compareDates < 0){
+               JOptionPane.showMessageDialog(null, "The return date is before the depart date. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                validation = true;
             }
         }
         
         if(cboOrigin.getSelectedItem() == null || cboDestination.getSelectedItem() == null){
-            JOptionPane.showMessageDialog(null, "Please select an Origin/Destination before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);
+            validation = false;
+            JOptionPane.showMessageDialog(null, "Please fill the origin/destination boxes carefully.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
-        if(cboOneWayYear.getSelectedItem() == null || cboOneWayDD.getSelectedItem()== null || cboOneWayMM.getSelectedItem()== null){
-            if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
-                if(cboRoundTripYear.getSelectedItem() == null || cboRoundTripMM.getSelectedItem() == null || cboRoundTripDD.getSelectedItem() == null){
-                    JOptionPane.showMessageDialog(null, "Please fill the dates properly before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-            else if(cboOneWayRoundTrip.getSelectedItem().equals("One-Way")){
-                JOptionPane.showMessageDialog(null, "Please fill the dates properly before proceeding.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+        if(validation == true){
+            AirlineType p = new AirlineType();
+            p.setVisible(true);
+            this.dispose();
         }
         
-        if(cboOrigin.getSelectedItem() != null && cboDestination.getSelectedItem() != null && cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null) {
-            if(cboOneWayRoundTrip.getSelectedItem().equals("Round-Trip")){
-                if(cboRoundTripYear.getSelectedItem() != null && cboRoundTripMM.getSelectedItem() != null && cboRoundTripDD.getSelectedItem() != null){
-                    if(compareDatesNow > 0){
-                        JOptionPane.showMessageDialog(null, "The date you inputted is before the current date. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                    else{
-                        if(compareDates < 0){
-                            JOptionPane.showMessageDialog(null, "The return date you inputted is before the depart date. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                        else{
-                            AirlineType p = new AirlineType();
-                            p.setVisible(true);
-                            this.dispose();
-                        }
-                    }
-                }
-            }
-            if(cboOneWayRoundTrip.getSelectedItem().equals("One-Way")){
-                if(compareDatesNow > 0){
-                    JOptionPane.showMessageDialog(null, "The date you inputted is before the current date. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                else{
-                    AirlineType p = new AirlineType();
-                    p.setVisible(true);
-                    this.dispose();
-                }
-            }
-        }
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void cboLocalInternationalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboLocalInternationalItemStateChanged
@@ -621,51 +583,46 @@ public class Destination extends javax.swing.JFrame {
 
     private void cboOneWayMMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboOneWayMMItemStateChanged
         if(evt.getStateChange()== ItemEvent.SELECTED){
-            String oneWaySelectedMonth = cboOneWayMM.getSelectedItem().toString();
-            cboOneWayDD.setSelectedItem(null);
             
-            switch(oneWaySelectedMonth){
-                case "Jan":
-                case "Mar":
-                case "May":
-                case "Jul":
-                case "Aug":
-                case "Oct":
-                case "Dec":
-                    monthCount = 31;
-                    break;
-                case "Apr":
-                case "Jun":
-                case "Sept":
-                case "Nov":
-                    monthCount = 30;
-                    break;
-                case "Feb":
-                    if(Double.parseDouble(cboOneWayYear.getSelectedItem().toString()) % 4 == 0){
-                        monthCount = 29;
-                    }
-                    else{
-                        monthCount = 28;
-                    }
-                    break;
-            }
+            int oneWayMonth = Integer.parseInt(String.valueOf(cboOneWayMM.getSelectedItem()));
+            int days = 0;
             
-            String oneWayDays[] = new String[monthCount];
-            
-            for(int a = 0; a < oneWayDays.length; a++){
-                if(a < 9){
-                    oneWayDays[a] = "0" + String.valueOf(a+1);
+            if(oneWayMonth == 2){
+                if(Integer.parseInt(String.valueOf(cboOneWayYear.getSelectedItem())) % 4 == 0){
+                    days = 29;
                 }
                 else{
-                    oneWayDays[a] = String.valueOf(a+1);
+                    days = 28;
                 }
             }
+            else if(oneWayMonth == 4 || oneWayMonth == 6 || oneWayMonth == 9 || oneWayMonth == 11){
+                days = 30;
+            }
+            else{
+                days = 31;
+            }
             
-            cboOneWayDD.setModel(new javax.swing.DefaultComboBoxModel<>(oneWayDays));
-            cboOneWayDD.setSelectedItem(null);
+            currentDay = DATE_NOW.getDayOfMonth();
+            currentMonth = DATE_NOW.getMonthValue();
+            
+            if(oneWayMonth != currentMonth){
+                currentDay = 1;
+            }
+            
+            cboOneWayDD.removeAllItems();
+            
+            for(int day = currentDay; day <= days; day++){
+                if(day < 10){
+                    cboOneWayDD.addItem("0" + String.valueOf(day));
+                }
+                else{
+                    cboOneWayDD.addItem(String.valueOf(day));
+                }
+            }
             
             if(cboOneWayMM.getSelectedItem() != null){
                 cboOneWayDD.setEnabled(true);
+                cboOneWayDD.setSelectedItem(null);
             }
             
             if(cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null){
@@ -684,18 +641,34 @@ public class Destination extends javax.swing.JFrame {
 
     private void cboOneWayYearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboOneWayYearItemStateChanged
         if(evt.getStateChange()== ItemEvent.SELECTED){
-            oneWayYear = Integer.parseInt(cboOneWayYear.getSelectedItem().toString());
-            cboOneWayMM.setEnabled(true);
             
-            if(oneWayYear == 2023){
-                cboOneWayMM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"}));
-                cboOneWayMM.setSelectedItem(null);
-                cboOneWayDD.setSelectedItem(null);
+            if(cboOneWayYear.getSelectedItem().equals(String.valueOf(DATE_NOW.getYear()))){
+                cboOneWayMM.removeAllItems();
+                for(int month = DATE_NOW.getMonthValue(); month <= 12; month++){
+                    if(month < 10){
+                        cboOneWayMM.addItem("0" + String.valueOf(month));
+                    }
+                    else{
+                        cboOneWayMM.addItem(String.valueOf(month));
+                    }
+                }
             }
-            else if(oneWayYear == 2024){
-                cboOneWayMM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun"}));
+            
+            else if(cboOneWayYear.getSelectedItem().equals(String.valueOf(END_DATE.getYear()))){
+                cboOneWayMM.removeAllItems();
+                for(int month = 1; month <= END_DATE.getMonthValue(); month++){
+                    if(month < 10){
+                        cboOneWayMM.addItem("0" + String.valueOf(month));
+                    }
+                    else{
+                        cboOneWayMM.addItem(String.valueOf(month));
+                    }
+                }    
+            }
+            
+            if(cboOneWayYear.getSelectedItem() != null){
+                cboOneWayMM.setEnabled(true);
                 cboOneWayMM.setSelectedItem(null);
-                cboOneWayDD.setSelectedItem(null);
             }
             
             if(cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null){
@@ -713,18 +686,32 @@ public class Destination extends javax.swing.JFrame {
 
     private void cboRoundTripYearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboRoundTripYearItemStateChanged
         if(evt.getStateChange()== ItemEvent.SELECTED){
-            roundTripYear = Integer.parseInt(cboRoundTripYear.getSelectedItem().toString());
-            cboRoundTripMM.setEnabled(true);
-            
-            if(roundTripYear == 2023){
-                cboRoundTripMM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"}));
-                cboRoundTripMM.setSelectedItem(null);
-                cboRoundTripDD.setSelectedItem(null);
+            if(cboRoundTripYear.getSelectedItem().equals(String.valueOf(DATE_NOW.getYear()))){
+                cboRoundTripMM.removeAllItems();
+                for(int month = DATE_NOW.getMonthValue(); month <= 12; month++){
+                    if(month < 10){
+                        cboRoundTripMM.addItem("0" + String.valueOf(month));
+                    }
+                    else{
+                        cboRoundTripMM.addItem(String.valueOf(month));
+                    }
+                }
             }
-            else if(roundTripYear == 2024){
-                cboRoundTripMM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun"}));
-                cboRoundTripMM.setSelectedItem(null);
-                cboRoundTripDD.setSelectedItem(null);
+            
+            else if(cboRoundTripYear.getSelectedItem().equals(String.valueOf(END_DATE.getYear()))){
+                cboRoundTripMM.removeAllItems();
+                for(int month = 1; month <= END_DATE.getMonthValue(); month++){
+                    if(month < 10){
+                        cboRoundTripMM.addItem("0" + String.valueOf(month));
+                    }
+                    else{
+                        cboRoundTripMM.addItem(String.valueOf(month));
+                    }
+                }    
+            }
+            
+            if(cboRoundTripYear.getSelectedItem() != null){
+                cboRoundTripMM.setEnabled(true);
             }
             
             if(cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null){
@@ -742,52 +729,47 @@ public class Destination extends javax.swing.JFrame {
     }//GEN-LAST:event_cboRoundTripYearItemStateChanged
 
     private void cboRoundTripMMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboRoundTripMMItemStateChanged
-       if(evt.getStateChange()== ItemEvent.SELECTED){
-            String oneWaySelectedMonth = cboRoundTripMM.getSelectedItem().toString();
-            cboRoundTripDD.setSelectedItem(null);
+        if(evt.getStateChange()== ItemEvent.SELECTED){
             
-            switch(oneWaySelectedMonth){
-                case "Jan":
-                case "Mar":
-                case "May":
-                case "Jul":
-                case "Aug":
-                case "Oct":
-                case "Dec":
-                    monthCount = 31;
-                    break;
-                case "Apr":
-                case "Jun":
-                case "Sept":
-                case "Nov":
-                    monthCount = 30;
-                    break;
-                case "Feb":
-                    if(Double.parseDouble(cboRoundTripYear.getSelectedItem().toString()) % 4 == 0){
-                        monthCount = 29;
-                    }
-                    else{
-                        monthCount = 28;
-                    }
-                    break;
-            }
+            int roundTripMonth = Integer.parseInt(String.valueOf(cboRoundTripMM.getSelectedItem()));
+            int days = 0;
             
-            String roundTripDays[] = new String[monthCount];
-            
-            for(int a = 0; a < roundTripDays.length; a++){
-                if(a < 9){
-                    roundTripDays[a] = "0" + String.valueOf(a+1);
+            if(roundTripMonth == 2){
+                if(Integer.parseInt(String.valueOf(cboRoundTripYear.getSelectedItem())) % 4 == 0){
+                    days = 29;
                 }
                 else{
-                    roundTripDays[a] = String.valueOf(a+1);
+                    days = 28;
                 }
             }
+            else if(roundTripMonth == 4 || roundTripMonth == 6 || roundTripMonth == 9 || roundTripMonth == 11){
+                days = 30;
+            }
+            else{
+                days = 31;
+            }
             
-            cboRoundTripDD.setModel(new javax.swing.DefaultComboBoxModel<>(roundTripDays));
-            cboRoundTripDD.setSelectedItem(null);
+            currentDay = DATE_NOW.getDayOfMonth();
+            currentMonth = DATE_NOW.getMonthValue();
+            
+            if(roundTripMonth != currentMonth){
+                currentDay = 1;
+            }
+            
+            cboRoundTripDD.removeAllItems();
+            
+            for(int day = currentDay; day <= days; day++){
+                if(day < 10){
+                    cboRoundTripDD.addItem("0" + String.valueOf(day));
+                }
+                else{
+                    cboRoundTripDD.addItem(String.valueOf(day));
+                }
+            }
             
             if(cboRoundTripMM.getSelectedItem() != null){
                 cboRoundTripDD.setEnabled(true);
+                cboRoundTripDD.setSelectedItem(null);
             }
             
             if(cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null){
@@ -866,6 +848,32 @@ public class Destination extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void oneWayDateMethod(){
+        currentDay = DATE_NOW.getDayOfMonth();
+        currentMonth = DATE_NOW.getMonthValue();
+        currentYear = DATE_NOW.getYear();
+        
+        nextYear = END_DATE.getYear();
+        
+        for(int year = currentYear; year <= nextYear; year++){
+            String yearLoop = String.valueOf(year);
+            cboOneWayYear.addItem(yearLoop); 
+        }
+    }
+    
+    public void roundTripDateMethod(){
+        currentDay = DATE_NOW.getDayOfMonth();
+        currentMonth = DATE_NOW.getMonthValue();
+        currentYear = DATE_NOW.getYear();
+        
+        nextYear = END_DATE.getYear();
+        
+        for(int year = currentYear; year <= nextYear; year++){
+            String yearLoop = String.valueOf(year);
+            cboRoundTripYear.addItem(yearLoop);
+        }
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
