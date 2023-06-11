@@ -766,18 +766,12 @@ public class Passengers extends javax.swing.JFrame {
         passengerCounter++;
                 
         if(minorCounter < AirlineType.minorCount && AirlineType.minorCount != 0){
-            System.out.println(String.valueOf(minorCounter));
-            System.out.println(AirlineType.minorCount);
             lblPanelText.setText("Passenger " + Integer.toString(passengerCounter) + ": (Minor)");
         }
         else if(adultCounter < AirlineType.adultCount && AirlineType.adultCount != 0){
-            System.out.println(String.valueOf(adultCounter));
-            System.out.println(AirlineType.adultCount);
             lblPanelText.setText("Passenger " + Integer.toString(passengerCounter) + ": (Adult)");
         }
         else if(seniorCounter < AirlineType.seniorCount && AirlineType.seniorCount != 0){
-            System.out.println(String.valueOf(seniorCounter));
-            System.out.println(AirlineType.seniorCount);
             lblPanelText.setText("Passenger " + Integer.toString(passengerCounter) + ": (Senior)");
         }
     }
