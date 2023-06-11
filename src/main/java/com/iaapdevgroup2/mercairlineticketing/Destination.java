@@ -13,9 +13,7 @@ public class Destination extends javax.swing.JFrame {
     private int roundTripDay;
     private int roundTripMonth;
     private int roundTripYear;
-    private int monthCount;
     private int compareDates;
-    private int compareDatesNow;
     
     private int currentDay;
     private int currentMonth;
@@ -24,7 +22,7 @@ public class Destination extends javax.swing.JFrame {
     private int nextYear;
     
     private final LocalDate DATE_NOW = LocalDate.now();
-    private LocalDate END_DATE = DATE_NOW.plusYears(1);
+    private final LocalDate END_DATE = DATE_NOW.plusYears(1);
     
     public Destination() {
         super("Himpapawid Airlines Ticketing System");
@@ -32,6 +30,8 @@ public class Destination extends javax.swing.JFrame {
         
         ImageIcon himpapawidTopIcon = new ImageIcon(getClass().getResource("/images/LogoWName.png"));
         setIconImage(himpapawidTopIcon.getImage());
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**

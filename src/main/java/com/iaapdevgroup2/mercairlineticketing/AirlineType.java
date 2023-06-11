@@ -17,6 +17,12 @@ import javax.swing.JOptionPane;
  */
 public class AirlineType extends javax.swing.JFrame {
 
+    private int maxSeat=0;
+    protected static int minorCount;
+    protected static int adultCount;
+    protected static int seniorCount;
+    protected static int passengerCount;
+    
     public AirlineType() {
         super("Himpapawid Airlines Ticketing System");
         initComponents();
@@ -30,17 +36,6 @@ public class AirlineType extends javax.swing.JFrame {
         lblLogo.setIcon(new ImageIcon (image));
         
         this.setLocationRelativeTo(null);
-    }
-    private int maxSeat=0;
-    protected static int passengerCount=0;
-    protected static int minorCount;
-    protected static int adultCount;
-    protected static int seniorCount;
-    
-    public String getPassengerCount(){
-        
-        String passengerNumber = Integer.toString(passengerCount);
-        return passengerNumber;
     }
 
     /**
@@ -295,8 +290,9 @@ public class AirlineType extends javax.swing.JFrame {
         adultCount = Integer.parseInt(cboAdultCount.getSelectedItem().toString());
         seniorCount = Integer.parseInt(cboSeniorsCount.getSelectedItem().toString());
         
+        passengerCount = minorCount + adultCount + seniorCount;
+        
         Boolean confirmation = false;
-        passengerCount = Integer.parseInt(cboAdultCount.getSelectedItem().toString()) + Integer.parseInt(cboMinorsCount.getSelectedItem().toString()) + Integer.parseInt(cboSeniorsCount.getSelectedItem().toString());
         
         if(passengerCount > maxSeat)
             JOptionPane.showMessageDialog(null, "The total reservation count must not exceed " + maxSeat + ".", "Error", JOptionPane.ERROR_MESSAGE);
@@ -388,10 +384,10 @@ public class AirlineType extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProceed;
-    private javax.swing.JComboBox<String> cboAdultCount;
+    protected static javax.swing.JComboBox<String> cboAdultCount;
     public static javax.swing.JComboBox<String> cboAirlineType;
-    private javax.swing.JComboBox<String> cboMinorsCount;
-    private javax.swing.JComboBox<String> cboSeniorsCount;
+    protected static javax.swing.JComboBox<String> cboMinorsCount;
+    protected static javax.swing.JComboBox<String> cboSeniorsCount;
     private javax.swing.JLabel lblAdults;
     private javax.swing.JLabel lblAirlineType;
     private javax.swing.JPanel lblAirlineTypeBackground;

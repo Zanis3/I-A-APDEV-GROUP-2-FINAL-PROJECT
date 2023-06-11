@@ -37,9 +37,13 @@ public class Passengers extends javax.swing.JFrame {
     private int minorCounter = 0;
     private int adultCounter = 0;
     private int seniorCounter = 0;
-    private int passengerCounter = 1;
+    private int passengerCounter = 0;
     private boolean validation;
     private int passengerAge;
+    
+    private boolean minor;
+    private boolean adult;
+    private boolean senior;
     
     Color sgBlue = new Color(29,72,134);;
     
@@ -105,7 +109,7 @@ public class Passengers extends javax.swing.JFrame {
         lblSlash2 = new javax.swing.JLabel();
         cboDD = new javax.swing.JComboBox<>();
         lblDD = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        pnlPassengerInputTopBar = new javax.swing.JPanel();
         lblPanelText = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPassengerData = new javax.swing.JTable();
@@ -291,6 +295,7 @@ public class Passengers extends javax.swing.JFrame {
         });
 
         lblSlash1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        lblSlash1.setForeground(new java.awt.Color(252, 177, 48));
         lblSlash1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSlash1.setText("/");
 
@@ -311,6 +316,7 @@ public class Passengers extends javax.swing.JFrame {
         lblMM.setToolTipText("");
 
         lblSlash2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        lblSlash2.setForeground(new java.awt.Color(252, 177, 48));
         lblSlash2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSlash2.setText("/");
 
@@ -329,26 +335,25 @@ public class Passengers extends javax.swing.JFrame {
         lblDD.setText("DD");
         lblDD.setToolTipText("");
 
-        jPanel1.setBackground(new java.awt.Color(252, 177, 48));
+        pnlPassengerInputTopBar.setBackground(new java.awt.Color(252, 177, 48));
 
         lblPanelText.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         lblPanelText.setForeground(new java.awt.Color(29, 72, 134));
         lblPanelText.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         passengerTitleMethod();
-        lblPanelText.setText(passenger);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlPassengerInputTopBarLayout = new javax.swing.GroupLayout(pnlPassengerInputTopBar);
+        pnlPassengerInputTopBar.setLayout(pnlPassengerInputTopBarLayout);
+        pnlPassengerInputTopBarLayout.setHorizontalGroup(
+            pnlPassengerInputTopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPassengerInputTopBarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblPanelText)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnlPassengerInputTopBarLayout.setVerticalGroup(
+            pnlPassengerInputTopBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPassengerInputTopBarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblPanelText)
                 .addContainerGap(11, Short.MAX_VALUE))
@@ -402,7 +407,7 @@ public class Passengers extends javax.swing.JFrame {
                         .addComponent(pnlnsurance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19)))
                 .addContainerGap())
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlPassengerInputTopBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlPassengerInputLayout.createSequentialGroup()
                 .addGap(124, 124, 124)
                 .addComponent(btnAdd)
@@ -411,7 +416,7 @@ public class Passengers extends javax.swing.JFrame {
         pnlPassengerInputLayout.setVerticalGroup(
             pnlPassengerInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPassengerInputLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlPassengerInputTopBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlPassengerInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
@@ -428,7 +433,7 @@ public class Passengers extends javax.swing.JFrame {
                             .addComponent(lblYYYY))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPassengerInputLayout.createSequentialGroup()
                             .addGroup(pnlPassengerInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cboMM, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboMM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblSlash2))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(lblMM)))
@@ -568,6 +573,10 @@ public class Passengers extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         if(txtName.getText().trim().isEmpty() == false && txtAge.getText().trim().isEmpty() == false && insuranceGroup.getSelection() != null){
             if(table.getRowCount()+1 <= AirlineType.passengerCount){
+                minor = false;
+                adult = false;
+                senior = false;
+                
                 insurance = "";
         
                 if(rdoYes.isSelected()){
@@ -578,31 +587,28 @@ public class Passengers extends javax.swing.JFrame {
                 }
                 
                 validation = false;
-                passengerAge = Integer.parseInt(txtAge.getText());
-                passengerCounter++;
+                passengerTitleMethod();
                 
+                passengerAge = Integer.parseInt(txtAge.getText());
                 if(minorCounter < AirlineType.minorCount && AirlineType.minorCount != 0){
                     if(passengerAge >= 0 && passengerAge <= 17){
-                        lblPanelText.setText("Passenger " + Integer.toString(passengerCounter) + ": (Minor)");
-                        minorCounter++;
+                        minor = true;
                         validation = true;
                     }
                 }
                 else if(adultCounter < AirlineType.adultCount && AirlineType.adultCount != 0){
                     if(passengerAge >= 18 && passengerAge <= 59){
-                        lblPanelText.setText("Passenger " + Integer.toString(passengerCounter) + ": (Adult)");
-                        adultCounter++;
+                        adult = true;
                         validation = true;
                     }
                 }
                 else if(seniorCounter < AirlineType.seniorCount && AirlineType.seniorCount != 0){
                     if(passengerAge >= 60){
-                        lblPanelText.setText("Passenger " + Integer.toString(passengerCounter) + ": (Senior)");
-                        seniorCounter++;
+                        senior = true;
                         validation = true;
                     }
                 }
-            
+                        
                 if(validation == true){
                     table.insertRow(table.getRowCount(), new Object[]{txtName.getText(), txtAge.getText(), insurance});
                     txtName.setText("");
@@ -615,12 +621,22 @@ public class Passengers extends javax.swing.JFrame {
                         insuranceCounter++;
                     }
                     insuranceGroup.clearSelection();
+                    
+                    if(minor == true){
+                        minorCounter++;
+                    }
+                    else if(adult == true){
+                        adultCounter++;
+                    }
+                    else if(senior == true){
+                        seniorCounter++;
+                    }
                 }
                 else{
                     passengerCounter--;
                     JOptionPane.showMessageDialog(null, "Enter a valid age for the specific age range of the passenger.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            
+                
                 if(table.getRowCount() == AirlineType.passengerCount){
                     btnProceed.setEnabled(true);
                     txtName.setEditable(false);
@@ -747,14 +763,22 @@ public class Passengers extends javax.swing.JFrame {
     }//GEN-LAST:event_cboDDItemStateChanged
     
     private void passengerTitleMethod(){
-        if(AirlineType.minorCount != 0){
-            passenger = "Passenger 1: (Minor)";
+        passengerCounter++;
+                
+        if(minorCounter < AirlineType.minorCount && AirlineType.minorCount != 0){
+            System.out.println(String.valueOf(minorCounter));
+            System.out.println(AirlineType.minorCount);
+            lblPanelText.setText("Passenger " + Integer.toString(passengerCounter) + ": (Minor)");
         }
-        else if(AirlineType.adultCount != 0){
-            passenger = "Passenger 1: (Adult)";
+        else if(adultCounter < AirlineType.adultCount && AirlineType.adultCount != 0){
+            System.out.println(String.valueOf(adultCounter));
+            System.out.println(AirlineType.adultCount);
+            lblPanelText.setText("Passenger " + Integer.toString(passengerCounter) + ": (Adult)");
         }
-        else if(AirlineType.seniorCount != 0){
-            passenger = "Passenger 1: (Senior)";
+        else if(seniorCounter < AirlineType.seniorCount && AirlineType.seniorCount != 0){
+            System.out.println(String.valueOf(seniorCounter));
+            System.out.println(AirlineType.seniorCount);
+            lblPanelText.setText("Passenger " + Integer.toString(passengerCounter) + ": (Senior)");
         }
     }
     
@@ -800,7 +824,6 @@ public class Passengers extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboMM;
     private javax.swing.JComboBox<String> cboYYYY;
     private javax.swing.ButtonGroup insuranceGroup;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblAirlineType;
@@ -820,6 +843,7 @@ public class Passengers extends javax.swing.JFrame {
     private javax.swing.JLabel lblYYYY;
     private javax.swing.JPanel pnlPassengerBackground;
     private javax.swing.JPanel pnlPassengerInput;
+    private javax.swing.JPanel pnlPassengerInputTopBar;
     private javax.swing.JPanel pnlPassengerTopBar;
     private javax.swing.JPanel pnlnsurance;
     private javax.swing.JRadioButton rdoNo;

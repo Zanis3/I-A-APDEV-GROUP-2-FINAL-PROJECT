@@ -93,7 +93,6 @@ public class Receipt extends javax.swing.JFrame {
         lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(654, 950));
 
         pnlReceiptBackground.setBackground(new java.awt.Color(255, 255, 255));
         pnlReceiptBackground.setToolTipText("");
@@ -355,7 +354,7 @@ public class Receipt extends javax.swing.JFrame {
             .addGroup(pnlGuestsBarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblGuests, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(493, Short.MAX_VALUE))
         );
         pnlGuestsBarLayout.setVerticalGroup(
             pnlGuestsBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,18 +381,14 @@ public class Receipt extends javax.swing.JFrame {
         pnlGuestsLayout.setHorizontalGroup(
             pnlGuestsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlGuestsBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnlGuestsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         pnlGuestsLayout.setVerticalGroup(
             pnlGuestsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGuestsLayout.createSequentialGroup()
                 .addComponent(pnlGuestsBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
         );
 
         pnlReceiptBackground.add(pnlGuests);
@@ -421,7 +416,7 @@ public class Receipt extends javax.swing.JFrame {
             }
         });
         pnlReceiptBackground.add(btnContinue);
-        btnContinue.setBounds(500, 730, 130, 31);
+        btnContinue.setBounds(500, 720, 130, 31);
 
         lblAutoReceipt.setFont(new java.awt.Font("SansSerif", 3, 14)); // NOI18N
         lblAutoReceipt.setForeground(new java.awt.Color(252, 177, 48));
@@ -459,7 +454,7 @@ public class Receipt extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlReceiptBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+            .addComponent(pnlReceiptBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
 
         pack();

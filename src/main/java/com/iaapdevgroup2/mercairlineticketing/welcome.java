@@ -150,4 +150,4 @@ public class welcome extends javax.swing.JFrame {
         public progressBar() {
         }
     }
-    }
+}
