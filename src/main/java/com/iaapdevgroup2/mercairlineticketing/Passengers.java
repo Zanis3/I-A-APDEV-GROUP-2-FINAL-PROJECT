@@ -33,7 +33,6 @@ public class Passengers extends javax.swing.JFrame {
     static DefaultTableModel table = new DefaultTableModel();
     private String insurance;
     protected static int insuranceCounter;
-    private String passenger;
     private int minorCounter = 0;
     private int adultCounter = 0;
     private int seniorCounter = 0;

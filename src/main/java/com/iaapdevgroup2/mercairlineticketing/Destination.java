@@ -620,6 +620,19 @@ public class Destination extends javax.swing.JFrame {
                 }
             }
             
+            int yearCheck = END_DATE.getYear();
+            if(currentDay == DATE_NOW.getDayOfMonth() && yearCheck == Integer.parseInt(cboOneWayYear.getSelectedItem().toString())){
+                cboOneWayDD.removeAllItems();
+                for(int day = 1; day <= currentDay; day++){
+                    if(day < 10){
+                        cboOneWayDD.addItem("0" + String.valueOf(day));
+                    }
+                    else{
+                        cboOneWayDD.addItem(String.valueOf(day));
+                    }
+                }
+            }
+            
             if(cboOneWayMM.getSelectedItem() != null){
                 cboOneWayDD.setEnabled(true);
                 cboOneWayDD.setSelectedItem(null);
@@ -712,6 +725,7 @@ public class Destination extends javax.swing.JFrame {
             
             if(cboRoundTripYear.getSelectedItem() != null){
                 cboRoundTripMM.setEnabled(true);
+                cboRoundTripMM.setSelectedItem(null);
             }
             
             if(cboOneWayYear.getSelectedItem()!= null && cboOneWayDD.getSelectedItem()!= null && cboOneWayMM.getSelectedItem()!= null){
@@ -764,6 +778,19 @@ public class Destination extends javax.swing.JFrame {
                 }
                 else{
                     cboRoundTripDD.addItem(String.valueOf(day));
+                }
+            }
+            
+            int yearCheck = END_DATE.getYear();
+            if(currentDay == DATE_NOW.getDayOfMonth() && yearCheck == Integer.parseInt(cboRoundTripYear.getSelectedItem().toString())){
+                cboRoundTripDD.removeAllItems();
+                for(int day = 1; day <= currentDay; day++){
+                    if(day < 10){
+                        cboRoundTripDD.addItem("0" + String.valueOf(day));
+                    }
+                    else{
+                        cboRoundTripDD.addItem(String.valueOf(day));
+                    }
                 }
             }
             
